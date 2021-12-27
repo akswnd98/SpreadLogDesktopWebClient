@@ -1,0 +1,77 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+
+module.exports = {
+  entry: {
+    public: path.resolve(__dirname, 'src/index.ts'),
+    admin: path.resolve(__dirname, 'src/admin/index.ts')
+  },
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: '[name]_bundle.js',
+    publicPath: '/',
+  },
+  resolve: {
+    alias: {
+      '@/src': path.resolve(__dirname, 'src'),
+      '@/assets': path.resolve(__dirname, 'assets'),
+    },
+    extensions: ['.ts', '.js'],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(ts|js)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              ["@babel/plugin-proposal-class-properties"],
+              ["@babel/plugin-proposal-decorators", {"decoratorsBeforeExport": true}]
+            ]
+          }
+        },
+      }, {
+        test: /\.(jpe?g|png)$/i,
+        exclude: /node_modules/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]',
+        },
+      }, {
+        test: /\.(css)$/,
+        use: ['css-loader'],
+      }, {
+        test: /\.(scss)$/,
+        use: [
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+            },
+          },
+        ],
+        exclude: /node_module/,
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      chunks: ['public'],
+      filename: 'index.html',
+      template: './src/index.html',
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['admin'],
+      filename: 'admin.html',
+      template: './src/index.html',
+    }),
+  ],
+  devServer: {
+    static: path.join(__dirname, 'dist'),
+    port: 8080,
+    historyApiFallback: true,
+  },
+};
