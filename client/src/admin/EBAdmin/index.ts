@@ -1,22 +1,14 @@
-import { html, render } from 'lit-html';
-import EBElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
+import EBElement from '@/src/EBElement';
+import 'reflect-metadata';
+import EBContainerElement, { ConstructorParam as ParentConstructorParam} from '@/src/EBContainerElement';
+import { injectable, unmanaged } from 'inversify';
 
 export type ConstructorParam = {
-} & ParentConstructorParam;
+} & ParentConstructorParam<EBElement[]>;
 
-export default class EBAdmin extends EBElement {
-  constructor (payload: ConstructorParam) {
+@injectable()
+export default class EBAdmin extends EBContainerElement<EBElement[]> {
+  constructor (@unmanaged() payload: ConstructorParam) {
     super(payload);
-  }
-
-  initialRender () {
-    render(
-      html`
-        <div id='root' class='root'>
-          hello world nice
-        </div>
-      `,
-      this.shadowRoot!,
-    );
   }
 }

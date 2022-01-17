@@ -1,0 +1,14 @@
+.root {
+  width: 300px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  background-color: red;
+  p:hover {
+    cursor: default;
+  }
+}
+
+.root:hover {
+  background-color: greenyellow;
+}

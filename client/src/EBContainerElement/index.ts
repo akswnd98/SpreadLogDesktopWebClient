@@ -1,19 +1,29 @@
+import { injectable, unmanaged } from 'inversify';
+import 'reflect-metadata';
 import EBElement, { ConstructorParam as ParentConstructorParam } from '../EBElement';
 import EBLayout from '../EBLayout';
 
-export type ConstructorParam = {
-  childElements: EBElement[];
-  layout: EBLayout;
+export type ConstructorParam<ChildElements> = {
+  childElements: ChildElements;
+  layout: EBLayout<ChildElements>;
 } & ParentConstructorParam;
 
-export default abstract class EBContainerElement extends EBElement {
-  layout: EBLayout;
-  childElements: EBElement[];
+@injectable()
+export default class EBContainerElement<ChildElements> extends EBElement {
+  layout!: EBLayout<ChildElements>;
+  childElements!: ChildElements;
 
-  constructor (payload: ConstructorParam) {
+  constructor (@unmanaged() payload: ConstructorParam<ChildElements>) {
     super(payload);
+  }
+
+  initField (payload: ConstructorParam<ChildElements>) {
     this.layout = payload.layout;
     this.childElements = payload.childElements;
+  }
+
+  initialRender () {
+    super.initialRender();
     this.layout.render(this, this.childElements);
   }
 }

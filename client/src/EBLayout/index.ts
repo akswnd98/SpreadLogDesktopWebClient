@@ -1,5 +1,8 @@
+import { injectable } from 'inversify';
+import 'reflect-metadata';
 import EBElement from '../EBElement';
 
-export default abstract class EBLayout {
-  abstract render (element: EBElement, childElements: EBElement[]): void;
+@injectable()
+export default abstract class EBLayout<ChildElements> {
+  abstract render (element: EBElement, childElements: ChildElements): void;
 }

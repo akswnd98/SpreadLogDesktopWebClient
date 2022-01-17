@@ -4,7 +4,8 @@ const path = require('path');
 module.exports = {
   entry: {
     public: path.resolve(__dirname, 'src/index.ts'),
-    admin: path.resolve(__dirname, 'src/admin/index.ts')
+    admin: path.resolve(__dirname, 'src/admin/index.ts'),
+    test: path.resolve(__dirname, 'src/test/index.ts'),
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -27,13 +28,21 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             plugins: [
+              "babel-plugin-transform-typescript-metadata",
+              ["@babel/plugin-proposal-decorators", {"legacy": true}],
               ["@babel/plugin-proposal-class-properties"],
-              ["@babel/plugin-proposal-decorators", {"decoratorsBeforeExport": true}]
             ]
           }
         },
       }, {
         test: /\.(jpe?g|png)$/i,
+        exclude: /node_modules/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]',
+        },
+      }, {
+        test: /\.(svg)$/i,
         exclude: /node_modules/,
         type: 'asset/resource',
         generator: {
@@ -66,6 +75,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       chunks: ['admin'],
       filename: 'admin.html',
+      template: './src/index.html',
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['test'],
+      filename: 'test.html',
       template: './src/index.html',
     }),
   ],

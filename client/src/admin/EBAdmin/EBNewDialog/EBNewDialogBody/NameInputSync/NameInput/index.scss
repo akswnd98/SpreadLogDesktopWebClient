@@ -1,0 +1,14 @@
+#root {
+  display: flex;
+  justify-content: stretch;
+  flex-direction: row;
+  height: 40px;
+  align-items: stretch;
+  input {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: calc(100% - 40px);
+    border-radius: 5px;
+    border: none;
+  }
+}

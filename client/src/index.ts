@@ -9,4 +9,4 @@ document.head.appendChild(stylesElement);
 customElements.define('eb-app', EBApp);
 
 const root = document.getElementById('root')!;
-root.appendChild(EBAppStatic.generateEBApp());
+root.appendChild(EBAppStatic.generate());

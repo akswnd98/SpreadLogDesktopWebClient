@@ -12,11 +12,9 @@ export default class EBApp extends EBElement {
   initialRender () {
     render(
       html`
-        <div id='root' class='root'>
-          hello world
-        </div>
+        hello world
       `,
-      this.shadowRoot!,
+      this.rootElement,
     );
   }
 }
