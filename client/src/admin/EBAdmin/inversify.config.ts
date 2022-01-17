@@ -18,10 +18,6 @@ container.bind<EBAttribute>(TYPES.style).to(Style).whenTargetNamed(TYPES.namespa
 
 container.bind<EBLayout<EBElement[]>>(TYPES.layout).to(EBVerticalLayout).whenTargetNamed(TYPES.namespace);
 
-// container.bind<EBElement[]>(TYPES.childElements).toDynamicValue((context) => {
-//   return [ EBGraphVisStatic.generateEBGraphVis() ];
-// });
-
 container.load(ebGraphVisContainerModule);
 
 export { container };

@@ -12,13 +12,11 @@ export default class Inversified extends EBAdmin {
   constructor (
     @inject(TYPES.style) @named(TYPES.namespace) style: EBAttribute,
     @inject(TYPES.layout) @named(TYPES.namespace) layout: EBLayout<EBElement[]>,
-    // @inject(TYPES.childElements) childElements: EBElement[],
     @inject(EBGraphVisTYPES.element) @named(EBGraphVisTYPES.namespace) graphVis: EBElement,
   ) {
     super({
       attributes: [ style ],
       layout,
-      // childElements,
       childElements: [ graphVis ],
     });
   }
