@@ -1,14 +1,21 @@
 import EBElement from '@/src/EBElement';
-import 'reflect-metadata';
 import EBContainerElement, { ConstructorParam as ParentConstructorParam} from '@/src/EBContainerElement';
-import { injectable, unmanaged } from 'inversify';
+import Style from '@/src/EBAttribute/Style';
+import styles from './index.scss';
+import EBVerticalLayout from '@/src/EBLayout/EBVerticalLayout';
+import EBGraphVis from './EBGraphVis';
 
 export type ConstructorParam = {
 } & ParentConstructorParam<EBElement[]>;
 
-@injectable()
 export default class EBAdmin extends EBContainerElement<EBElement[]> {
-  constructor (@unmanaged() payload: ConstructorParam) {
-    super(payload);
+  constructor () {
+    super({
+      attributes: [ new Style({ styles: styles.toString() }) ],
+      layout: new EBVerticalLayout(),
+      childElements: [ new EBGraphVis({}) ],
+    });
   }
 }
+
+customElements.define('eb-admin', EBAdmin);

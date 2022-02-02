@@ -1,13 +1,11 @@
 import EBAttribute from '../EBAttribute';
 import RawEBElement, { ConstructorParam as ParentConstructorParam } from '@/src/RawEBElement';
-import { injectable, unmanaged } from 'inversify';
 import 'reflect-metadata';
 
 export type ConstructorParam = {
   attributes?: EBAttribute[];
 } & ParentConstructorParam;
 
-@injectable()
 export default class EBElement extends RawEBElement {
   constructor (payload: ConstructorParam) {
     super(payload);

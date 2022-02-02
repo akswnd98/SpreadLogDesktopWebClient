@@ -6,20 +6,18 @@ export type ConstructorParam = {
 } & ParentConstructorParam;
 
 export default class EBRawSelection extends EBElement {
-  text!: string;
+  text: string;
 
   constructor (payload: ConstructorParam) {
     super(payload);
-  }
-
-  initField (payload: ConstructorParam) {
     this.text = payload.text;
   }
 
-  initialRender () {
+  initialRender (payload: ConstructorParam) {
+    super.initialRender(payload);
     render(
       html`
-        <p>${this.text}</p>
+        <p>${payload.text}</p>
       `,
       this.rootElement,
     );

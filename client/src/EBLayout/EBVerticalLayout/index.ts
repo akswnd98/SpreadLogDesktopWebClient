@@ -1,10 +1,7 @@
-import { injectable } from 'inversify';
-import 'reflect-metadata';
 import { render, html } from 'lit-html';
 import EBElement from '@/src/EBElement';
 import EBLayout from '..';
 
-@injectable()
 export default class EBVerticalLayout extends EBLayout<EBElement[]> {
   render (element: EBElement, childElements: EBElement[]) {
     const rootElement = element.rootElement;

@@ -1,4 +1,6 @@
+import Style from '../EBAttribute/Style';
 import EBListElement, { ConstructorParam as ParentConstructorParam } from '../EBListElement';
+import styles from './index.scss';
 
 export type ConstructorParam = {
 } & ParentConstructorParam;
@@ -6,6 +8,7 @@ export type ConstructorParam = {
 export default class EBContextMenuPopup extends EBListElement {
   constructor (payload: ConstructorParam) {
     super(payload);
+    this.registerAttribute(new Style({ styles: styles.toString() }));
     document.body.appendChild(this);
     this.rootElement.style.visibility = 'hidden';
     this.rootElement.classList.add('hide');

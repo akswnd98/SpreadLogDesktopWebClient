@@ -9,7 +9,8 @@ export default class EBApp extends EBElement {
     super(payload);
   }
 
-  initialRender () {
+  initialRender (payload: ConstructorParam) {
+    super.initialRender(payload);
     render(
       html`
         hello world

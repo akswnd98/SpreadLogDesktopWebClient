@@ -1,0 +1,41 @@
+import EBElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
+import { html, render } from 'lit-html';
+import x24Icon from '@/assets/images/x-24.svg';
+
+export type ConstructorParam = {
+  body: EBElement;
+} & ParentConstructorParam;
+
+export default class EBDialog extends EBElement {
+  body: EBElement;
+
+  constructor (payload: ConstructorParam) {
+    super(payload);
+    this.body = payload.body;
+  }
+
+  initialRender (payload: ConstructorParam) {
+    super.initialRender(payload);
+    render(
+      html`
+        <div class='total-margin'>
+          <div id='top' class='top'>
+            <p>new node</p>
+            <img src=${x24Icon} id='close' />
+          </div>
+          <hr>
+          <div class='body'>
+            ${payload.body}
+          </div>
+          <hr>
+          <div class='bottom'>
+            <div id='ok' class='ok'>확인</div>
+          </div>
+        </div>
+      `,
+      this.rootElement,
+    );
+  }
+}
+
+customElements.define('eb-dialog', EBDialog);

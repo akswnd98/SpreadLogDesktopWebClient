@@ -6,20 +6,18 @@ export type ConstructorParam = {
 } & ParentConstructorParam;
 
 export default class EBDecorator extends EBElement {
-  originElement!: EBElement;
+  originElement: EBElement;
 
   constructor (payload: ConstructorParam) {
     super(payload);
-  }
-
-  initField (payload: ConstructorParam) {
     this.originElement = payload.originElement;
   }
 
-  initialRender () {
+  initialRender (payload: ConstructorParam) {
+    super.initialRender(payload);
     this.rootElement.remove();
-    this.rootElement = this.originElement.rootElement;
-    Object.entries(this.originElement.shadowRoot!.children).forEach(([key, child]) => {
+    this.rootElement = payload.originElement.rootElement;
+    Object.entries(payload.originElement.shadowRoot!.children).forEach(([key, child]) => {
       this.shadowRoot!.appendChild(child);
     });
   }

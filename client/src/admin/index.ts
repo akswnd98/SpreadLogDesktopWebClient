@@ -1,9 +1,7 @@
 import EBAdmin from './EBAdmin';
-import EBContextMenuPopupSingleton from '../EBContextMenuPopup/singleton';
 import styles from '../index.scss';
-import EBNewDialogSingleton from './EBAdmin/EBNewDialog/singleton';
-import { container } from './EBAdmin/inversify.config';
-import { TYPES } from './EBAdmin/types';
+import EBGraphVisContextMenuPopup from '@/src/admin/EBAdmin/EBGraphVis/ContextMenuPopup/singleton';
+import EBNewDialogPopupSingleton from './EBAdmin/EBNewDialogPopup/singleton';
 import 'reflect-metadata';
 
 const stylesElement = document.createElement('style');
@@ -11,7 +9,7 @@ stylesElement.textContent = styles.toString();
 document.head.appendChild(stylesElement);
 
 const root = document.getElementById('root')!;
-root.appendChild(container.getNamed<EBAdmin>(TYPES.element, TYPES.namespace));
+root.appendChild(new EBAdmin());
 
-EBContextMenuPopupSingleton.instance;
-document.body.appendChild(EBNewDialogSingleton.instance);
+EBGraphVisContextMenuPopup.instance;
+document.body.appendChild(EBNewDialogPopupSingleton.instance);
