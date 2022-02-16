@@ -1,11 +1,16 @@
 import Node from '@/src/Task/Node';
+import 'reflect-metadata';
+import { injectable } from 'inversify';
 import ServerNode from '../ServerNode';
-import EBNewDialogPopupSingleton from '@/src/admin/EBAdmin/EBNewDialogPopup/singleton';
+import { SYMBOLS } from '@/src/admin/types';
+import EBNewDialogPopup from '../../../..';
+import Static from '@/src/admin/inversify.config';
 
 export type PrevNodes = {
   server?: ServerNode;
 };
 
+@injectable()
 export default class HideNode extends Node {
   private nominal!: void;
 
@@ -13,8 +18,13 @@ export default class HideNode extends Node {
 
   prevNodes: PrevNodes = {};
 
+  constructor () {
+    super();
+  }
+
   doTask () {
-    EBNewDialogPopupSingleton.instance.hide();
+    const popup = Static.instance.get<EBNewDialogPopup>(SYMBOLS.EBNewDialogPopup);
+    popup.hide();
     console.log('HideNode.doTask()');
   }
 

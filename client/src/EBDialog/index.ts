@@ -1,15 +1,18 @@
 import EBElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
 import { html, render } from 'lit-html';
 import x24Icon from '@/assets/images/x-24.svg';
+import 'reflect-metadata';
+import { injectable, unmanaged } from 'inversify';
 
 export type ConstructorParam = {
   body: EBElement;
 } & ParentConstructorParam;
 
+@injectable()
 export default class EBDialog extends EBElement {
   body: EBElement;
 
-  constructor (payload: ConstructorParam) {
+  constructor (@unmanaged() payload: ConstructorParam) {
     super(payload);
     this.body = payload.body;
   }

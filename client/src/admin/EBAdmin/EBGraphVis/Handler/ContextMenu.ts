@@ -1,15 +1,24 @@
-import ContextMenuPopupSingleton from '../../EBGraphVis/ContextMenuPopup/singleton';
 import Handler from '@/src/EBAttribute/Handler';
+import 'reflect-metadata';
+import { inject, injectable } from 'inversify';
+import ContextMenuPopup from '../ContextMenuPopup';
+import { SYMBOLS } from '@/src/admin/types';
 
+@injectable()
 export default class ContextMenu extends Handler<'contextmenu'> {
   eventName: 'contextmenu' = 'contextmenu';
 
-  constructor () {
+  popup: ContextMenuPopup;
+
+  constructor (
+    @inject(SYMBOLS.ContextMenuPopup) popup: ContextMenuPopup
+  ) {
     super({ id: 'root' });
+    this.popup = popup;
   }
 
   handle (event: MouseEvent) {
     event.preventDefault();
-    ContextMenuPopupSingleton.instance.show({ x: event.clientX, y: event.clientY });
+    this.popup.show({ x: event.clientX, y: event.clientY });
   }
 }

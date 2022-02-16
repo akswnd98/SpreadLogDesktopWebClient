@@ -1,6 +1,8 @@
 import Node from './Node';
 import Static from './static';
 import PriorityQueue from 'priorityqueuejs';
+import 'reflect-metadata';
+import { injectable } from 'inversify';
 
 export type Nodes = {
   [key in string]: Node;
@@ -38,6 +40,7 @@ export type OverIncludeCheck<T extends Task> = {
     : false;
 };
 
+@injectable()
 export default abstract class Task {
   readonly abstract nodes: Nodes;
   

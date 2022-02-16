@@ -3,6 +3,7 @@ import path from 'path';
 import dotenv from 'dotenv';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
 dotenv.config();
 
@@ -19,6 +20,11 @@ if (process.env.MODE === 'development') {
 }
 
 app.set('port', 8080);
+
+app.use('/api', createProxyMiddleware('', {
+  target: `http://${process.env.HOST}:${process.env.API_SERVER_PORT}`,
+  changeOrigin: true,
+}));
 
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist/index.html'));

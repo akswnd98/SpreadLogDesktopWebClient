@@ -1,23 +1,25 @@
 import EBBasicDialog, { ConstructorParam as ParentConstructorParam } from '@/src/EBDialog/EBBasicDialog';
-import Model from './EBNewDialogBody/NameInputSync/Model';
 import EBNewDialogBody from './EBNewDialogBody';
 import OkHandler from './Handler/ok';
 import CloseHandler from './Handler/close';
+import 'reflect-metadata';
+import { inject, injectable } from 'inversify';
+import { SYMBOLS } from '@/src/admin/types';
 
 export type ConstructorParam = {
-  model: Model;
 };
 
+@injectable()
 export default class EBNewDialog extends EBBasicDialog {
-  model: Model;
-
-  constructor (payload: ConstructorParam) {
+  constructor (
+    @inject(SYMBOLS.NewDialogOkHandler) okHandler: OkHandler,
+    @inject(SYMBOLS.NewDialogCloseHandler) closeHandler: CloseHandler,
+    @inject(SYMBOLS.EBNewDialogBody) body: EBNewDialogBody,
+  ) {
     super({
-      ...payload,
-      body: new EBNewDialogBody(payload),
-      attributes: [ new OkHandler(), new CloseHandler() ],
+      body,
+      attributes: [ okHandler, closeHandler ],
     });
-    this.model = payload.model;
   }
 }
 

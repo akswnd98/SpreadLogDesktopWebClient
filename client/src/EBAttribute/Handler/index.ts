@@ -1,16 +1,18 @@
 import EBElement from '@/src/EBElement';
+import { injectable, unmanaged } from 'inversify';
 import EBAttribute, { ConstructorParam as ParentConstructorParam } from '..';
 
 export type ConstructorParam = {
   id: string;
 } & ParentConstructorParam;
 
+@injectable()
 export default abstract class Handler<Event extends keyof HTMLElementEventMap> extends EBAttribute {
   id: string;
   abstract eventName: Event;
   registeredHandler?: (event: HTMLElementEventMap[Event]) => void;
 
-  constructor (payload: ConstructorParam) {
+  constructor (@unmanaged() payload: ConstructorParam) {
     super();
     this.id = payload.id;
   }

@@ -1,6 +1,12 @@
 import type { PostPayload } from '@/common/api/post';
 import Post from '@/db/Post';
 
+export async function getAllNodeSummary () {
+  return Post.findAll({
+    attributes: ['id', 'title'],
+  });
+}
+
 export async function getById (id: number): Promise<Post> {
   try {
     return findOne(id);

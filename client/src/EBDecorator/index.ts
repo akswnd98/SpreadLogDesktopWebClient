@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+import { injectable, unmanaged } from 'inversify';
 import { html, render } from 'lit-html';
 import EBElement, { ConstructorParam as ParentConstructorParam } from '../EBElement';
 
@@ -5,10 +7,11 @@ export type ConstructorParam = {
   originElement: EBElement;
 } & ParentConstructorParam;
 
+@injectable()
 export default class EBDecorator extends EBElement {
   originElement: EBElement;
 
-  constructor (payload: ConstructorParam) {
+  constructor (@unmanaged() payload: ConstructorParam) {
     super(payload);
     this.originElement = payload.originElement;
   }

@@ -1,14 +1,17 @@
 import { html, render } from 'lit-html';
 import EBElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
+import 'reflect-metadata';
+import { injectable, unmanaged } from 'inversify';
 
 export type ConstructorParam = {
   text: string;
 } & ParentConstructorParam;
 
+@injectable()
 export default class EBRawSelection extends EBElement {
   text: string;
 
-  constructor (payload: ConstructorParam) {
+  constructor (@unmanaged() payload: ConstructorParam) {
     super(payload);
     this.text = payload.text;
   }

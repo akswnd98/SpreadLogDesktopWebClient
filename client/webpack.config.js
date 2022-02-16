@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 const path = require('path');
 
 module.exports = {
@@ -31,6 +32,7 @@ module.exports = {
               "babel-plugin-transform-typescript-metadata",
               ["@babel/plugin-proposal-decorators", {"legacy": true}],
               ["@babel/plugin-proposal-class-properties"],
+              "@babel/plugin-transform-runtime",
             ]
           }
         },
@@ -82,10 +84,21 @@ module.exports = {
       filename: 'test.html',
       template: './src/index.html',
     }),
+    // new CircularDependencyPlugin({
+    //   exclude: /node_module/,
+    //   allowAsyncCycles: false,
+    //   cwd: process.cwd(),
+    // }),
   ],
   devServer: {
     static: path.join(__dirname, 'dist'),
     port: 8080,
     historyApiFallback: true,
+    proxy: {
+      '/api/**': {
+        target: 'http://localhost:11000',
+        changeOrigin: true,
+      },
+    },
   },
 };

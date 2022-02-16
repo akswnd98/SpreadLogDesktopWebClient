@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+import { injectable, unmanaged } from 'inversify';
 import Style from '../EBAttribute/Style';
 import EBListElement, { ConstructorParam as ParentConstructorParam } from '../EBListElement';
 import styles from './index.scss';
@@ -5,8 +7,9 @@ import styles from './index.scss';
 export type ConstructorParam = {
 } & ParentConstructorParam;
 
+@injectable()
 export default class EBContextMenuPopup extends EBListElement {
-  constructor (payload: ConstructorParam) {
+  constructor (@unmanaged() payload: ConstructorParam) {
     super(payload);
     this.registerAttribute(new Style({ styles: styles.toString() }));
     document.body.appendChild(this);

@@ -1,15 +1,21 @@
-import EBAdmin from './EBAdmin';
+import EBAdmin from './EBAdmin/inversified';
 import styles from '../index.scss';
-import EBGraphVisContextMenuPopup from '@/src/admin/EBAdmin/EBGraphVis/ContextMenuPopup/singleton';
-import EBNewDialogPopupSingleton from './EBAdmin/EBNewDialogPopup/singleton';
 import 'reflect-metadata';
+import ContainerStatic from './inversify.config';
+import { SYMBOLS } from './types';
+import EBNewDialogPopup from './EBAdmin/EBNewDialogPopup';
 
-const stylesElement = document.createElement('style');
-stylesElement.textContent = styles.toString();
-document.head.appendChild(stylesElement);
+(async () => {
+  const container = await ContainerStatic.getInstance();
 
-const root = document.getElementById('root')!;
-root.appendChild(new EBAdmin());
+  const stylesElement = document.createElement('style');
+  stylesElement.textContent = styles.toString();
+  document.head.appendChild(stylesElement);
 
-EBGraphVisContextMenuPopup.instance;
-document.body.appendChild(EBNewDialogPopupSingleton.instance);
+  const root = document.getElementById('root')!;
+  root.appendChild(container.get<EBAdmin>(SYMBOLS.EBAdmin));
+
+  // EBGraphVisContextMenuPopup.instance;
+  // document.body.appendChild(EBNewDialogPopupSingleton.instance);
+  document.body.appendChild(container.get<EBNewDialogPopup>(SYMBOLS.EBNewDialogPopup));
+})();

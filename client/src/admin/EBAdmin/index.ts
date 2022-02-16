@@ -4,16 +4,21 @@ import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
 import EBVerticalLayout from '@/src/EBLayout/EBVerticalLayout';
 import EBGraphVis from './EBGraphVis';
+import 'reflect-metadata';
+import { injectable, unmanaged } from 'inversify';
 
 export type ConstructorParam = {
 } & ParentConstructorParam<EBElement[]>;
 
+@injectable()
 export default class EBAdmin extends EBContainerElement<EBElement[]> {
-  constructor () {
+  constructor (
+    @unmanaged() ebGraphVis: EBGraphVis,
+  ) {
     super({
       attributes: [ new Style({ styles: styles.toString() }) ],
       layout: new EBVerticalLayout(),
-      childElements: [ new EBGraphVis({}) ],
+      childElements: [ ebGraphVis ],
     });
   }
 }

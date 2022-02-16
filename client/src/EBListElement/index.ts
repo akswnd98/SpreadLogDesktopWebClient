@@ -1,13 +1,16 @@
+import 'reflect-metadata';
+import { injectable, unmanaged } from 'inversify';
 import EBElement, { ConstructorParam as ParentConstructorParam } from '../EBElement';
 
 export type ConstructorParam = {
   childElements: EBElement[];
 } & ParentConstructorParam;
 
+@injectable()
 export default class EBListElement extends EBElement {
   childElements: EBElement[];
 
-  constructor (payload: ConstructorParam) {
+  constructor (@unmanaged() payload: ConstructorParam) {
     super(payload);
     this.childElements = [];
     payload.childElements.forEach((element) => {

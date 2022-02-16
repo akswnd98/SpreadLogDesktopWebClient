@@ -2,15 +2,19 @@ import EBPopupDecorator, { ConstructorParam as ParentConstructorParam } from '@/
 import Style from '@/src/EBAttribute/Style';
 import styles from '@/src/EBPopupDecorator/index.scss';
 import EBNewDialog from './EBNewDialog';
-import Model from './EBNewDialog/EBNewDialogBody/NameInputSync/Model';
+import 'reflect-metadata';
+import { inject, injectable } from 'inversify';
+import { SYMBOLS } from '../../types';
 
 export type ConstructorParam = {
-  model: Model;
 };
 
+@injectable()
 export default class EBNewDialogPopup extends EBPopupDecorator {
-  constructor (payload: ConstructorParam) {
-    super({ originElement: new EBNewDialog(payload) });
+  constructor (
+    @inject(SYMBOLS.EBNewDialog) originElement: EBNewDialog,
+  ) {
+    super({ originElement });
     this.registerAttribute(new Style({ styles: styles.toString() }));
   }
 }

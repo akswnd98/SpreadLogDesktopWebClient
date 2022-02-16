@@ -1,7 +1,11 @@
 import Task, { Check, OverIncludeCheck } from '@/src/Task';
+import 'reflect-metadata';
+import { inject, injectable } from 'inversify';
 import DrawNode from './DrawNode';
 import HideNode from './HideNode';
 import ServerNode from './ServerNode';
+import { SYMBOLS } from '@/src/admin/types';
+import Static, { hello } from '@/src/admin/inversify.config';
 
 type Nodes = {
   draw: DrawNode;
@@ -13,12 +17,11 @@ type Checked = Check<OkTask>;
 
 type OverIncludeChecked = OverIncludeCheck<OkTask>;
 
+console.log(hello);
+
+@injectable()
 export default class OkTask extends Task {
-  readonly nodes: Nodes = {
-    draw: new DrawNode(),
-    server: new ServerNode(),
-    hide: new HideNode(),
-  };
+  readonly nodes: Nodes;
 
   readonly prevNodesMap = {
     draw: {},
@@ -29,4 +32,17 @@ export default class OkTask extends Task {
       server: 'server',
     },
   } as const;
+
+  constructor (
+    @inject(SYMBOLS.NewDialogOkDrawNode) draw: DrawNode,
+    // (SYMBOLS.NewDialogOkHideNode) hide: HideNode,
+  ) {
+    super();
+    this.nodes = {
+      draw,
+      server: new ServerNode(),
+      // hide,
+      hide: new HideNode(),
+    };
+  }
 }

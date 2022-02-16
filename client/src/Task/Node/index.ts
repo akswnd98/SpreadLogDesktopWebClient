@@ -1,4 +1,7 @@
+import 'reflect-metadata';
+import { injectable } from "inversify";
 
+@injectable()
 export default abstract class Node {
   indegree: number;
 

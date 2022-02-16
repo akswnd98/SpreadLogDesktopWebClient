@@ -1,11 +1,14 @@
 import EBDecorator, { ConstructorParam as ParentConstructorParam } from '@/src/EBDecorator';
+import 'reflect-metadata';
+import { injectable, unmanaged } from 'inversify';
 import IPopup from '../IPopup';
 
 export type ConstructorParam = {
 } & ParentConstructorParam;
 
+@injectable()
 export default class EBPopupDecorator extends EBDecorator implements IPopup {
-  constructor (payload: ConstructorParam) {
+  constructor (@unmanaged() payload: ConstructorParam) {
     super(payload);
   }
 
