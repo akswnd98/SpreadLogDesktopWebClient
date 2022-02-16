@@ -22,13 +22,12 @@ export default class HideNode extends Node {
     super();
   }
 
-  doTask () {
+  async doTask () {
     const popup = Static.instance.get<EBNewDialogPopup>(SYMBOLS.EBNewDialogPopup);
     popup.hide();
-    console.log('HideNode.doTask()');
   }
 
-  handleFail () {
+  async handleFail () {
     console.log('HideNode.handleFail()');
   }
 }

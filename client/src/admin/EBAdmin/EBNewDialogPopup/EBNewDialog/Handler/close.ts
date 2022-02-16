@@ -3,6 +3,7 @@ import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
 import { SYMBOLS } from '@/src/admin/types';
 import EBNewDialogPopup from '../..';
+import Static from '@/src/admin/inversify.config';
 
 export type ConstructorParam = {
 } & ParentConstructorParam;
@@ -10,16 +11,13 @@ export type ConstructorParam = {
 @injectable()
 export default class Close extends Handler<'click'> {
   eventName: 'click' = 'click';
-  // popup: EBNewDialogPopup;
 
-  constructor (
-    // @inject(SYMBOLS.EBNewDialogPopup) popup: EBNewDialogPopup,
-  ) {
+  constructor () {
     super({ id: 'close' });
-    // this.popup = popup;
   }
 
   handle () {
-    // this.popup.hide();
+    const popup = Static.instance.get<EBNewDialogPopup>(SYMBOLS.EBNewDialogPopup);
+    popup.hide();
   }
 }

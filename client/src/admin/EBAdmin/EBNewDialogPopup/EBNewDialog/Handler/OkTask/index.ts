@@ -17,16 +17,15 @@ type Checked = Check<OkTask>;
 
 type OverIncludeChecked = OverIncludeCheck<OkTask>;
 
-console.log(hello);
-
 @injectable()
 export default class OkTask extends Task {
   readonly nodes: Nodes;
 
   readonly prevNodesMap = {
-    draw: {},
+    draw: {
+      server: 'server',
+    },
     server: {
-      draw: 'draw',
     },
     hide: {
       server: 'server',
@@ -35,13 +34,11 @@ export default class OkTask extends Task {
 
   constructor (
     @inject(SYMBOLS.NewDialogOkDrawNode) draw: DrawNode,
-    // (SYMBOLS.NewDialogOkHideNode) hide: HideNode,
   ) {
     super();
     this.nodes = {
       draw,
       server: new ServerNode(),
-      // hide,
       hide: new HideNode(),
     };
   }

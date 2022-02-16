@@ -12,7 +12,7 @@ export default abstract class Node {
     this.indegree = 0;
   }
 
-  abstract doTask (): void;
+  abstract doTask (): Promise<void>;
 
-  abstract handleFail (): void;
+  abstract handleFail (): Promise<void>;
 }

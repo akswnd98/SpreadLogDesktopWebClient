@@ -4,9 +4,13 @@ export type GetAllNodeSummary = {
   ret: NodeConstructorParam[];
 };
 
-export interface PostPayload {
+export interface AppendPostNodeRequest {
   title: string;
   body: string;
+};
+
+export interface AppendPostNodeResolve {
+  id: number;
 };
 
 export interface GetByIdPayload {

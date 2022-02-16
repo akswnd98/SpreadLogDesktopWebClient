@@ -1,8 +1,12 @@
+import { AppendPostNodeRequest, AppendPostNodeResolve } from '@/common/api/post';
+import NewNode from '@/src/admin/data-binding/Model/NewNode';
+import Static from '@/src/admin/inversify.config';
 import Node from '@/src/Task/Node';
+import axios, { AxiosResponse } from 'axios';
 import DrawNode from '../DrawNode';
+import { SYMBOLS } from '@/src/admin/types';
 
 export type PrevNodes = {
-  draw?: DrawNode;
 };
 
 export default class ServerNode extends Node {
@@ -12,11 +16,18 @@ export default class ServerNode extends Node {
 
   prevNodes: PrevNodes = {};
 
-  doTask () {
-    console.log('ServerNode.doTask()');
+  id: number = -1;
+
+  async doTask () {
+    const model = Static.instance.get<NewNode>(SYMBOLS.NewNodeModel);
+    const data = (await axios.post<AppendPostNodeResolve, AxiosResponse<AppendPostNodeResolve>, AppendPostNodeRequest>(`/api/post/appendPostNode`, {
+      title: model.data.title,
+      body: '',
+    })).data;
+    this.id = data.id;
   }
 
-  handleFail () {
+  async handleFail () {
     console.log('ServerNode.handleFail()');
   }
 }

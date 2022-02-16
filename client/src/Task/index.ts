@@ -61,10 +61,10 @@ export default abstract class Task {
     });
   }
 
-  doTask () {
+  async doTask () {
     this.readyAlgorithm();
     while (!this.pq.isEmpty()) {
-      this.pq.peek().doTask();
+      await this.pq.peek().doTask();
       this.pq.peek().nextNodes.forEach((v) => {
         v.indegree--;
         if (v.indegree === 0) this.pq.enq(v);

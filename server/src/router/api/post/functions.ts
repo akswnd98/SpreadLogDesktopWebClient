@@ -1,4 +1,4 @@
-import type { PostPayload } from '@/common/api/post';
+import type { AppendPostNodeRequest } from '@/common/api/post';
 import Post from '@/db/Post';
 
 export async function getAllNodeSummary () {
@@ -16,14 +16,15 @@ export async function getById (id: number): Promise<Post> {
   }
 }
 
-export async function create (payload: PostPayload) {
+export async function create (payload: AppendPostNodeRequest) {
   try {
     const curDate = new Date();
-    await Post.create({
+    const ret = await Post.create({
       firstUpload: curDate,
       lastUpdate: curDate,
       ...payload,
     });
+    return ret.id!;
   } catch (err) {
     console.log(err);
     throw new Error('Post.createPost failed');

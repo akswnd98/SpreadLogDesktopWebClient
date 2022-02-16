@@ -8,6 +8,11 @@ import EBNewDialogPopup from '../../../..';
 import NewNode from '@/src/admin/data-binding/Model/NewNode';
 import PostNode from '@/src/data-binding/Model/PostGraph/Node/inversified';
 import { ParameterizableNewable } from '@/src/inversify';
+import ServerNode from '../ServerNode';
+
+export type PrevNodes = {
+  server?: ServerNode;
+};
 
 @injectable()
 export default class DrawNode extends Node {
@@ -15,22 +20,20 @@ export default class DrawNode extends Node {
 
   nextNodes: [] = [];
 
-  prevNodes: {} = {};
+  prevNodes: PrevNodes = {};
 
   constructor () {
     super();
   }
 
-  doTask () {
-    console.log('DrawNode.doTask()');
-    // const popup = Static.instance.get<EBNewDialogPopup>(SYMBOLS.EBNewDialogPopup);
+  async doTask () {
     const appendNode = Static.instance.get<AppendNode>(SYMBOLS.PostGraphAppendNodeNotifier);
     const input = Static.instance.get<NewNode>(SYMBOLS.NewNodeModel);
     const NodeNewable = Static.instance.get<ParameterizableNewable<PostNode, ConstructorParameters<typeof PostNode>>>(SYMBOLS.PostNodeNewable);
-    appendNode.append(new NodeNewable(3, input.data.title));
+    appendNode.append(new NodeNewable(this.prevNodes.server!.id, input.data.title));
   }
 
-  handleFail () {
+  async handleFail () {
     console.log('DrawNode.handleFail()');
   }
 }
