@@ -11,7 +11,7 @@ export default class ContextMenu extends Handler<'contextmenu'> {
   popup: ContextMenuPopup;
 
   constructor (
-    @inject(SYMBOLS.ContextMenuPopup) popup: ContextMenuPopup
+    @inject(SYMBOLS.ContextMenuPopup) popup: ContextMenuPopup,
   ) {
     super({ id: 'root' });
     this.popup = popup;

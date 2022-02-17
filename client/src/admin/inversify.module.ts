@@ -28,6 +28,9 @@ import NewNodeInputHandler from './EBAdmin/EBNewDialogPopup/EBNewDialog/EBNewDia
 import NodeContextMenuPopup from './EBAdmin/EBGraphVis/NodeContextMenuPopup';
 import DeleteSelection from './EBAdmin/EBGraphVis/NodeContextMenuPopup/DeleteSelection';
 import NodeContextMenuSelectedId from '@/src/data-binding/Model/NodeContextMenuSelectedId';
+import EBEditorPopup from './EBAdmin/EBEditorPopup';
+import EBButton from '../EBButton';
+import EBEditorPopupBody from './EBAdmin/EBEditorPopup/EBEditorPopupBody';
 
 const module = new AsyncContainerModule(
   async (
@@ -54,7 +57,7 @@ const module = new AsyncContainerModule(
     bind<EBNewDialogBody>(SYMBOLS.EBNewDialogBody).to(EBNewDialogBody);
     bind<EBNewDialogPopup>(SYMBOLS.EBNewDialogPopup).to(EBNewDialogPopup).inSingletonScope();
     bind<ContextMenuNewSelection>(SYMBOLS.ContextMenuNewSelection).to(ContextMenuNewSelection);
-    bind<ContextMenuPopup>(SYMBOLS.ContextMenuPopup).to(ContextMenuPopup);
+    bind<ContextMenuPopup>(SYMBOLS.ContextMenuPopup).to(ContextMenuPopup).inSingletonScope();
     bind<ContextMenuHandler>(SYMBOLS.ContextMenuHandler).to(ContextMenuHandler);
     bind<NewNode>(SYMBOLS.NewNodeModel).to(NewNode).inSingletonScope();
     bind<NewNodeInput>(SYMBOLS.NewNodeInput).to(NewNodeInput).inSingletonScope();
@@ -63,6 +66,9 @@ const module = new AsyncContainerModule(
     bind<DeleteSelection>(SYMBOLS.DeleteSelection).to(DeleteSelection).inSingletonScope();
     // bind<NodeContextMenuHandler>(SYMBOLS.NodeContextMenuHandler).to(NodeContextMenuHandler);
     bind<NodeContextMenuSelectedId>(SYMBOLS.NodeContextMenuSelectedId).to(NodeContextMenuSelectedId).inSingletonScope();
+    bind<EBEditorPopup>(SYMBOLS.EBEditorPopup).to(EBEditorPopup).inSingletonScope();
+    bind<ParameterizableNewable<EBEditorPopupBody, ConstructorParameters<typeof EBEditorPopupBody>>>(SYMBOLS.EBEditorPopupBody).toConstantValue(EBEditorPopupBody);
+    bind<ParameterizableNewable<EBButton, ConstructorParameters<typeof EBButton>>>(SYMBOLS.EBButton).toConstructor(EBButton);
   }
 );
 

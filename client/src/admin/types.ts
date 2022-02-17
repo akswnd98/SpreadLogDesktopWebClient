@@ -27,6 +27,9 @@ const SYMBOLS = {
   DeleteSelection: Symbol.for('DeleteSelection'),
   NodeContextMenuHandler: Symbol.for('NodeContextMenuHandler'),
   NodeContextMenuSelectedId: Symbol.for('NodeContextMenuSelectedId'),
+  EBEditorPopup: Symbol.for('EBEditorPopup'),
+  EBEditorPopupBody: Symbol.for('EBEditorPopupBody'),
+  EBButton: Symbol.for('EBButton'),
 };
 
 export {

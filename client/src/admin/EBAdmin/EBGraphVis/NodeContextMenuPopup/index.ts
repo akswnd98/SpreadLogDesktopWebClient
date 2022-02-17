@@ -3,7 +3,6 @@ import EBContextMenuPopup from '@/src/EBContextMenuPopup';
 import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
 import DeleteSelection from './DeleteSelection';
-import Selection from './Selection';
 
 @injectable()
 export default class ContextMenuPopup extends EBContextMenuPopup {

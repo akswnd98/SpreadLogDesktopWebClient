@@ -4,6 +4,9 @@ import 'reflect-metadata';
 import ContainerStatic from './inversify.config';
 import { SYMBOLS } from './types';
 import EBNewDialogPopup from './EBAdmin/EBNewDialogPopup';
+import EBEditorPopup from './EBAdmin/EBEditorPopup';
+import NodeContextMenuPopup from './EBAdmin/EBGraphVis/NodeContextMenuPopup';
+import ContextMenuPopup from './EBAdmin/EBGraphVis/ContextMenuPopup';
 
 (async () => {
   const container = await ContainerStatic.getInstance();
@@ -15,7 +18,8 @@ import EBNewDialogPopup from './EBAdmin/EBNewDialogPopup';
   const root = document.getElementById('root')!;
   root.appendChild(container.get<EBAdmin>(SYMBOLS.EBAdmin));
 
-  // EBGraphVisContextMenuPopup.instance;
-  // document.body.appendChild(EBNewDialogPopupSingleton.instance);
   document.body.appendChild(container.get<EBNewDialogPopup>(SYMBOLS.EBNewDialogPopup));
+  document.body.appendChild(container.get<EBEditorPopup>(SYMBOLS.EBEditorPopup));
+  document.body.appendChild(container.get<ContextMenuPopup>(SYMBOLS.ContextMenuPopup));
+  document.body.appendChild(container.get<NodeContextMenuPopup>(SYMBOLS.NodeContextMenuPopup));
 })();

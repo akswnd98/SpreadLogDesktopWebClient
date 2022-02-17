@@ -12,7 +12,6 @@ export default class EBContextMenuPopup extends EBListElement {
   constructor (@unmanaged() payload: ConstructorParam) {
     super(payload);
     this.registerAttribute(new Style({ styles: styles.toString() }));
-    document.body.appendChild(this);
     this.rootElement.style.visibility = 'hidden';
     this.rootElement.classList.add('hide');
   }

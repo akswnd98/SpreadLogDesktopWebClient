@@ -10,6 +10,7 @@ import { SYMBOLS } from '../../types';
 import PostGraph from '@/src/data-binding/Model/PostGraph';
 import VisNetworkWrapper from '@/src/VisNetworkWrapper';
 import NodeContextMenuHandler from './VisNetworkHandler/NodeContextMenu';
+import NodeDoubleClick from './VisNetworkHandler/NodeDoubleClick';
 
 export type ConstructorParam = {
 } & ParentConstructorParam;
@@ -45,7 +46,8 @@ export default class EBGraphVis extends EBElement {
         edges: this.edges,
       },
       attributes: [
-        new NodeContextMenuHandler({ eventName: 'oncontext' }),
+        new NodeContextMenuHandler(),
+        new NodeDoubleClick(),
       ],
     });
   }
