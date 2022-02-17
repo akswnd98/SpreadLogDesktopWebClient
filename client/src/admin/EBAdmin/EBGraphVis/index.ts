@@ -8,6 +8,8 @@ import ContextMenuHandler from './Handler/ContextMenu';
 import EBGraphVisRaw, { ConstructorParam as ParentConstructorParam } from '@/src/EBGraphVis';
 import { SYMBOLS } from '../../types';
 import PostGraph from '@/src/data-binding/Model/PostGraph';
+import VisNetworkWrapper from '@/src/VisNetworkWrapper';
+import NodeContextMenuHandler from './VisNetworkHandler/NodeContextMenu';
 
 export type ConstructorParam = {
 } & ParentConstructorParam;
@@ -21,11 +23,13 @@ export default class EBGraphVis extends EBElement {
   constructor (
     @inject(SYMBOLS.PostGraph) postGraph: PostGraph,
     @inject(SYMBOLS.ContextMenuHandler) contextMenuHandler: ContextMenuHandler,
+    // @inject(SYMBOLS.NodeContextMenuHandler) nodeContextMenuHandler: NodeContextMenuHandler,
   ) {
     super({
       attributes: [
         new Style({ styles: styles.toString()}),
         contextMenuHandler,
+        // nodeContextMenuHandler,
       ],
     });
     this.nodes = new VisNetwork.DataSet(
@@ -34,10 +38,15 @@ export default class EBGraphVis extends EBElement {
       }),
     );
     this.edges = new VisNetwork.DataSet([]);
-    this.network = new VisNetwork.Network(this.rootElement, { nodes: this.nodes, edges: this.edges }, {
-      manipulation: {
-        enabled: true,
+    this.network = new VisNetworkWrapper({
+      container: this.rootElement,
+      data: {
+        nodes: this.nodes,
+        edges: this.edges,
       },
+      attributes: [
+        new NodeContextMenuHandler({ eventName: 'oncontext' }),
+      ],
     });
   }
 }

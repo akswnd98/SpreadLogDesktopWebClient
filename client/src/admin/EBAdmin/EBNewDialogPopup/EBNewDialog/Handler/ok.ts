@@ -21,7 +21,7 @@ export default class Ok extends Handler<'click'> {
     this.okTask.readyTask();
   }
 
-  handle () {
-    this.okTask.doTask();
+  async handle () {
+    await this.okTask.doTask();
   }
 }

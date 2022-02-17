@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
-import type { GetByIdPayload, GetAllNodeSummary, AppendPostNodeResolve, AppendPostNodeRequest } from '@/common/api/post';
-import { getAllNodeSummary, getById, create } from './functions';
+import type { DeleteByIdRequest, DeleteByIdResponse, GetAllNodeSummary, AppendPostNodeResponse, AppendPostNodeRequest } from '@/common/api/post';
+import { getAllNodeSummary, getById, create, deletePostNodeById } from './functions';
 
 const router = express.Router();
 
@@ -26,14 +26,27 @@ router.get('/getAllNodeSummary', async (req: Request<any, GetAllNodeSummary, any
 //   }
 // });
 
-router.post('/appendPostNode', async (req: Request<any, AppendPostNodeResolve, AppendPostNodeRequest>, res: Response) => {
+router.post('/appendPostNode', async (req: Request<any, AppendPostNodeResponse, AppendPostNodeRequest>, res: Response) => {
   try {
     console.log(req.body);
     const data = await create(req.body);
     res.json({ id: data });
     res.end();
   } catch (e) {
-    console.log('POST /api/post failed', e);
+    console.log('POST /api/post/appendPostNode failed', e);
+  }
+});
+
+router.delete('/deleteNodeById', async (req: Request<any, DeleteByIdResponse, DeleteByIdRequest>, res: Response<DeleteByIdResponse>) => {
+  try {
+    console.log(req.body);
+    const data = await deletePostNodeById(req.body);
+    res.json({ error: false });
+    res.end();
+  } catch (e) {
+    console.log('DELETE /api/post/deleteNodeById', e);
+    res.json({ error: true });
+    res.end();
   }
 });
 

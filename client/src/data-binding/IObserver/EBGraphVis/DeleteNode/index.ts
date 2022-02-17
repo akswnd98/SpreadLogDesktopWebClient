@@ -5,14 +5,14 @@ import Node from '@/src/data-binding/Model/PostGraph/Node';
 import 'reflect-metadata';
 import { injectable, unmanaged } from 'inversify';
 
-export type EventType = Node;
+export type EventType = number;
 
 export type ConstructorParam = {
   ebGraphVis: EBGraphVis;
 };
 
 @injectable()
-export default class AppendNode implements IObserver {
+export default class DeleteNode implements IObserver {
   ebGraphVis: EBGraphVis;
 
   constructor (@unmanaged() payload: ConstructorParam) {
@@ -20,10 +20,6 @@ export default class AppendNode implements IObserver {
   }
 
   update (subject: INotifier, event: EventType) {
-    this.ebGraphVis.nodes.add([{ id: event.data.id, label: event.data.title }]);
-    // this.ebGraphVis.nodes.update([{ id: event.data.id, label: event.data.title }]);
-    // this.ebGraphVis.network.editNode();
-    // this.ebGraphVis.nodes.add({ id: 5, label: 'nice' });
-    console.log(this.ebGraphVis.nodes.get());
+    this.ebGraphVis.nodes.remove(event);
   }
 }

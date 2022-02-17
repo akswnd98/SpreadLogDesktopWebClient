@@ -1,4 +1,4 @@
-import type { AppendPostNodeRequest } from '@/common/api/post';
+import type { AppendPostNodeRequest, DeleteByIdRequest } from '@/common/api/post';
 import Post from '@/db/Post';
 
 export async function getAllNodeSummary () {
@@ -28,6 +28,19 @@ export async function create (payload: AppendPostNodeRequest) {
   } catch (err) {
     console.log(err);
     throw new Error('Post.createPost failed');
+  }
+}
+
+export async function deletePostNodeById (payload: DeleteByIdRequest) {
+  try {
+    await Post.destroy({
+      where: {
+        id: payload.id,
+      },
+    });
+  } catch (e) {
+    console.log(e);
+    throw 'deletePostNodeById failed';
   }
 }
 

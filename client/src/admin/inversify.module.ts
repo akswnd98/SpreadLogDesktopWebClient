@@ -9,6 +9,8 @@ import EBAdmin from './EBAdmin/inversified';
 import EBGraphVis from './EBAdmin/EBGraphVis';
 import PostGraphAppendNodeNotifier from '@/src/data-binding/ModelNotifier/PostGraph/AppendNode';
 import PostGraphAppendNodeObserver from '@/src/data-binding/IObserver/EBGraphVis/AppendNode/inversified';
+import PostGraphDeleteNodeNotifier from '@/src/data-binding/ModelNotifier/PostGraph/DeleteNode';
+import PostGraphDeleteNodeObserver from '@/src/data-binding/IObserver/EBGraphVis/DeleteNode/inversified';
 import NewDialogOkTask from '@/src/admin/EBAdmin/EBNewDialogPopup/EBNewDialog/Handler/OkTask';
 import NewDialogOkDrawNode from './EBAdmin/EBNewDialogPopup/EBNewDialog/Handler/OkTask/DrawNode';
 import NewDialogOkHideNode from './EBAdmin/EBNewDialogPopup/EBNewDialog/Handler/OkTask/HideNode';
@@ -23,6 +25,9 @@ import EBNewDialogBody from './EBAdmin/EBNewDialogPopup/EBNewDialog/EBNewDialogB
 import NewNode from './data-binding/Model/NewNode';
 import NewNodeInput from './EBAdmin/EBNewDialogPopup/EBNewDialog/EBNewDialogBody/Input';
 import NewNodeInputHandler from './EBAdmin/EBNewDialogPopup/EBNewDialog/EBNewDialogBody/Input/Handler';
+import NodeContextMenuPopup from './EBAdmin/EBGraphVis/NodeContextMenuPopup';
+import DeleteSelection from './EBAdmin/EBGraphVis/NodeContextMenuPopup/DeleteSelection';
+import NodeContextMenuSelectedId from '@/src/data-binding/Model/NodeContextMenuSelectedId';
 
 const module = new AsyncContainerModule(
   async (
@@ -37,6 +42,8 @@ const module = new AsyncContainerModule(
     bind<EBGraphVis>(SYMBOLS.EBGraphVis).to(EBGraphVis).inSingletonScope();
     bind<PostGraphAppendNodeNotifier>(SYMBOLS.PostGraphAppendNodeNotifier).to(PostGraphAppendNodeNotifier).inSingletonScope();
     bind<PostGraphAppendNodeObserver>(SYMBOLS.PostGraphAppendNodeObserver).to(PostGraphAppendNodeObserver).inSingletonScope();
+    bind<PostGraphDeleteNodeNotifier>(SYMBOLS.PostGraphDeleteNodeNotifier).to(PostGraphDeleteNodeNotifier).inSingletonScope();
+    bind<PostGraphDeleteNodeObserver>(SYMBOLS.PostGraphDeleteNodeObserver).to(PostGraphDeleteNodeObserver).inSingletonScope();
     bind<NewDialogOkTask>(SYMBOLS.NewDialogOkTask).to(NewDialogOkTask);
     bind<NewDialogOkDrawNode>(SYMBOLS.NewDialogOkDrawNode).to(NewDialogOkDrawNode);
     // bind<NewDialogOkHideNode>(SYMBOLS.NewDialogOkHideNode).to(NewDialogOkHideNode);
@@ -52,6 +59,10 @@ const module = new AsyncContainerModule(
     bind<NewNode>(SYMBOLS.NewNodeModel).to(NewNode).inSingletonScope();
     bind<NewNodeInput>(SYMBOLS.NewNodeInput).to(NewNodeInput).inSingletonScope();
     bind<NewNodeInputHandler>(SYMBOLS.NewNodeInputHandler).to(NewNodeInputHandler).inSingletonScope();
+    bind<NodeContextMenuPopup>(SYMBOLS.NodeContextMenuPopup).to(NodeContextMenuPopup).inSingletonScope();
+    bind<DeleteSelection>(SYMBOLS.DeleteSelection).to(DeleteSelection).inSingletonScope();
+    // bind<NodeContextMenuHandler>(SYMBOLS.NodeContextMenuHandler).to(NodeContextMenuHandler);
+    bind<NodeContextMenuSelectedId>(SYMBOLS.NodeContextMenuSelectedId).to(NodeContextMenuSelectedId).inSingletonScope();
   }
 );
 

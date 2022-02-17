@@ -17,7 +17,7 @@ export default class ContextMenu extends Handler<'contextmenu'> {
     this.popup = popup;
   }
 
-  handle (event: MouseEvent) {
+  async handle (event: MouseEvent) {
     event.preventDefault();
     this.popup.show({ x: event.clientX, y: event.clientY });
   }

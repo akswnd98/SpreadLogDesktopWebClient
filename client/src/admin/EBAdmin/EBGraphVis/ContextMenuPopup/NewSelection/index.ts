@@ -13,12 +13,12 @@ export default class NewSelection extends EBBasicSelection {
   ) {
     super({
       text: 'New',
-      handleClick: () => { this.handleNewClick(); },
+      handleClick: async () => { await this.handleNewClick(); },
     });
     this.popup = popup;
   }
 
-  handleNewClick () {
+  async handleNewClick () {
     this.popup.show();
   }
 }

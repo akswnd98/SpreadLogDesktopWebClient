@@ -7,6 +7,8 @@ const SYMBOLS = {
   EBGraphVis: Symbol.for('EBGraphVis'),
   PostGraphAppendNodeNotifier: Symbol.for('PostGraphAppendNodeNotifier'),
   PostGraphAppendNodeObserver: Symbol.for('PostGraphAppendNodeObserver'),
+  PostGraphDeleteNodeNotifier: Symbol.for('PostGraphDeleteNodeNotifier'),
+  PostGraphDeleteNodeObserver: Symbol.for('PostGraphDeleteNodeObserver'),
   NewDialogOkTask: Symbol.for('NewDialogOkTask'),
   NewDialogOkDrawNode: Symbol.for('NewDialogOkDrawNode'),
   NewDialogOkHideNode: Symbol.for('NewDialogOkHideNode'),
@@ -21,6 +23,10 @@ const SYMBOLS = {
   NewNodeModel: Symbol.for('NewNodeModel'),
   NewNodeInput: Symbol.for('NewNodeInput'),
   NewNodeInputHandler: Symbol.for('NewNodeInputHandler'),
+  NodeContextMenuPopup: Symbol.for('NodeContextMenuPopup'),
+  DeleteSelection: Symbol.for('DeleteSelection'),
+  NodeContextMenuHandler: Symbol.for('NodeContextMenuHandler'),
+  NodeContextMenuSelectedId: Symbol.for('NodeContextMenuSelectedId'),
 };
 
 export {

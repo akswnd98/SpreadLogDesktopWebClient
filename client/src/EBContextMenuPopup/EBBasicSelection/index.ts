@@ -6,7 +6,7 @@ import EBRawSelection, { ConstructorParam as ParentConstructorParam } from '../E
 import styles from './index.scss';
 
 type ConstructorParam = {
-  handleClick: (event: MouseEvent) => void;
+  handleClick: (event: MouseEvent) => Promise<void>;
 } & ParentConstructorParam;
 
 @injectable()

@@ -16,7 +16,7 @@ export default class Close extends Handler<'click'> {
     super({ id: 'close' });
   }
 
-  handle () {
+  async handle () {
     const popup = Static.instance.get<EBNewDialogPopup>(SYMBOLS.EBNewDialogPopup);
     popup.hide();
   }

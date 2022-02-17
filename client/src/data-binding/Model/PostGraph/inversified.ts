@@ -14,7 +14,8 @@ export default class Inversified extends PostGraph {
   ) {
     super({
       data: {
-        nodes: new Set<Node>(postNodeSummaries.map((v) => new postNodeNewable(v.id, v.title))),
+        // nodes: postNodeSummaries.map((v) => new postNodeNewable(v.id, v.title)),
+        nodes: new Map<number, Node>(postNodeSummaries.map((v) => [v.id, new postNodeNewable(v.id, v.title)])),
       },
     });
   }

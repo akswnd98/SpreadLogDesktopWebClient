@@ -4,7 +4,7 @@ import Model, { ConstructorParam as ParentConstructorParam } from '..';
 import Node from './Node';
 
 export type DataType = {
-  nodes: Set<Node>;
+  nodes: Map<number, Node>;
 };
 
 export type ConstructorParam = {

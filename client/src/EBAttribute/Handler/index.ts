@@ -34,5 +34,5 @@ export default abstract class Handler<Event extends keyof HTMLElementEventMap> e
     this.registeredHandler = undefined;
   }
 
-  abstract handle (event: HTMLElementEventMap[Event]): void;
+  abstract handle (event: HTMLElementEventMap[Event]): Promise<void>;
 }

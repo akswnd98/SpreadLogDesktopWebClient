@@ -3,13 +3,13 @@ import Node from '@/src/data-binding/Model/PostGraph/Node';
 import { injectable, inject } from 'inversify';
 import ModelNotifier from '../..';
 import PostGraph, { DataType } from '../../../Model/PostGraph';
-import PostGraphAppendNodeObserver from '@/src/data-binding/IObserver/EBGraphVis/AppendNode/inversified';
+import PostGraphDeleteNodeObserver from '@/src/data-binding/IObserver/EBGraphVis/DeleteNode/inversified';
 
 @injectable()
-export default class AppendNode extends ModelNotifier<DataType> {
+export default class DeleteNode extends ModelNotifier<DataType> {
   constructor (
     @inject(SYMBOLS.PostGraph) postGraph: PostGraph,
-    @inject(SYMBOLS.PostGraphAppendNodeObserver) observer: PostGraphAppendNodeObserver,
+    @inject(SYMBOLS.PostGraphDeleteNodeObserver) observer: PostGraphDeleteNodeObserver,
   ) {
     super({
       model: postGraph,
@@ -17,7 +17,7 @@ export default class AppendNode extends ModelNotifier<DataType> {
     this.attachObserver(observer);
   }
 
-  notify (event: Node) {
+  notify (event: number) {
     try {
       super.notify(event);
     } catch (e) {
@@ -26,8 +26,8 @@ export default class AppendNode extends ModelNotifier<DataType> {
     }
   }
 
-  append (node: Node) {
-    this.model.data.nodes.set(node.data.id, node);
-    this.notify(node);
+  delete (id: number) {
+    this.model.data.nodes.delete(id);
+    this.notify(id);
   }
 }

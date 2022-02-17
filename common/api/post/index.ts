@@ -9,10 +9,14 @@ export interface AppendPostNodeRequest {
   body: string;
 };
 
-export interface AppendPostNodeResolve {
+export interface AppendPostNodeResponse {
   id: number;
 };
 
-export interface GetByIdPayload {
+export interface DeleteByIdRequest {
   id: number;
+};
+
+export interface DeleteByIdResponse {
+  error: boolean;
 };
