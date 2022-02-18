@@ -8,24 +8,28 @@ import { render, html } from 'lit-html';
 import EBEditor from './EBEditor';
 import { SYMBOLS } from '@/src/admin/types';
 import OkButton from './OkButton';
+import CancelButton from './CancelButton';
 
 export type ConstructorParam = {
 } & ParentConstructorParam;
 
 export type PayloadParam = {
   okButton: OkButton;
+  cancelButton: CancelButton;
 } & ParentConstructorParam;
 
 @injectable()
 export default class EBEditorPopupBody extends EBElement {
   constructor (
     @inject(SYMBOLS.EBEditorOkButton) okButton: OkButton,
+    @inject(SYMBOLS.EBEditorCancelButton) cancelButton: CancelButton,
   ) {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
       ],
       okButton,
+      cancelButton,
     } as PayloadParam);
   }
 
@@ -36,6 +40,7 @@ export default class EBEditorPopupBody extends EBElement {
         ${new EBEditor()}
         <div class='bottom'>
           ${payload.okButton}
+          ${payload.cancelButton}
         </div>
       `,
       this.rootElement,

@@ -30,6 +30,7 @@ const SYMBOLS = {
   EBEditorPopup: Symbol.for('EBEditorPopup'),
   EBEditorPopupBody: Symbol.for('EBEditorPopupBody'),
   EBEditorOkButton: Symbol.for('EBEditorOkButton'),
+  EBEditorCancelButton: Symbol.for('EBEditorCancelButton'),
 };
 
 export {

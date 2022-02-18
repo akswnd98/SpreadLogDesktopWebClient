@@ -30,6 +30,7 @@ import DeleteSelection from './EBAdmin/EBGraphVis/NodeContextMenuPopup/DeleteSel
 import NodeContextMenuSelectedId from '@/src/data-binding/Model/NodeContextMenuSelectedId';
 import EBEditorPopup from './EBAdmin/EBEditorPopup';
 import EBEditorOkButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/OkButton';
+import EBEditorCancelButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/CancelButton';
 import EBEditorPopupBody from './EBAdmin/EBEditorPopup/EBEditorPopupBody';
 
 const module = new AsyncContainerModule(
@@ -69,6 +70,7 @@ const module = new AsyncContainerModule(
     bind<EBEditorPopup>(SYMBOLS.EBEditorPopup).to(EBEditorPopup).inSingletonScope();
     bind<EBEditorPopupBody>(SYMBOLS.EBEditorPopupBody).to(EBEditorPopupBody);
     bind<EBEditorOkButton>(SYMBOLS.EBEditorOkButton).to(EBEditorOkButton);
+    bind<EBEditorCancelButton>(SYMBOLS.EBEditorCancelButton).to(EBEditorCancelButton);
   }
 );
 

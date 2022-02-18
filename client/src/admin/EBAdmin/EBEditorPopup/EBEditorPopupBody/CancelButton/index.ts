@@ -5,10 +5,10 @@ import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
 
 @injectable()
-export default class OkButton extends EBButton {
+export default class CancelButton extends EBButton {
   constructor () {
     super({
-      text: 'ok',
+      text: 'cancel',
       width: '100px',
       height: '50px',
       borderRadius: '20px',
@@ -18,4 +18,4 @@ export default class OkButton extends EBButton {
   }
 }
 
-customElements.define('eb-editor-popup-body-ok-button', OkButton);
+customElements.define('eb-editor-popup-body-cancel-button', CancelButton);
