@@ -18,7 +18,7 @@ export default class DeleteNode implements IObserver {
     this.ebGraphVis = payload.ebGraphVis;
   }
 
-  update (subject: INotifier, event: EventType) {
+  async update (subject: INotifier, event: EventType) {
     this.ebGraphVis.nodes.remove(event);
   }
 }

@@ -1,7 +1,7 @@
 import IObserver from '../IObserver';
 
 export default interface INotifier {
-  notify (event: any): void;
+  notify (event: any): Promise<void>;
 
   attachObserver (observer: IObserver): void;
 

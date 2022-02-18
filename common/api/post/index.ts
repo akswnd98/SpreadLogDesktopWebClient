@@ -20,3 +20,17 @@ export interface DeleteByIdRequest {
 export interface DeleteByIdResponse {
   error: boolean;
 };
+
+export interface GetByIdRequest {
+  id: number;
+};
+
+export interface GetByIdResponse {
+  ret: {
+    id: number;
+    title: string;
+    body: string;
+    firstUpload: Date;
+    lastUpdate: Date;
+  };
+};

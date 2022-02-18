@@ -17,17 +17,17 @@ export default class AppendNode extends ModelNotifier<DataType> {
     this.attachObserver(observer);
   }
 
-  notify (event: Node) {
+  async notify (event: Node) {
     try {
-      super.notify(event);
+      await super.notify(event);
     } catch (e) {
       console.log('PostGraphAppendNotifier.notify failed');
       throw e;
     }
   }
 
-  append (node: Node) {
+  async append (node: Node) {
     this.model.data.nodes.set(node.data.id, node);
-    this.notify(node);
+    await this.notify(node);
   }
 }

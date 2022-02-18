@@ -37,7 +37,9 @@ export default class EBEditorPopupBody extends EBElement {
     super.initialRender(payload);
     render(
       html`
-        ${new EBEditor()}
+        <div class='top'>
+          ${new EBEditor()}
+        </div>
         <div class='bottom'>
           ${payload.okButton}
           ${payload.cancelButton}

@@ -30,7 +30,7 @@ export default class DrawNode extends Node {
     const appendNode = Static.instance.get<AppendNode>(SYMBOLS.PostGraphAppendNodeNotifier);
     const input = Static.instance.get<NewNode>(SYMBOLS.NewNodeModel);
     const NodeNewable = Static.instance.get<ParameterizableNewable<PostNode, ConstructorParameters<typeof PostNode>>>(SYMBOLS.PostNodeNewable);
-    appendNode.append(new NodeNewable(this.prevNodes.server!.id, input.data.title));
+    await appendNode.append(new NodeNewable(this.prevNodes.server!.id, input.data.title));
   }
 
   async handleFail () {

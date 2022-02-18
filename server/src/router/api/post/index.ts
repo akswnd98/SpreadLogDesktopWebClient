@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
-import type { DeleteByIdRequest, DeleteByIdResponse, GetAllNodeSummary, AppendPostNodeResponse, AppendPostNodeRequest } from '@/common/api/post';
+import type { DeleteByIdRequest, DeleteByIdResponse, GetAllNodeSummary, AppendPostNodeResponse, AppendPostNodeRequest, GetByIdRequest, GetByIdResponse } from '@/common/api/post';
 import { getAllNodeSummary, getById, create, deletePostNodeById } from './functions';
+import { textChangeRangeNewSpan } from 'typescript';
 
 const router = express.Router();
 
@@ -18,15 +19,25 @@ router.get('/getAllNodeSummary', async (req: Request<any, GetAllNodeSummary, any
   }
 });
 
-// router.get('/getById', async (req: Request<any, AppendPostNode, GetByIdPayload>, res: Response<AppendPostNode>) => {
-//   try {
-//     res.end(await getById(req.body.id));
-//   } catch (e) {
-//     console.log('GET /api/post failed', e);
-//   }
-// });
+router.get('/getById', async (req: Request<any, GetByIdResponse, any, GetByIdRequest>, res: Response<GetByIdResponse>) => {
+  try {
+    const post = await getById(req.query.id);
+    res.json({
+      ret: {
+        id: post.id!,
+        title: post.title!,
+        body: post.body!,
+        firstUpload: post.firstUpload!,
+        lastUpdate: post.lastUpdate!,
+      },
+    });
+    res.end();
+  } catch (e) {
+    console.log('GET /api/post failed', e);
+  }
+});
 
-router.post('/appendPostNode', async (req: Request<any, AppendPostNodeResponse, AppendPostNodeRequest>, res: Response) => {
+router.post('/appendPostNode', async (req: Request<any, AppendPostNodeResponse, AppendPostNodeRequest>, res: Response<AppendPostNodeResponse>) => {
   try {
     console.log(req.body);
     const data = await create(req.body);

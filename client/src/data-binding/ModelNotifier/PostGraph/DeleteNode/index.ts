@@ -17,17 +17,17 @@ export default class DeleteNode extends ModelNotifier<DataType> {
     this.attachObserver(observer);
   }
 
-  notify (event: number) {
+  async notify (event: number) {
     try {
-      super.notify(event);
+      await super.notify(event);
     } catch (e) {
       console.log('PostGraphAppendNotifier.notify failed');
       throw e;
     }
   }
 
-  delete (id: number) {
+  async delete (id: number) {
     this.model.data.nodes.delete(id);
-    this.notify(id);
+    await this.notify(id);
   }
 }

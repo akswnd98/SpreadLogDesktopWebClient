@@ -1,6 +1,6 @@
-import * as VisNetwork from 'vis-network/standalone';
+import VisNetworkWrapper from '@/src/VisNetworkWrapper';
 
 export default abstract class Attribute {
-  abstract register (network: VisNetwork.Network): void;
-  abstract unregister (network: VisNetwork.Network): void;
+  abstract register (network: VisNetworkWrapper): void;
+  abstract unregister (network: VisNetworkWrapper): void;
 }

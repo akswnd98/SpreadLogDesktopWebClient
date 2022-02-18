@@ -32,6 +32,9 @@ import EBEditorPopup from './EBAdmin/EBEditorPopup';
 import EBEditorOkButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/OkButton';
 import EBEditorCancelButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/CancelButton';
 import EBEditorPopupBody from './EBAdmin/EBEditorPopup/EBEditorPopupBody';
+import EditingPostId from './data-binding/Model/EditingPostId';
+import EditingPostIdNotifier from './data-binding/ModelNotifier/EditingPostId';
+import EditingPostIdObserver from './data-binding/Observer/EditingPostId';
 
 const module = new AsyncContainerModule(
   async (
@@ -71,6 +74,9 @@ const module = new AsyncContainerModule(
     bind<EBEditorPopupBody>(SYMBOLS.EBEditorPopupBody).to(EBEditorPopupBody);
     bind<EBEditorOkButton>(SYMBOLS.EBEditorOkButton).to(EBEditorOkButton);
     bind<EBEditorCancelButton>(SYMBOLS.EBEditorCancelButton).to(EBEditorCancelButton);
+    bind<EditingPostId>(SYMBOLS.EditingPostId).to(EditingPostId).inSingletonScope();
+    bind<EditingPostIdNotifier>(SYMBOLS.EditingPostIdNotifier).to(EditingPostIdNotifier).inSingletonScope();
+    bind<EditingPostIdObserver>(SYMBOLS.EditingPostIdObserver).to(EditingPostIdObserver).inSingletonScope();
   }
 );
 

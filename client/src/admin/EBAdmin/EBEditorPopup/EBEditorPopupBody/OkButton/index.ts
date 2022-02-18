@@ -10,7 +10,7 @@ export default class OkButton extends EBButton {
     super({
       text: 'ok',
       width: '100px',
-      height: '50px',
+      height: 'calc(100% - 1px)',
       borderRadius: '20px',
       backgroundColor: 'red',
       attributes: [ new Style({ styles: styles.toString() }) ],

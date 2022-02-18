@@ -17,7 +17,7 @@ export default class EBEditor extends EBElement {
       el: this.rootElement,
       initialEditType: 'markdown',
       previewStyle: 'vertical',
-      height: 'calc(100% - 50px)',
+      height: '100%',
     });
   }
 }

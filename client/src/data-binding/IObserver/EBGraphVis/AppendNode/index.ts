@@ -19,7 +19,7 @@ export default class AppendNode implements IObserver {
     this.ebGraphVis = payload.ebGraphVis;
   }
 
-  update (subject: INotifier, event: EventType) {
+  async update (subject: INotifier, event: EventType) {
     this.ebGraphVis.nodes.add([{ id: event.data.id, label: event.data.title }]);
     // this.ebGraphVis.nodes.update([{ id: event.data.id, label: event.data.title }]);
     // this.ebGraphVis.network.editNode();

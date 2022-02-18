@@ -22,7 +22,7 @@ export default class DrawNode extends Node {
     const id = this.prevNodes.server!.id;
     if (id < 0) return;
     const notifier = Static.instance.get<PostGraphDeleteNodeNotifier>(SYMBOLS.PostGraphDeleteNodeNotifier);
-    notifier.delete(id);
+    await notifier.delete(id);
   }
 
   async handleFail () {

@@ -14,10 +14,10 @@ export default class Notifier implements INotifier {
     if (payload.observers !== undefined) this.observers = payload.observers;
   }
 
-  notify (event: any) {
-    this.observers.forEach((observer) => {
-      observer.update(this, event);
-    });
+  async notify (event: any) {
+    await Promise.all(Array.from(this.observers).map((observer) => {
+      return observer.update(this, event);
+    }));
   }
 
   attachObserver (observer: IObserver) {
