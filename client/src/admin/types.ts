@@ -34,6 +34,8 @@ const SYMBOLS = {
   EditingPostId: Symbol.for('EditingPostId'),
   EditingPostIdObserver: Symbol.for('EditingPostIdObserver'),
   EditingPostIdNotifier: Symbol.for('EditingPostIdNotifier'),
+  EditingPost: Symbol.for('EditingPost'),
+  EBEditor: Symbol.for('EBEditor'),
 };
 
 export {

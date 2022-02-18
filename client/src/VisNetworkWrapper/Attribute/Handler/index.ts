@@ -24,5 +24,5 @@ export default abstract class Handler extends Attribute {
   unregister (network: VisNetworkWrapper) {
   }
 
-  abstract handle (params: any): void;
+  abstract handle (params: any): Promise<void>;
 }

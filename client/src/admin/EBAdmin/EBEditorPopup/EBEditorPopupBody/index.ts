@@ -16,6 +16,7 @@ export type ConstructorParam = {
 export type PayloadParam = {
   okButton: OkButton;
   cancelButton: CancelButton;
+  ebEditor: EBEditor;
 } & ParentConstructorParam;
 
 @injectable()
@@ -23,6 +24,7 @@ export default class EBEditorPopupBody extends EBElement {
   constructor (
     @inject(SYMBOLS.EBEditorOkButton) okButton: OkButton,
     @inject(SYMBOLS.EBEditorCancelButton) cancelButton: CancelButton,
+    @inject(SYMBOLS.EBEditor) ebEditor: EBEditor,
   ) {
     super({
       attributes: [
@@ -30,6 +32,7 @@ export default class EBEditorPopupBody extends EBElement {
       ],
       okButton,
       cancelButton,
+      ebEditor,
     } as PayloadParam);
   }
 
@@ -38,7 +41,7 @@ export default class EBEditorPopupBody extends EBElement {
     render(
       html`
         <div class='top'>
-          ${new EBEditor()}
+          ${payload.ebEditor}
         </div>
         <div class='bottom'>
           ${payload.okButton}

@@ -14,7 +14,7 @@ export default class Handler extends VisNetworkHandler {
     });
   }
 
-  handle (params: any) {
+  async handle (params: any) {
     const graphVis = Static.instance.get<EBGraphVis>(SYMBOLS.EBGraphVis);
     const id = graphVis.network.getNodeAt(params.pointer.DOM);
     if (id === undefined) return;
