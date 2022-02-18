@@ -34,3 +34,12 @@ export interface GetByIdResponse {
     lastUpdate: Date;
   };
 };
+
+export interface UpdatePostRequest {
+  id: number;
+  body: string;
+};
+
+export interface UpdatePostResponse {
+  error: boolean;
+};

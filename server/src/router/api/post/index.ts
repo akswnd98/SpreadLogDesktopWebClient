@@ -1,7 +1,6 @@
-import express, { Request, Response } from 'express';
-import type { DeleteByIdRequest, DeleteByIdResponse, GetAllNodeSummary, AppendPostNodeResponse, AppendPostNodeRequest, GetByIdRequest, GetByIdResponse } from '@/common/api/post';
-import { getAllNodeSummary, getById, create, deletePostNodeById } from './functions';
-import { textChangeRangeNewSpan } from 'typescript';
+import express, { Request, Response, RequestHandler } from 'express';
+import type { DeleteByIdRequest, DeleteByIdResponse, GetAllNodeSummary, AppendPostNodeResponse, AppendPostNodeRequest, GetByIdRequest, GetByIdResponse, UpdatePostRequest, UpdatePostResponse } from '@/common/api/post';
+import { getAllNodeSummary, getById, create, deletePostNodeById, updatePost } from './functions';
 
 const router = express.Router();
 
@@ -56,6 +55,18 @@ router.delete('/deleteNodeById', async (req: Request<any, DeleteByIdResponse, De
     res.end();
   } catch (e) {
     console.log('DELETE /api/post/deleteNodeById', e);
+    res.json({ error: true });
+    res.end();
+  }
+});
+
+router.put('/updatePost', async (req: Request<any, UpdatePostResponse, any, UpdatePostRequest>, res: Response<UpdatePostResponse>) => {
+  try {
+    await updatePost(req.body.id, req.body.body);
+    res.json({ error: false });
+    res.end();
+  } catch (e) {
+    console.log('PUT /api/post/putdatePost', e);
     res.json({ error: true });
     res.end();
   }

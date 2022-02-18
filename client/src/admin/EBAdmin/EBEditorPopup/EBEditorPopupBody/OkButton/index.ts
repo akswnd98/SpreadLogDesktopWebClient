@@ -3,6 +3,7 @@ import 'reflect-metadata';
 import { injectable } from 'inversify';
 import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
+import Handler from './Handler';
 
 @injectable()
 export default class OkButton extends EBButton {
@@ -13,7 +14,10 @@ export default class OkButton extends EBButton {
       height: 'calc(100% - 1px)',
       borderRadius: '20px',
       backgroundColor: 'red',
-      attributes: [ new Style({ styles: styles.toString() }) ],
+      attributes: [
+        new Style({ styles: styles.toString() }),
+        new Handler({ id: 'root' }),
+      ],
     });
   }
 }

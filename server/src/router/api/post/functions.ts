@@ -44,7 +44,7 @@ export async function deletePostNodeById (payload: DeleteByIdRequest) {
   }
 }
 
-async function findOne (id: number): Promise<Post> {
+export async function findOne (id: number): Promise<Post> {
   try {
     const ret = await Post.findOne({ where: { id } });
     if (ret === null) throw new Error('Post.findOne: no such id');
@@ -53,4 +53,14 @@ async function findOne (id: number): Promise<Post> {
     console.log(err);
     throw new Error('Post.findOne failed');
   }
+}
+
+export async function updatePost (id: number, body: string) {
+  const ret = await Post.update({
+    body,
+  }, {
+    where: {
+      id,
+    },
+  });
 }
