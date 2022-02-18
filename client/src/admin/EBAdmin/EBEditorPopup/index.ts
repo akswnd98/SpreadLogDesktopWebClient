@@ -8,25 +8,25 @@ import { html, render } from 'lit-html';
 import EBEditorPopupBody from './EBEditorPopupBody';
 import { SYMBOLS } from '../../types';
 import type { ParameterizableNewable } from '@/src/inversify';
-import EBButton from '@/src/EBButton';
+import EBEditorOkButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/OkButton';
 
 export type PayloadParam = {
-  Body: ParameterizableNewable<EBEditorPopupBody, ConstructorParameters<typeof EBEditorPopupBody>>;
-  EBButtonNewable: ParameterizableNewable<EBButton, ConstructorParameters<typeof EBButton>>;
+  body: EBEditorPopupBody;
+  okButton: EBEditorOkButton;
 } & ParentConstructorParam;
 
 @injectable()
 export default class EBEditorPopup extends EBElement {
   constructor (
-    @inject(SYMBOLS.EBEditorPopupBody) Body: ParameterizableNewable<EBEditorPopupBody, ConstructorParameters<typeof EBEditorPopupBody>>,
-    @inject(SYMBOLS.EBButton) EBButtonNewable: ParameterizableNewable<EBButton, ConstructorParameters<typeof EBButton>>,
+    @inject(SYMBOLS.EBEditorPopupBody) body: EBEditorPopupBody,
+    @inject(SYMBOLS.EBEditorOkButton) okButton: EBEditorOkButton,
   ) {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
       ],
-      Body,
-      EBButtonNewable,
+      body,
+      okButton,
     } as PayloadParam);
   }
 
@@ -34,7 +34,7 @@ export default class EBEditorPopup extends EBElement {
     super.initialRender(payload);
     render(
       html`
-        ${new payload.Body(payload.EBButtonNewable)}
+        ${payload.body}
       `,
       this.rootElement,
     );

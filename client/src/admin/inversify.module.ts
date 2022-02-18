@@ -29,7 +29,7 @@ import NodeContextMenuPopup from './EBAdmin/EBGraphVis/NodeContextMenuPopup';
 import DeleteSelection from './EBAdmin/EBGraphVis/NodeContextMenuPopup/DeleteSelection';
 import NodeContextMenuSelectedId from '@/src/data-binding/Model/NodeContextMenuSelectedId';
 import EBEditorPopup from './EBAdmin/EBEditorPopup';
-import EBButton from '../EBButton';
+import EBEditorOkButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/OkButton';
 import EBEditorPopupBody from './EBAdmin/EBEditorPopup/EBEditorPopupBody';
 
 const module = new AsyncContainerModule(
@@ -67,8 +67,8 @@ const module = new AsyncContainerModule(
     // bind<NodeContextMenuHandler>(SYMBOLS.NodeContextMenuHandler).to(NodeContextMenuHandler);
     bind<NodeContextMenuSelectedId>(SYMBOLS.NodeContextMenuSelectedId).to(NodeContextMenuSelectedId).inSingletonScope();
     bind<EBEditorPopup>(SYMBOLS.EBEditorPopup).to(EBEditorPopup).inSingletonScope();
-    bind<ParameterizableNewable<EBEditorPopupBody, ConstructorParameters<typeof EBEditorPopupBody>>>(SYMBOLS.EBEditorPopupBody).toConstantValue(EBEditorPopupBody);
-    bind<ParameterizableNewable<EBButton, ConstructorParameters<typeof EBButton>>>(SYMBOLS.EBButton).toConstructor(EBButton);
+    bind<EBEditorPopupBody>(SYMBOLS.EBEditorPopupBody).to(EBEditorPopupBody);
+    bind<EBEditorOkButton>(SYMBOLS.EBEditorOkButton).to(EBEditorOkButton);
   }
 );
 

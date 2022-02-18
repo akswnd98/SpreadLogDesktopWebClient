@@ -5,28 +5,27 @@ import { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
 import styles from './index.scss';
 import Style from '@/src/EBAttribute/Style';
 import { render, html } from 'lit-html';
-import EBButton from '@/src/EBButton';
 import EBEditor from './EBEditor';
 import { SYMBOLS } from '@/src/admin/types';
-import type { ParameterizableNewable } from '@/src/inversify';
+import OkButton from './OkButton';
 
 export type ConstructorParam = {
 } & ParentConstructorParam;
 
 export type PayloadParam = {
-  EBButtonNewable: ParameterizableNewable<EBButton, ConstructorParameters<typeof EBButton>>;
+  okButton: OkButton;
 } & ParentConstructorParam;
 
 @injectable()
 export default class EBEditorPopupBody extends EBElement {
   constructor (
-    @unmanaged() EBButtonNewable: ParameterizableNewable<EBButton, ConstructorParameters<typeof EBButton>>,
+    @inject(SYMBOLS.EBEditorOkButton) okButton: OkButton,
   ) {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
       ],
-      EBButtonNewable: EBButtonNewable,
+      okButton,
     } as PayloadParam);
   }
 
@@ -35,13 +34,9 @@ export default class EBEditorPopupBody extends EBElement {
     render(
       html`
         ${new EBEditor()}
-        ${new payload.EBButtonNewable({
-          text: 'OK',
-          width: 100,
-          height: 50,
-          borderRadius: 5,
-          backgroundColor: 'red',
-        })}
+        <div class='bottom'>
+          ${payload.okButton}
+        </div>
       `,
       this.rootElement,
     );

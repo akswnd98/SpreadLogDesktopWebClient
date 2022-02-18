@@ -3,25 +3,29 @@ import { render, html } from 'lit-html';
 import Style from '@/src/EBAttribute/Style';
 import 'reflect-metadata';
 import { injectable, unmanaged } from 'inversify';
+import styles from './index.scss';
 
 export type ConstructorParam = {
   text: string;
-  width: number;
-  height: number;
-  borderRadius: number;
+  width: string;
+  height: string;
+  borderRadius: string;
   backgroundColor: string;
 } & ParentConstructorParam;
 
 @injectable()
 export default class EBButton extends EBElement {
   text: string;
-  width: number;
-  height: number;
-  borderRadius: number;
+  width: string;
+  height: string;
+  borderRadius: string;
   backgroundColor: string;
 
   constructor (@unmanaged() payload: ConstructorParam) {
-    super(payload);
+    super({
+      ...payload,
+      attributes: [ ...(payload.attributes ? payload.attributes : []), new Style({ styles: styles.toString() }) ],
+    });
     this.text = payload.text;
     this.width = payload.width;
     this.height = payload.height;
@@ -33,9 +37,7 @@ export default class EBButton extends EBElement {
     super.initialRender(payload);
     render(
       html`
-        <div id='button'>
-          ${payload.text}
-        </div>
+        <p>${payload.text}</p>
       `, this.rootElement,
     );
     this.registerAttribute(new Style({ styles: `

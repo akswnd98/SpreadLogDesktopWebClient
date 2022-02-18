@@ -29,7 +29,7 @@ const SYMBOLS = {
   NodeContextMenuSelectedId: Symbol.for('NodeContextMenuSelectedId'),
   EBEditorPopup: Symbol.for('EBEditorPopup'),
   EBEditorPopupBody: Symbol.for('EBEditorPopupBody'),
-  EBButton: Symbol.for('EBButton'),
+  EBEditorOkButton: Symbol.for('EBEditorOkButton'),
 };
 
 export {
