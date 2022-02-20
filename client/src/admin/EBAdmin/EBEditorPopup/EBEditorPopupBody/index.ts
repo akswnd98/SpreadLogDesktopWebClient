@@ -7,49 +7,40 @@ import Style from '@/src/EBAttribute/Style';
 import { render, html } from 'lit-html';
 import EBEditor from './EBEditor';
 import { SYMBOLS } from '@/src/admin/types';
-import OkButton from './OkButton';
-import CancelButton from './CancelButton';
+import OkButton from './Bottom/OkButton';
+import CancelButton from './Bottom/CancelButton';
+import EBContainerElement from '@/src/EBContainerElement';
+import EBVerticalDictLayout, { ChildElementsType } from '@/src/EBLayout/EBVerticalDictLayout';
+import EBLayout from '@/src/EBLayout';
+import EditorPopupBodyBottom from './Bottom';
+import EditorPopupBodyTop from './Top';
 
 export type ConstructorParam = {
 } & ParentConstructorParam;
 
 export type PayloadParam = {
-  okButton: OkButton;
-  cancelButton: CancelButton;
-  ebEditor: EBEditor;
+  layout: EBVerticalDictLayout;
+  childElements: ChildElementsType;
 } & ParentConstructorParam;
 
 @injectable()
-export default class EBEditorPopupBody extends EBElement {
+export default class EBEditorPopupBody extends EBContainerElement<ChildElementsType> {
   constructor (
-    @inject(SYMBOLS.EBEditorOkButton) okButton: OkButton,
-    @inject(SYMBOLS.EBEditorCancelButton) cancelButton: CancelButton,
+    @inject(SYMBOLS.EditorPopupBodyTop) top: EditorPopupBodyTop,
+    @inject(SYMBOLS.EditorPopupBodyBottom) bottom: EditorPopupBodyBottom,
     @inject(SYMBOLS.EBEditor) ebEditor: EBEditor,
   ) {
     super({
+      layout: new EBVerticalDictLayout(),
+      childElements: {
+        top,
+        center: ebEditor,
+        bottom,
+      },
       attributes: [
         new Style({ styles: styles.toString() }),
       ],
-      okButton,
-      cancelButton,
-      ebEditor,
     } as PayloadParam);
-  }
-
-  initialRender (payload: PayloadParam) {
-    super.initialRender(payload);
-    render(
-      html`
-        <div class='top'>
-          ${payload.ebEditor}
-        </div>
-        <div class='bottom'>
-          ${payload.okButton}
-          ${payload.cancelButton}
-        </div>
-      `,
-      this.rootElement,
-    );
   }
 }
 

@@ -8,25 +8,22 @@ import { html, render } from 'lit-html';
 import EBEditorPopupBody from './EBEditorPopupBody';
 import { SYMBOLS } from '../../types';
 import type { ParameterizableNewable } from '@/src/inversify';
-import EBEditorOkButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/OkButton';
+import EBEditorOkButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/Bottom/OkButton';
 
 export type PayloadParam = {
   body: EBEditorPopupBody;
-  okButton: EBEditorOkButton;
 } & ParentConstructorParam;
 
 @injectable()
 export default class EBEditorPopup extends EBElement {
   constructor (
     @inject(SYMBOLS.EBEditorPopupBody) body: EBEditorPopupBody,
-    @inject(SYMBOLS.EBEditorOkButton) okButton: EBEditorOkButton,
   ) {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
       ],
       body,
-      okButton,
     } as PayloadParam);
   }
 

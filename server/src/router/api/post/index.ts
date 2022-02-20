@@ -62,7 +62,8 @@ router.delete('/deleteNodeById', async (req: Request<any, DeleteByIdResponse, De
 
 router.put('/updatePost', async (req: Request<any, UpdatePostResponse, any, UpdatePostRequest>, res: Response<UpdatePostResponse>) => {
   try {
-    await updatePost(req.body.id, req.body.body);
+    console.log(req.body.title);
+    await updatePost(req.body.id, req.body.title, req.body.body);
     res.json({ error: false });
     res.end();
   } catch (e) {

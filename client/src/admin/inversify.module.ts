@@ -29,14 +29,18 @@ import NodeContextMenuPopup from './EBAdmin/EBGraphVis/NodeContextMenuPopup';
 import DeleteSelection from './EBAdmin/EBGraphVis/NodeContextMenuPopup/DeleteSelection';
 import NodeContextMenuSelectedId from '@/src/data-binding/Model/NodeContextMenuSelectedId';
 import EBEditorPopup from './EBAdmin/EBEditorPopup';
-import EBEditorOkButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/OkButton';
-import EBEditorCancelButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/CancelButton';
+import EBEditorOkButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/Bottom/OkButton';
+import EBEditorCancelButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/Bottom/CancelButton';
 import EBEditorPopupBody from './EBAdmin/EBEditorPopup/EBEditorPopupBody';
 import EditingPostId from './data-binding/Model/EditingPostId';
 import EditingPostIdNotifier from './data-binding/ModelNotifier/EditingPostId';
 import EditingPostIdObserver from './data-binding/Observer/EditingPostId';
 import EditingPost from './data-binding/Model/EditingPost';
+import EditingPostNotifier from './data-binding/ModelNotifier/EditingPost';
+import EditingPostObserver from './data-binding/Observer/EditingPost'
 import EBEditor from './EBAdmin/EBEditorPopup/EBEditorPopupBody/EBEditor';
+import EditorPopupBodyBottom from './EBAdmin/EBEditorPopup/EBEditorPopupBody/Bottom';
+import EditorPopupBodyTop from './EBAdmin/EBEditorPopup/EBEditorPopupBody/Top';
 
 const module = new AsyncContainerModule(
   async (
@@ -81,6 +85,10 @@ const module = new AsyncContainerModule(
     bind<EditingPostIdObserver>(SYMBOLS.EditingPostIdObserver).to(EditingPostIdObserver).inSingletonScope();
     bind<EditingPost>(SYMBOLS.EditingPost).to(EditingPost).inSingletonScope();
     bind<EBEditor>(SYMBOLS.EBEditor).to(EBEditor).inSingletonScope();
+    bind<EditorPopupBodyBottom>(SYMBOLS.EditorPopupBodyBottom).to(EditorPopupBodyBottom).inSingletonScope();
+    bind<EditorPopupBodyTop>(SYMBOLS.EditorPopupBodyTop).to(EditorPopupBodyTop).inSingletonScope();
+    bind<EditingPostNotifier>(SYMBOLS.EditingPostNotifier).to(EditingPostNotifier).inSingletonScope();
+    bind<EditingPostObserver>(SYMBOLS.EditingPostObserver).to(EditingPostObserver).inSingletonScope();
   }
 );
 

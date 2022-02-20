@@ -5,7 +5,7 @@ import EditingPostIdNotifier from '../../ModelNotifier/EditingPostId';
 import axios, { AxiosResponse } from 'axios';
 import { GetByIdRequest, GetByIdResponse } from '@/common/api/post';
 import Static from '@/src/admin/inversify.config';
-import EditingPost from '../../Model/EditingPost';
+import EditingPostNotifier from '@/src/admin/data-binding/ModelNotifier/EditingPost';
 import { SYMBOLS } from '@/src/admin/types';
 
 @injectable()
@@ -17,6 +17,6 @@ export default class EditingPostId implements IObserver {
       },
       responseType: 'json',
     });
-    Static.instance.get<EditingPost>(SYMBOLS.EditingPost).data = ret.data.ret;
+    Static.instance.get<EditingPostNotifier>(SYMBOLS.EditingPostNotifier).setData(ret.data.ret);
   }
 }

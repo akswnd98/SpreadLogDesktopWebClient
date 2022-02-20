@@ -55,8 +55,9 @@ export async function findOne (id: number): Promise<Post> {
   }
 }
 
-export async function updatePost (id: number, body: string) {
+export async function updatePost (id: number, title: string, body: string) {
   const ret = await Post.update({
+    title,
     body,
   }, {
     where: {
