@@ -1,6 +1,6 @@
 import IObserver from '@/src/data-binding/IObserver';
 import INotifier from '@/src/data-binding/INotifier';
-import EBGraphVis from '@/src/admin/EBAdmin/EBGraphVis';
+import EBGraphVis from '@/src/admin/EBAdmin/GraphVis';
 import Node from '@/src/data-binding/Model/PostGraph/Node';
 import 'reflect-metadata';
 import { injectable, unmanaged } from 'inversify';
@@ -24,6 +24,5 @@ export default class AppendNode implements IObserver {
     // this.ebGraphVis.nodes.update([{ id: event.data.id, label: event.data.title }]);
     // this.ebGraphVis.network.editNode();
     // this.ebGraphVis.nodes.add({ id: 5, label: 'nice' });
-    console.log(this.ebGraphVis.nodes.get());
   }
 }

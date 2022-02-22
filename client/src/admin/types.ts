@@ -1,8 +1,4 @@
 const SYMBOLS = {
-  PostNodeSummaries: Symbol.for('PostNodeSummaries'),
-  PostEdgeSummaries: Symbol.for('PostEdgeSummaries'),
-  PostGraph: Symbol.for('PostGraph'),
-  PostNodeNewable: Symbol.for('PostGraph.NodeNewable'),
   EBAdmin: Symbol.for('EBAdmin'),
   EBGraphVis: Symbol.for('EBGraphVis'),
   PostGraphAppendNodeNotifier: Symbol.for('PostGraphAppendNodeNotifier'),

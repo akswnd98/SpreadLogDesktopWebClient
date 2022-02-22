@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import inversify, { injectable, inject } from 'inversify';
-import { SYMBOLS } from '@/src/admin/types';
+import { SYMBOLS } from '@/src/types';
 import PostGraph from '.';
 import Node from '@/src/data-binding/Model/PostGraph/Node/inversified';
 import { DataType as PostNodeDataType } from '@/src/data-binding/Model/PostGraph/Node';

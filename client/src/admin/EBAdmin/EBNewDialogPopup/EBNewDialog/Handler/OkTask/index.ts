@@ -5,7 +5,6 @@ import DrawNode from './DrawNode';
 import HideNode from './HideNode';
 import ServerNode from './ServerNode';
 import { SYMBOLS } from '@/src/admin/types';
-import Static, { hello } from '@/src/admin/inversify.config';
 
 type Nodes = {
   draw: DrawNode;

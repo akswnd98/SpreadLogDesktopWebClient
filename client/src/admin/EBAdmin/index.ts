@@ -3,7 +3,7 @@ import EBContainerElement, { ConstructorParam as ParentConstructorParam} from '@
 import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
 import EBVerticalLayout from '@/src/EBLayout/EBVerticalLayout';
-import EBGraphVis from './EBGraphVis';
+import EBGraphVis from './GraphVis';
 import 'reflect-metadata';
 import { injectable, unmanaged } from 'inversify';
 

@@ -1,5 +1,7 @@
 import { SYMBOLS } from '@/src/admin/types';
+import { SYMBOLS as BasicSYMBOLS } from '@/src/types';
 import Node from '@/src/data-binding/Model/PostGraph/Node';
+import 'reflect-metadata';
 import { injectable, inject } from 'inversify';
 import ModelNotifier from '../..';
 import PostGraph, { DataType } from '../../../Model/PostGraph';
@@ -8,7 +10,7 @@ import PostGraphAppendNodeObserver from '@/src/data-binding/IObserver/EBGraphVis
 @injectable()
 export default class AppendNode extends ModelNotifier<DataType> {
   constructor (
-    @inject(SYMBOLS.PostGraph) postGraph: PostGraph,
+    @inject(BasicSYMBOLS.PostGraph) postGraph: PostGraph,
     @inject(SYMBOLS.PostGraphAppendNodeObserver) observer: PostGraphAppendNodeObserver,
   ) {
     super({

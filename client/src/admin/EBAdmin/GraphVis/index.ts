@@ -3,10 +3,10 @@ import { inject, injectable } from 'inversify';
 import * as VisNetwork from 'vis-network/standalone';
 import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
-import EBElement from '@/src/EBElement';
 import ContextMenuHandler from './Handler/ContextMenu';
-import EBGraphVisRaw, { ConstructorParam as ParentConstructorParam } from '@/src/EBGraphVis';
+import EBGraphVis, { ConstructorParam as ParentConstructorParam } from '@/src/EBGraphVis';
 import { SYMBOLS } from '../../types';
+import { SYMBOLS as BasicSYMBOLS } from '@/src/types';
 import PostGraph from '@/src/data-binding/Model/PostGraph';
 import VisNetworkWrapper from '@/src/VisNetworkWrapper';
 import NodeContextMenuHandler from './VisNetworkHandler/NodeContextMenu';
@@ -16,13 +16,13 @@ export type ConstructorParam = {
 } & ParentConstructorParam;
 
 @injectable()
-export default class EBGraphVis extends EBElement {
+export default class GraphVis extends EBGraphVis {
   nodes: VisNetwork.DataSet<VisNetwork.Node>;
   edges: VisNetwork.DataSet<VisNetwork.Edge>;
-  network: VisNetwork.Network;
+  network: VisNetworkWrapper;
 
   constructor (
-    @inject(SYMBOLS.PostGraph) postGraph: PostGraph,
+    @inject(BasicSYMBOLS.PostGraph) postGraph: PostGraph,
     @inject(SYMBOLS.ContextMenuHandler) contextMenuHandler: ContextMenuHandler,
     // @inject(SYMBOLS.NodeContextMenuHandler) nodeContextMenuHandler: NodeContextMenuHandler,
   ) {
@@ -53,4 +53,4 @@ export default class EBGraphVis extends EBElement {
   }
 }
 
-customElements.define('eb-graph-vis', EBGraphVis);
+customElements.define('graph-vis', GraphVis);

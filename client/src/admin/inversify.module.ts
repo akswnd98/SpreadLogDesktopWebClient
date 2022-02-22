@@ -6,7 +6,7 @@ import { ConstructorParam as PostNodeConstructorParam } from '@/src/data-binding
 import PostGraph from '../data-binding/Model/PostGraph/inversified';
 import { ParameterizableNewable } from '../inversify';
 import EBAdmin from './EBAdmin/inversified';
-import EBGraphVis from './EBAdmin/EBGraphVis';
+import EBGraphVis from './EBAdmin/GraphVis';
 import PostGraphAppendNodeNotifier from '@/src/data-binding/ModelNotifier/PostGraph/AppendNode';
 import PostGraphAppendNodeObserver from '@/src/data-binding/IObserver/EBGraphVis/AppendNode/inversified';
 import PostGraphDeleteNodeNotifier from '@/src/data-binding/ModelNotifier/PostGraph/DeleteNode';
@@ -18,15 +18,15 @@ import NewDialogOkHandler from './EBAdmin/EBNewDialogPopup/EBNewDialog/Handler/o
 import NewDialogCloseHandler from './EBAdmin/EBNewDialogPopup/EBNewDialog/Handler/close';
 import EBNewDialog from './EBAdmin/EBNewDialogPopup/EBNewDialog';
 import EBNewDialogPopup from './EBAdmin/EBNewDialogPopup';
-import ContextMenuNewSelection from './EBAdmin/EBGraphVis/ContextMenuPopup/NewSelection';
-import ContextMenuPopup from './EBAdmin/EBGraphVis/ContextMenuPopup';
-import ContextMenuHandler from './EBAdmin/EBGraphVis/Handler/ContextMenu';
+import ContextMenuNewSelection from './EBAdmin/GraphVis/ContextMenuPopup/NewSelection';
+import ContextMenuPopup from './EBAdmin/GraphVis/ContextMenuPopup';
+import ContextMenuHandler from './EBAdmin/GraphVis/Handler/ContextMenu';
 import EBNewDialogBody from './EBAdmin/EBNewDialogPopup/EBNewDialog/EBNewDialogBody';
 import NewNode from './data-binding/Model/NewNode';
 import NewNodeInput from './EBAdmin/EBNewDialogPopup/EBNewDialog/EBNewDialogBody/Input';
 import NewNodeInputHandler from './EBAdmin/EBNewDialogPopup/EBNewDialog/EBNewDialogBody/Input/Handler';
-import NodeContextMenuPopup from './EBAdmin/EBGraphVis/NodeContextMenuPopup';
-import DeleteSelection from './EBAdmin/EBGraphVis/NodeContextMenuPopup/DeleteSelection';
+import NodeContextMenuPopup from './EBAdmin/GraphVis/NodeContextMenuPopup';
+import DeleteSelection from './EBAdmin/GraphVis/NodeContextMenuPopup/DeleteSelection';
 import NodeContextMenuSelectedId from '@/src/data-binding/Model/NodeContextMenuSelectedId';
 import EBEditorPopup from './EBAdmin/EBEditorPopup';
 import EBEditorOkButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/Bottom/OkButton';
@@ -46,11 +46,6 @@ const module = new AsyncContainerModule(
   async (
     bind: interfaces.Bind,
   ) => {
-    bind<PostNodeConstructorParam[]>(SYMBOLS.PostNodeSummaries).toConstantValue(
-      await getAllNodeSummary(),
-    );
-    bind<PostGraph>(SYMBOLS.PostGraph).to(PostGraph).inSingletonScope();
-    bind<ParameterizableNewable<Node, ConstructorParameters<typeof Node>>>(SYMBOLS.PostNodeNewable).toConstructor(Node);
     bind<EBAdmin>(SYMBOLS.EBAdmin).to(EBAdmin);
     bind<EBGraphVis>(SYMBOLS.EBGraphVis).to(EBGraphVis).inSingletonScope();
     bind<PostGraphAppendNodeNotifier>(SYMBOLS.PostGraphAppendNodeNotifier).to(PostGraphAppendNodeNotifier).inSingletonScope();

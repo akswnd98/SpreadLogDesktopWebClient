@@ -1,6 +1,6 @@
 import IObserver from '@/src/data-binding/IObserver';
 import INotifier from '@/src/data-binding/INotifier';
-import EBGraphVis from '@/src/admin/EBAdmin/EBGraphVis';
+import EBGraphVis from '@/src/admin/EBAdmin/GraphVis';
 import 'reflect-metadata';
 import { injectable, unmanaged } from 'inversify';
 

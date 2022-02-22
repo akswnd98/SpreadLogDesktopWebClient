@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
 import EBAdmin from '.';
 import { SYMBOLS } from '../types';
-import EBGraphVis from './EBGraphVis';
+import EBGraphVis from './GraphVis';
 
 @injectable()
 export default class Inversified extends EBAdmin {

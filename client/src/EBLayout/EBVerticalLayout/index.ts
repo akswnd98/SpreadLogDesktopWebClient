@@ -2,16 +2,15 @@ import { render, html } from 'lit-html';
 import EBElement from '@/src/EBElement';
 import EBLayout from '..';
 
-export default class EBVerticalLayout extends EBLayout<EBElement[]> {
-  render (element: EBElement, childElements: EBElement[]) {
-    const rootElement = element.rootElement;
-    childElements.forEach((element) => {
-      render(
-        html`
-          ${element}
-        `,
-        rootElement,
-      );
-    });
+export type ChildElementsType = EBElement[];
+
+export default class EBVerticalLayout extends EBLayout<ChildElementsType> {
+  render (element: EBElement, childElements: ChildElementsType) {
+    render(
+      html`
+        ${childElements.map((childElement) => html`<div>${childElement}</div>`)}
+      `,
+      element.rootElement,
+    );
   }
 }

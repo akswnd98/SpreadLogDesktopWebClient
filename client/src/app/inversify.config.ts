@@ -1,6 +1,5 @@
 import { Container } from 'inversify';
 import module from './inversify.module';
-import getDecorators from 'inversify-inject-decorators';
 import basicModule from '../inversify.module';
 
 export default class Static {
@@ -22,13 +21,8 @@ export default class Static {
 
   static async generateInstance () {
     const container = new Container();
-    await container.loadAsync(basicModule);
+    await container.loadAsync(basicModule),
     await container.loadAsync(module);
     return container;
-  }
-
-  static getDecorators () {
-    console.log(this.fInstance);
-    return getDecorators(this.fInstance!);
   }
 }

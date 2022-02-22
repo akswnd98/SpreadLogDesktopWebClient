@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    public: path.resolve(__dirname, 'src/index.ts'),
+    public: path.resolve(__dirname, 'src/app/index.ts'),
     admin: path.resolve(__dirname, 'src/admin/index.ts'),
     test: path.resolve(__dirname, 'src/test/index.ts'),
   },

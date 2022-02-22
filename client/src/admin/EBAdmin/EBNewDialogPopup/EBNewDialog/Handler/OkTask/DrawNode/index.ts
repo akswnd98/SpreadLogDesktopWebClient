@@ -2,6 +2,7 @@ import Node from '@/src/Task/Node';
 import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
 import AppendNode from '@/src/data-binding/ModelNotifier/PostGraph/AppendNode';
+import { SYMBOLS as BasicSYMBOLS } from '@/src/types';
 import { SYMBOLS } from '@/src/admin/types';
 import Static from '@/src/admin/inversify.config';
 import EBNewDialogPopup from '../../../..';
@@ -29,7 +30,7 @@ export default class DrawNode extends Node {
   async doTask () {
     const appendNode = Static.instance.get<AppendNode>(SYMBOLS.PostGraphAppendNodeNotifier);
     const input = Static.instance.get<NewNode>(SYMBOLS.NewNodeModel);
-    const NodeNewable = Static.instance.get<ParameterizableNewable<PostNode, ConstructorParameters<typeof PostNode>>>(SYMBOLS.PostNodeNewable);
+    const NodeNewable = Static.instance.get<ParameterizableNewable<PostNode, ConstructorParameters<typeof PostNode>>>(BasicSYMBOLS.PostNodeNewable);
     await appendNode.append(new NodeNewable(this.prevNodes.server!.id, input.data.title));
   }
 
