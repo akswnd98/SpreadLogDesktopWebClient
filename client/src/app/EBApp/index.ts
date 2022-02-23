@@ -6,9 +6,7 @@ import Navigator from './Navigator';
 import background from '@/assets/images/plane-background.svg';
 import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
-import Static from '../inversify.config';
 import { SYMBOLS } from '../types';
-import { ConstructorParam as PostNodeConstructorParam } from '@/src/data-binding/Model/PostGraph/Node';
 import Body from './Body';
 
 export type PayloadParam = {

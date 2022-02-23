@@ -8,10 +8,10 @@ import DeleteSelection from '../NodeContextMenuPopup/DeleteSelection';
 import NodeContextMenuSelectedId from '@/src/data-binding/Model/NodeContextMenuSelectedId';
 
 export default class Handler extends VisNetworkHandler {
+  eventName: 'oncontext' = 'oncontext';
+
   constructor () {
-    super({
-      eventName: 'oncontext',
-    });
+    super();
   }
 
   async handle (params: any) {

@@ -30,6 +30,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist/index.html'));
 });
 
+app.get('/blog*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../dist/index.html'));
+});
+
 app.get('/public_bundle.js', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist/public_bundle.js'));
 });

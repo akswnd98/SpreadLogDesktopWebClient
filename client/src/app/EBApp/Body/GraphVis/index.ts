@@ -8,6 +8,7 @@ import { SYMBOLS } from '@/src/types';
 import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
 import PostGraphModel from '@/src/data-binding/Model/PostGraph';
+import ClickHandler from './ClickHandler';
 
 @injectable()
 export default class GraphVis extends EBGraphVis {
@@ -36,9 +37,10 @@ export default class GraphVis extends EBGraphVis {
         edges: this.edges,
       },
       attributes: [
+        new ClickHandler(),
       ],
     });
   }
 }
 
-customElements.define('graph-vis', GraphVis);
+customElements.define('app-graph-vis', GraphVis);

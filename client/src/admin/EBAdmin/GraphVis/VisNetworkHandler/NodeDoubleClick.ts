@@ -6,12 +6,13 @@ import VisNetworkHandler from '@/src/VisNetworkWrapper/Attribute/Handler'
 import EBEditorPopup from '../../EBEditorPopup';
 import EBEditor from '../../EBEditorPopup/EBEditorPopupBody/EBEditor';
 import EditingPost from '@/src/admin/data-binding/Model/EditingPost';
+import { NetworkEvents } from 'vis-network/standalone';
 
 export default class Handler extends VisNetworkHandler {
+  eventName: 'doubleClick' = 'doubleClick';
+
   constructor () {
-    super({
-      eventName: 'doubleClick',
-    });
+    super();
   }
 
   async handle (params: any) {
