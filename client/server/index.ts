@@ -4,10 +4,17 @@ import dotenv from 'dotenv';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import { createProxyMiddleware } from 'http-proxy-middleware';
+import https from 'https';
+import fs from 'fs';
 
 dotenv.config();
 
 const app = express();
+
+const options = {
+  key: fs.readFileSync(path.join(__dirname, '../../ssl/eb.com.key')),
+  cert: fs.readFileSync(path.join(__dirname, '../../ssl/eb.com.crt')),
+};
 
 if (process.env.MODE === 'development') {
   const webpackConfig = { mode: 'development', ...require('../webpack.config.js') };
@@ -19,7 +26,7 @@ if (process.env.MODE === 'development') {
   app.use(instance);
 }
 
-app.set('port', 8080);
+app.set('port', process.env.SERVER_PORT);
 
 app.use('/api', createProxyMiddleware('', {
   target: `http://${process.env.HOST}:${process.env.API_SERVER_PORT}`,
@@ -46,6 +53,6 @@ app.get('/admin_bundle.js', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist/admin_bundle.js'));
 });
 
-app.listen(app.get('port'), () => {
+https.createServer(options, app).listen(process.env.SERVER_PORT, () => {
   console.log(`server started on port ${app.get('port')}`);
 });

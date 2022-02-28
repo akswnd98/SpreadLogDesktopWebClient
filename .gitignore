@@ -6,3 +6,5 @@ server/.env
 common/node_modules/
 ssl/*
 !ssl/readme.md
+!ssl/rootca.conf
+!ssl/eb.com.conf

@@ -3,5 +3,6 @@ declare namespace NodeJS {
     MODE: 'development' | 'production';
     HOST: string;
     API_SERVER_PORT: number;
+    SERVER_PORT: number;
   }
 }
