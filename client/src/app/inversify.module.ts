@@ -10,6 +10,8 @@ import PostingIdNotifier from './data-binding/ModelNotifier/PostingId';
 import PostingPostObserver from './data-binding/Observer/PostingPost';
 import PostingPostNotifier from './data-binding/ModelNotifier/PostingPost';
 import BlogPostObserver from './data-binding/Observer/BlogPost';
+import LoginPopup from './EBApp/LoginPopup';
+import LoginPopupBody from './EBApp/LoginPopup/Body';
 
 const module = new AsyncContainerModule(
   async (
@@ -25,6 +27,8 @@ const module = new AsyncContainerModule(
     bind<PostingPostObserver>(SYMBOLS.PostingPostObserver).to(PostingPostObserver).inSingletonScope();
     bind<PostingPostNotifier>(SYMBOLS.PostingPostNotifier).to(PostingPostNotifier).inSingletonScope();
     bind<BlogPostObserver>(SYMBOLS.BlogPostObserver).to(BlogPostObserver).inSingletonScope();
+    bind<LoginPopup>(SYMBOLS.LoginPopup).to(LoginPopup).inSingletonScope();
+    bind<LoginPopupBody>(SYMBOLS.LoginPopupBody).to(LoginPopupBody);
   }
 );
 

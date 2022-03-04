@@ -11,6 +11,7 @@ export type ConstructorParam = {
   height: string;
   borderRadius: string;
   backgroundColor: string;
+  color: string;
 } & ParentConstructorParam;
 
 @injectable()
@@ -20,6 +21,7 @@ export default class EBButton extends EBElement {
   height: string;
   borderRadius: string;
   backgroundColor: string;
+  color: string;
 
   constructor (@unmanaged() payload: ConstructorParam) {
     super({
@@ -31,6 +33,7 @@ export default class EBButton extends EBElement {
     this.height = payload.height;
     this.borderRadius = payload.borderRadius;
     this.backgroundColor = payload.backgroundColor;
+    this.color = payload.color;
   }
 
   initialRender (payload: ConstructorParam) {
@@ -46,6 +49,7 @@ export default class EBButton extends EBElement {
         height: ${payload.height};
         border-radius: ${payload.borderRadius};
         background-color: ${payload.backgroundColor};
+        color: ${payload.color};
       }
     ` }));
   }

@@ -2,6 +2,9 @@ import Handler, { type ConstructorParam as ParentConstructorParam } from '@/src/
 import 'reflect-metadata';
 import { injectable } from 'inversify';
 import axios from 'axios';
+import Static from '@/src/app/inversify.config';
+import LoginPopup from '@/src/app/EBApp/LoginPopup';
+import { SYMBOLS } from '@/src/app/types';
 
 @injectable()
 export default class Click extends Handler<'click'> {
@@ -12,6 +15,6 @@ export default class Click extends Handler<'click'> {
   }
 
   async handle (event: HTMLElementEventMap['click']) {
-    await axios.get(`/login/kakao/auth`);
+    Static.instance.get<LoginPopup>(SYMBOLS.LoginPopup).show();
   }
 }

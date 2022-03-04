@@ -2,6 +2,7 @@ import EBApp from './EBApp';
 import styles from '../index.scss';
 import ContainerStatic from './inversify.config';
 import { SYMBOLS } from './types';
+import LoginPopup from './EBApp/LoginPopup';
 
 (async () => {
   const container = await ContainerStatic.getInstance();
@@ -12,4 +13,7 @@ import { SYMBOLS } from './types';
 
   const root = document.getElementById('root')!;
   root.appendChild(container.get<EBApp>(SYMBOLS.EBApp));
+
+  document.body.appendChild(container.get<LoginPopup>(SYMBOLS.LoginPopup));
+  console.log(container.get<LoginPopup>(SYMBOLS.LoginPopup));
 })();
