@@ -20,7 +20,7 @@ export default class Login extends EBElement {
     super.initialRender(payload);
     render(
       html`
-        <p>Login</p>
+        <a href='/login/kakao/auth' router-ignore><p>Login</p></a>
       `,
       this.rootElement,
     );

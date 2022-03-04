@@ -46,6 +46,7 @@
     "lit-html": "^2.0.2",
     "nodemon": "^2.0.15",
     "priorityqueuejs": "^2.0.0",
+    "qs": "^6.10.3",
     "reflect-metadata": "^0.1.13",
     "rehype-katex": "^6.0.2",
     "rehype-stringify": "^9.0.2",

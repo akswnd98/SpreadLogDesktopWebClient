@@ -6,6 +6,7 @@ import webpackMiddleware from 'webpack-dev-middleware';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import https from 'https';
 import fs from 'fs';
+import login from './login';
 
 dotenv.config();
 
@@ -52,6 +53,8 @@ app.get('/admin', (req, res) => {
 app.get('/admin_bundle.js', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist/admin_bundle.js'));
 });
+
+app.use('/login', login);
 
 https.createServer(options, app).listen(process.env.SERVER_PORT, () => {
   console.log(`server started on port ${app.get('port')}`);
