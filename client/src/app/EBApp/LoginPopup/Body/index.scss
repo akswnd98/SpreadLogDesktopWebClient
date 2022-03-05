@@ -5,6 +5,18 @@
   background-color: white;
   border-radius: 10px;
 
+  #closeButton {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+  }
+
+  #closeButton:hover {
+    cursor: pointer;
+  }
+
   #loginLabel {
     margin-left: 60px;
     padding-top: 60px;

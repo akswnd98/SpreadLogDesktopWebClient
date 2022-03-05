@@ -10,6 +10,8 @@ import { SYMBOLS } from '../../types';
 
 @injectable()
 export default class LoginPopup extends EBPopup {
+  body: LoginPopupBody;
+
   constructor (
     @inject(SYMBOLS.LoginPopupBody) body: LoginPopupBody,
   ) {
@@ -18,6 +20,7 @@ export default class LoginPopup extends EBPopup {
       popupInterface: new CssClassPopupInterface({ showTimeClasses: [ 'show' ], hideTimeClasses: [ 'hide' ] }),
       attributes: [ new Style({ styles: styles.toString() }) ],
     });
+    this.body = body;
   }
 }
 

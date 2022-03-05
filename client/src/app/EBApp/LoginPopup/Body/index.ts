@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import { injectable } from 'inversify';
 import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
-import EBContainerElement from '@/src/EBContainerElement';
+import EBContainerElement, { ConstructorParam } from '@/src/EBContainerElement';
 import EBVerticalDictLayout, { ChildElementsType } from '@/src/EBLayout/EBVerticalDictLayout';
 import LoginLabel from './LoginLabel';
 import EmailAddressLabel from './EmailAddressLabel';
@@ -20,13 +20,14 @@ import naverStyles from './OAuthLoginButton/naver.scss';
 import emailLogo from '@/assets/images/envelope-fill.svg';
 import emailStyles from './OAuthLoginButton/email.scss';
 import EmailAddressInput from './EmailAddressInput';
-
+import CloseButton from './CloseButton';
 
 @injectable()
 export default class Body extends EBContainerElement<ChildElementsType> {
   constructor () {
     super({
       childElements: {
+        closeButton: new CloseButton(),
         loginLabel: new LoginLabel(),
         emailAddressLabel: new EmailAddressLabel(),
         emailAddressInput: new EmailAddressInput(),
