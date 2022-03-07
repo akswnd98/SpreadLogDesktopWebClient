@@ -39,16 +39,18 @@ module.exports = {
       }, {
         test: /\.(jpe?g|png)$/i,
         exclude: /node_modules/,
+        include: /assets\/images/,
         type: 'asset/resource',
         generator: {
-          filename: 'images/[name][ext]',
+          filename: 'images/[hash][name][ext]',
         },
       }, {
         test: /\.(svg)$/i,
         exclude: /node_modules/,
+        include: /assets\/images/,
         type: 'asset/resource',
         generator: {
-          filename: 'images/[name][ext]',
+          filename: 'images/[hash][name][ext]',
         },
       }, {
         test: /\.(css)$/,
