@@ -5,10 +5,12 @@ import axios, { AxiosResponse } from 'axios';
 import { AppendPostEdgeRequest, AppendPostEdgeResponse } from '@/common/api/post';
 import AddPostEdgeNotifier from '@/src/admin/data-binding/ModelNotifier/AddPostEdge';
 import AddEdgeTask from './Task';
+import GraphVis from '@/src/admin/EBAdmin/GraphVis';
 
-export default (data: any, callback: (data: any) => void) => {
-  mainLogic(data);
+export default async (data: any, callback: (data: any) => void) => {
+  await mainLogic(data);
   callback(null);
+  Static.instance.get<GraphVis>(SYMBOLS.EBGraphVis).network.addEdgeMode();
 }
 
 async function mainLogic (data: any) {

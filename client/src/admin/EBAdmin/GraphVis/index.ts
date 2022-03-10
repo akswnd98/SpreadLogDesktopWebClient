@@ -56,7 +56,6 @@ export default class GraphVis extends EBGraphVis {
       ],
       options,
     });
-    this.network.addEdgeMode();
   }
 }
 

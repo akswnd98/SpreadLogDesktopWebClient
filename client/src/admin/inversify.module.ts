@@ -53,6 +53,7 @@ import GraphVisContextMenuBody from '@/src/admin/EBAdmin/GraphVis/ContextMenuBod
 import GraphVisNodeContextMenuBody from './EBAdmin/GraphVis/NodeContextMenuBody';
 import GraphVisEdgeContextMenuBody from './EBAdmin/GraphVis/EdgeContextMenuBody';
 import EdgeContextMenuDeleteSelection from './EBAdmin/GraphVis/EdgeContextMenuBody/Delete';
+import ContextMenuEnterEditEdgeModeSelection from './EBAdmin/GraphVis/ContextMenuBody/EnterEditEdgeMode';
 
 const module = new AsyncContainerModule(
   async (
@@ -108,7 +109,7 @@ const module = new AsyncContainerModule(
     bind<GraphVisNodeContextMenuBody>(SYMBOLS.GraphVisNodeContextMenuBody).to(GraphVisNodeContextMenuBody);
     bind<GraphVisEdgeContextMenuBody>(SYMBOLS.GraphVisEdgeContextMenuBody).to(GraphVisEdgeContextMenuBody);
     bind<EdgeContextMenuDeleteSelection>(SYMBOLS.EdgeContextMenuDeleteSelection).to(EdgeContextMenuDeleteSelection).inSingletonScope();
-
+    bind<ContextMenuEnterEditEdgeModeSelection>(SYMBOLS.ContextMenuEnterEditEdgeModeSelection).to(ContextMenuEnterEditEdgeModeSelection).inSingletonScope();
   }
 );
 
