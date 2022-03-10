@@ -1,9 +1,16 @@
-import type { AppendPostNodeRequest, DeleteByIdRequest } from '@/common/api/post';
+import type { AppendPostEdgeRequest, AppendPostNodeRequest, DeleteByIdRequest, DeleteEdgeByIdRequest } from '@/common/api/post';
 import Post from '@/db/Post';
+import PostGraphEdge from '@/db/Post/Edge';
 
 export async function getAllNodeSummary () {
   return Post.findAll({
     attributes: ['id', 'title'],
+  });
+}
+
+export async function getAllEdge () {
+  return PostGraphEdge.findAll({
+    attributes: ['id', 'fromId', 'toId'],
   });
 }
 
@@ -41,6 +48,31 @@ export async function deletePostNodeById (payload: DeleteByIdRequest) {
   } catch (e) {
     console.log(e);
     throw 'deletePostNodeById failed';
+  }
+}
+
+export async function appendPostEdge (payload: AppendPostEdgeRequest) {
+  try {
+    const ret = await PostGraphEdge.create({
+      ...payload,
+    });
+    return ret.id!;
+  } catch (e) {
+    console.log(e);
+    throw new Error('appendPostEdge failed');
+  }
+}
+
+export async function deleteEdgeById (payload: DeleteEdgeByIdRequest) {
+  try {
+    await PostGraphEdge.destroy({
+      where: {
+        id: payload.id,
+      },
+    });
+  } catch (e) {
+    console.log(e);
+    throw new Error('deleteEdgeById failed');
   }
 }
 

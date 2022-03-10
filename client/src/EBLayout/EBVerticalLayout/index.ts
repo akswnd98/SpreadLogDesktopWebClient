@@ -8,7 +8,7 @@ export default class EBVerticalLayout extends EBLayout<ChildElementsType> {
   render (element: EBElement, childElements: ChildElementsType) {
     render(
       html`
-        ${childElements.map((childElement) => html`<div>${childElement}</div>`)}
+        ${childElements.map((childElement) => html`<div class='childElement'>${childElement}</div>`)}
       `,
       element.rootElement,
     );

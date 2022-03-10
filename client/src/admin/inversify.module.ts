@@ -41,6 +41,14 @@ import EditingPostObserver from './data-binding/Observer/EditingPost'
 import EBEditor from './EBAdmin/EBEditorPopup/EBEditorPopupBody/EBEditor';
 import EditorPopupBodyBottom from './EBAdmin/EBEditorPopup/EBEditorPopupBody/Bottom';
 import EditorPopupBodyTop from './EBAdmin/EBEditorPopup/EBEditorPopupBody/Top';
+import AddPostEdgeNotifier from './data-binding/ModelNotifier/AddPostEdge';
+import AddPostEdgeObserver from './data-binding/Observer/AddPostEdge';
+import EdgeContextMenuPopup from './EBAdmin/GraphVis/EdgeContextMenuPopup';
+import DeletePostEdgeNotifier from './data-binding/ModelNotifier/DeletePostEdge';
+import DeletePostEdgeObserver from './data-binding/Observer/DeletePostEdge';
+import AddPostEdgeDrawNode from './EBAdmin/GraphVis/visNetworkOptions/manipulation/addEdge/Task/DrawNode';
+import EdgeContextMenuSelectedId from '@/src/data-binding/Model/EdgeContextMenuSelectedId';
+import AddPostEdgeTask from './EBAdmin/GraphVis/visNetworkOptions/manipulation/addEdge/Task';
 
 const module = new AsyncContainerModule(
   async (
@@ -84,6 +92,14 @@ const module = new AsyncContainerModule(
     bind<EditorPopupBodyTop>(SYMBOLS.EditorPopupBodyTop).to(EditorPopupBodyTop).inSingletonScope();
     bind<EditingPostNotifier>(SYMBOLS.EditingPostNotifier).to(EditingPostNotifier).inSingletonScope();
     bind<EditingPostObserver>(SYMBOLS.EditingPostObserver).to(EditingPostObserver).inSingletonScope();
+    bind<AddPostEdgeNotifier>(SYMBOLS.AddPostEdgeNotifier).to(AddPostEdgeNotifier).inSingletonScope();
+    bind<AddPostEdgeObserver>(SYMBOLS.AddPostEdgeObserver).to(AddPostEdgeObserver).inSingletonScope();
+    bind<EdgeContextMenuPopup>(SYMBOLS.EdgeContextMenuPopup).to(EdgeContextMenuPopup).inSingletonScope();
+    bind<DeletePostEdgeNotifier>(SYMBOLS.DeletePostEdgeNotifier).to(DeletePostEdgeNotifier).inSingletonScope();
+    bind<DeletePostEdgeObserver>(SYMBOLS.DeletePostEdgeObserver).to(DeletePostEdgeObserver).inSingletonScope();
+    bind<AddPostEdgeDrawNode>(SYMBOLS.AddPostEdgeDrawNode).to(AddPostEdgeDrawNode);
+    bind<EdgeContextMenuSelectedId>(SYMBOLS.EdgeContextMenuSelectedId).to(EdgeContextMenuSelectedId).inSingletonScope();
+    bind<AddPostEdgeTask>(SYMBOLS.AddPostEdgeTask).to(AddPostEdgeTask).inSingletonScope();
   }
 );
 

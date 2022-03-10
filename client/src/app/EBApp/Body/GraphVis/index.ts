@@ -29,7 +29,11 @@ export default class GraphVis extends EBGraphVis {
         return { id: v.data.id, label: v.data.title };
       }),
     );
-    this.edges = new VisNetwork.DataSet([]);
+    this.edges = new VisNetwork.DataSet(
+      Array.from(postGraph.data.edges.values()).map((v) => {
+        return { id: v.data.id, from: v.data.fromId, to: v.data.toId, arrows: { to: { enabled: true, type: 'arrow' } } };
+      }),
+    );
     this.network = new VisNetworkWrapper({
       container: this.rootElement,
       data: {

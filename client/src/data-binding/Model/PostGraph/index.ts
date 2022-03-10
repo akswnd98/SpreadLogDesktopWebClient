@@ -2,9 +2,11 @@ import 'reflect-metadata';
 import { injectable, unmanaged } from 'inversify';
 import Model, { ConstructorParam as ParentConstructorParam } from '..';
 import Node from './Node';
+import Edge from './Edge';
 
 export type DataType = {
   nodes: Map<number, Node>;
+  edges: Map<number, Edge>;
 };
 
 export type ConstructorParam = {

@@ -24,7 +24,7 @@ export default class EBContextMenuPopup extends EBListElement {
     this.rootElement.classList.add('show');
     document.body.addEventListener('click', () => {
       this.hide();
-    });
+    }); // 이건 필수적으로 개선해야됨.
   }
 
   hide () {

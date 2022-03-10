@@ -36,6 +36,15 @@ const SYMBOLS = {
   EBEditor: Symbol.for('EBEditor'),
   EditorPopupBodyBottom: Symbol.for('EditorPopupBodyBottom'),
   EditorPopupBodyTop: Symbol.for('EditorPopupBodyTop'),
+  AddPostEdgeNotifier: Symbol.for('AddPostEdgeNotifier'),
+  AddPostEdgeObserver: Symbol.for('AddPostEdgeObserver'),
+  EdgeContextMenuPopup: Symbol.for('EdgeContextMenuPopup'),
+  EdgeContextMenuBody: Symbol.for('EdgeContextMenuBody'),
+  DeletePostEdgeNotifier: Symbol.for('DeletePostEdgeNotifier'),
+  DeletePostEdgeObserver: Symbol.for('DeletePostEdgeObserver'),
+  AddPostEdgeDrawNode: Symbol.for('AddPostEdgeDrawNode'),
+  EdgeContextMenuSelectedId: Symbol.for('EdgeContextMenuSelectedId'),
+  AddPostEdgeTask: Symbol.for('AddPostEdgeTask'),
 };
 
 export {

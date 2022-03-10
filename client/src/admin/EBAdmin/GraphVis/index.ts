@@ -11,6 +11,8 @@ import PostGraph from '@/src/data-binding/Model/PostGraph';
 import VisNetworkWrapper from '@/src/VisNetworkWrapper';
 import NodeContextMenuHandler from './VisNetworkHandler/NodeContextMenu';
 import NodeDoubleClick from './VisNetworkHandler/NodeDoubleClick';
+import options from './visNetworkOptions';
+import EdgeContextMenuHandler from './VisNetworkHandler/EdgeContextMenu';
 
 export type ConstructorParam = {
 } & ParentConstructorParam;
@@ -24,13 +26,11 @@ export default class GraphVis extends EBGraphVis {
   constructor (
     @inject(BasicSYMBOLS.PostGraph) postGraph: PostGraph,
     @inject(SYMBOLS.ContextMenuHandler) contextMenuHandler: ContextMenuHandler,
-    // @inject(SYMBOLS.NodeContextMenuHandler) nodeContextMenuHandler: NodeContextMenuHandler,
   ) {
     super({
       attributes: [
         new Style({ styles: styles.toString()}),
         contextMenuHandler,
-        // nodeContextMenuHandler,
       ],
     });
     this.nodes = new VisNetwork.DataSet(
@@ -38,7 +38,11 @@ export default class GraphVis extends EBGraphVis {
         return { id: v.data.id, label: v.data.title };
       }),
     );
-    this.edges = new VisNetwork.DataSet([]);
+    this.edges = new VisNetwork.DataSet(
+      Array.from(postGraph.data.edges.values()).map((v) => {
+        return { id: v.data.id, from: v.data.fromId, to: v.data.toId, arrows: { to: { enabled: true, type: 'arrow' } } };
+      }),
+    );
     this.network = new VisNetworkWrapper({
       container: this.rootElement,
       data: {
@@ -48,8 +52,11 @@ export default class GraphVis extends EBGraphVis {
       attributes: [
         new NodeContextMenuHandler(),
         new NodeDoubleClick(),
+        new EdgeContextMenuHandler(),
       ],
+      options,
     });
+    this.network.addEdgeMode();
   }
 }
 

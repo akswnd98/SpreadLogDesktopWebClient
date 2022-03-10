@@ -1,7 +1,12 @@
-import { ConstructorParam as NodeConstructorParam } from '@/client/src/data-binding/Model/PostGraph/Node';
+import { DataType as NodeDataType } from '@/client/src/data-binding/Model/PostGraph/Node';
+import { DataType as EdgeDataType } from '@/client/src/data-binding/Model/PostGraph/Edge';
 
 export type GetAllNodeSummary = {
-  ret: NodeConstructorParam[];
+  ret: NodeDataType[];
+};
+
+export interface GetAllEdge {
+  ret: EdgeDataType[];
 };
 
 export interface AppendPostNodeRequest {
@@ -18,6 +23,23 @@ export interface DeleteByIdRequest {
 };
 
 export interface DeleteByIdResponse {
+  error: boolean;
+};
+
+export interface AppendPostEdgeRequest {
+  fromId: number;
+  toId: number;
+};
+
+export interface AppendPostEdgeResponse {
+  id: number;
+};
+
+export interface DeleteEdgeByIdRequest {
+  id: number;
+};
+
+export interface DeleteEdgeByIdResponse {
   error: boolean;
 };
 
