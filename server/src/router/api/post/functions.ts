@@ -1,6 +1,7 @@
 import type { AppendPostEdgeRequest, AppendPostNodeRequest, DeleteByIdRequest, DeleteEdgeByIdRequest } from '@/common/api/post';
 import Post from '@/db/Post';
 import PostGraphEdge from '@/db/Post/Edge';
+import { Op } from 'sequelize';
 
 export async function getAllNodeSummary () {
   return Post.findAll({
@@ -43,6 +44,14 @@ export async function deletePostNodeById (payload: DeleteByIdRequest) {
     await Post.destroy({
       where: {
         id: payload.id,
+      },
+    });
+    await PostGraphEdge.destroy({
+      where: {
+        [Op.or]: {
+          fromId: payload.id,
+          toId: payload.id,
+        },
       },
     });
   } catch (e) {

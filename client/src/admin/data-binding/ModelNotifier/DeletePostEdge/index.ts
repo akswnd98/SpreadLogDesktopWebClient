@@ -29,7 +29,7 @@ export default class Delete extends ModelNotifier<DataType> {
   }
 
   async delete (id: number) {
-    this.model.data.nodes.delete(id);
+    this.model.data.edges.delete(id);
     await this.notify(id);
   }
 }
