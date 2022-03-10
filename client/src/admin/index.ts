@@ -3,13 +3,9 @@ import styles from '../index.scss';
 import 'reflect-metadata';
 import ContainerStatic from './inversify.config';
 import { SYMBOLS } from './types';
-import { SYMBOLS as BasicSYMBOLS } from '../types';
 import EBNewDialogPopup from './EBAdmin/EBNewDialogPopup';
 import EBEditorPopup from './EBAdmin/EBEditorPopup';
-import NodeContextMenuPopup from './EBAdmin/GraphVis/NodeContextMenuPopup';
-import ContextMenuPopup from './EBAdmin/GraphVis/ContextMenuPopup';
-import PostGraph from '../data-binding/Model/PostGraph';
-import EdgeContextMenuPopup from './EBAdmin/GraphVis/EdgeContextMenuPopup';
+import ContextMenuPopup from './EBAdmin/ContextMenuPopup';
 
 (async () => {
   const container = await ContainerStatic.getInstance();
@@ -24,6 +20,4 @@ import EdgeContextMenuPopup from './EBAdmin/GraphVis/EdgeContextMenuPopup';
   document.body.appendChild(container.get<EBNewDialogPopup>(SYMBOLS.EBNewDialogPopup));
   document.body.appendChild(container.get<EBEditorPopup>(SYMBOLS.EBEditorPopup));
   document.body.appendChild(container.get<ContextMenuPopup>(SYMBOLS.ContextMenuPopup));
-  document.body.appendChild(container.get<NodeContextMenuPopup>(SYMBOLS.NodeContextMenuPopup));
-  document.body.appendChild(container.get<EdgeContextMenuPopup>(SYMBOLS.EdgeContextMenuPopup));
 })();

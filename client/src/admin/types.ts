@@ -20,7 +20,7 @@ const SYMBOLS = {
   NewNodeInput: Symbol.for('NewNodeInput'),
   NewNodeInputHandler: Symbol.for('NewNodeInputHandler'),
   NodeContextMenuPopup: Symbol.for('NodeContextMenuPopup'),
-  DeleteSelection: Symbol.for('DeleteSelection'),
+  NodeContextMenuDeleteSelection: Symbol.for('NodeContextMenuDeleteSelection'),
   NodeContextMenuHandler: Symbol.for('NodeContextMenuHandler'),
   NodeContextMenuSelectedId: Symbol.for('NodeContextMenuSelectedId'),
   EBEditorPopup: Symbol.for('EBEditorPopup'),
@@ -45,6 +45,10 @@ const SYMBOLS = {
   AddPostEdgeDrawNode: Symbol.for('AddPostEdgeDrawNode'),
   EdgeContextMenuSelectedId: Symbol.for('EdgeContextMenuSelectedId'),
   AddPostEdgeTask: Symbol.for('AddPostEdgeTask'),
+  GraphVisContextMenuBody: Symbol.for('GraphVisContextMenuBody'),
+  GraphVisNodeContextMenuBody: Symbol.for('GraphVisNodeContextMenuBody'),
+  GraphVisEdgeContextMenuBody: Symbol.for('GraphVisEdgeContextMenuBody'),
+  EdgeContextMenuDeleteSelection: Symbol.for('EdgeContextMenuDeleteSelection'),
 };
 
 export {

@@ -1,38 +1,68 @@
 import 'reflect-metadata';
 import { injectable, unmanaged } from 'inversify';
 import Style from '../EBAttribute/Style';
-import EBListElement, { ConstructorParam as ParentConstructorParam } from '../EBListElement';
 import styles from './index.scss';
+import EBElement, { ConstructorParam as ParentConstructorParam } from '../EBElement';
+import PopupInterface from '../PopupInterface';
+import { render, html } from 'lit-html';
 
 export type ConstructorParam = {
+  element: EBElement;
+  popupInterface: PopupInterface;
 } & ParentConstructorParam;
 
+export type CordType = {
+  x: number;
+  y: number;
+};
+
 @injectable()
-export default class EBContextMenuPopup extends EBListElement {
+export default class EBContextMenuPopup extends EBElement {
+  element: EBElement;
+  popupInterface: PopupInterface;
+
   constructor (@unmanaged() payload: ConstructorParam) {
-    super(payload);
-    this.registerAttribute(new Style({ styles: styles.toString() }));
+    super({
+      ...payload,
+      attributes: [
+        new Style({ styles: styles.toString() }),
+      ],
+    });
+    this.element = payload.element;
+    this.popupInterface = payload.popupInterface;
     this.rootElement.style.visibility = 'hidden';
-    this.rootElement.classList.add('hide');
+    document.body.addEventListener('click', () => {
+      this.hide();
+    });
   }
 
-  show (cord: { x: number; y: number; }) {
+  initialRender (payload: ConstructorParam) {
+    super.initialRender(payload);
+    payload.popupInterface.hide(this);
+  }
+
+  show (cord: CordType) {
     this.rootElement.style.visibility = 'visible';
     this.rootElement.style.left = `${cord.x}px`;
     this.rootElement.style.top = `${cord.y}px`;
-    this.rootElement.classList.remove('hide');
-    this.rootElement.classList.add('show');
-    document.body.addEventListener('click', () => {
-      this.hide();
-    }); // 이건 필수적으로 개선해야됨.
+    this.popupInterface.show(this);
   }
 
   hide () {
-    this.rootElement.classList.remove('show');
-    this.rootElement.classList.add('hide');
+    this.popupInterface.hide(this);
     setTimeout(() => {
       this.rootElement.style.visibility = 'hidden';
     }, 500);
+  }
+
+  replaceBody (body: EBElement) {
+    this.element = body;
+    render(
+      html`
+        ${body}
+      `,
+      this.rootElement,
+    );
   }
 }
 

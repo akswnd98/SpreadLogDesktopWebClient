@@ -4,7 +4,7 @@ import { injectable } from 'inversify';
 import ServerNode from '../ServerNode';
 import { SYMBOLS } from '@/src/admin/types';
 import Static from '@/src/admin/inversify.config';
-import EdgeContextMenuPopup from '../../..'
+import ContextMenuPopup from '@/src/admin/EBAdmin/ContextMenuPopup';
 
 export type PrevNodes = {
   server?: ServerNode;
@@ -23,8 +23,8 @@ export default class HideNode extends Node {
   }
 
   async doTask () {
-    const popup = Static.instance.get<EdgeContextMenuPopup>(SYMBOLS.EdgeContextMenuPopup);
-    popup.hide();
+    // const popup = Static.instance.get<ContextMenuPopup>(SYMBOLS.ContextMenuPopup);
+    // popup.hide();
   }
 
   async handleFail () {

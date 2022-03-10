@@ -24,3 +24,5 @@ export default class EBContainerElement<ChildElements> extends EBElement {
     payload.layout.render(this, payload.childElements);
   }
 }
+
+customElements.define('container-element', EBContainerElement);

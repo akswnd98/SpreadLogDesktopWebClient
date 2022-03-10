@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { injectable } from 'inversify';
-import EBBasicSelection from '@/src/EBContextMenuPopup/EBBasicSelection';
+import EBBasicSelection from '@/src/EBContextMenuPopup/BasicContextMenuBody/EBBasicSelection';
 import DeleteTask from './Task';
 
 @injectable()

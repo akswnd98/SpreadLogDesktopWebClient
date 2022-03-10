@@ -1,7 +1,7 @@
-import EBBasicSelection from '@/src/EBContextMenuPopup/EBBasicSelection';
+import EBBasicSelection from '@/src/EBContextMenuPopup/BasicContextMenuBody/EBBasicSelection';
 import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
-import EBNewDialogPopup from '../../../EBNewDialogPopup';
+import EBNewDialogPopup from '@/src/admin/EBAdmin/EBNewDialogPopup';
 import { SYMBOLS } from '@/src/admin/types';
 
 @injectable()
