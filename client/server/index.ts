@@ -55,7 +55,7 @@ app.get('/admin_bundle.js', (req, res) => {
 });
 
 app.get('/assets/images/:filename', (req, res) => {
-  res.sendFile(path.resolve(__dirname, `../assets/images/${req.params.filename}`));
+  res.sendFile(path.resolve(__dirname, `../dist/assets/images/${req.params.filename}`));
 });
 
 app.use('/login', login);
