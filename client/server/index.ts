@@ -54,7 +54,7 @@ app.get('/admin_bundle.js', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist/admin_bundle.js'));
 });
 
-app.get('/images/:filename', (req, res) => {
+app.get('/assets/images/:filename', (req, res) => {
   res.sendFile(path.resolve(__dirname, `../assets/images/${req.params.filename}`));
 });
 

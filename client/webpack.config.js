@@ -42,7 +42,7 @@ module.exports = {
         include: /assets\/images/,
         type: 'asset/resource',
         generator: {
-          filename: 'images/[hash][name][ext]',
+          filename: 'assets/images/[hash][name][ext]',
         },
       }, {
         test: /\.(svg)$/i,
@@ -50,7 +50,7 @@ module.exports = {
         include: /assets\/images/,
         type: 'asset/resource',
         generator: {
-          filename: 'images/[hash][name][ext]',
+          filename: 'assets/images/[hash][name][ext]',
         },
       }, {
         test: /\.(css)$/,
