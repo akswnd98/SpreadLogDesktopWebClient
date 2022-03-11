@@ -8,7 +8,7 @@ export type ConstructorParam = {
 } & ParentConstructorParam;
 
 @injectable()
-export default class EBRawSelection extends EBElement {
+export default class RawBasicSelection extends EBElement {
   text: string;
 
   constructor (@unmanaged() payload: ConstructorParam) {
@@ -20,7 +20,7 @@ export default class EBRawSelection extends EBElement {
     super.initialRender(payload);
     render(
       html`
-        <p>${payload.text}</p>
+        <div id='text'>${payload.text}</div>
       `,
       this.rootElement,
     );

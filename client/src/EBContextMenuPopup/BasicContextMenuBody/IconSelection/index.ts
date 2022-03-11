@@ -2,7 +2,7 @@ import SimpleHandler from '@/src/EBAttribute/SimpleHandler';
 import Style from '@/src/EBAttribute/Style';
 import 'reflect-metadata';
 import { injectable, unmanaged } from 'inversify';
-import EBRawSelection, { ConstructorParam as ParentConstructorParam } from '../EBRawSelection';
+import RawIconSelection, { ConstructorParam as ParentConstructorParam } from './RawIconSelection';
 import styles from './index.scss';
 
 type ConstructorParam = {
@@ -10,7 +10,7 @@ type ConstructorParam = {
 } & ParentConstructorParam;
 
 @injectable()
-export default class EBBasicSelection extends EBRawSelection {
+export default class IconSelection extends RawIconSelection {
   constructor (@unmanaged() payload: ConstructorParam) {
     super(payload);
     this.registerAttributes([
@@ -20,4 +20,4 @@ export default class EBBasicSelection extends EBRawSelection {
   }
 }
 
-customElements.define('eb-basic-selection', EBBasicSelection);
+customElements.define('eb-icon-selection', IconSelection);

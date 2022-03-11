@@ -1,14 +1,17 @@
 .root {
   width: 300px;
-  height: 30px;
+  height: 40px;
   display: flex;
   align-items: center;
-  background-color: red;
+  justify-content: left;
   p:hover {
     cursor: default;
+  }
+  #text {
+    margin-left: 60px;
   }
 }
 
 .root:hover {
-  background-color: greenyellow;
+  cursor: pointer;
 }

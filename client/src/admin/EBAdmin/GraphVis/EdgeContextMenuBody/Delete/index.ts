@@ -1,13 +1,15 @@
 import 'reflect-metadata';
 import { injectable } from 'inversify';
-import EBBasicSelection from '@/src/EBContextMenuPopup/BasicContextMenuBody/EBBasicSelection';
+import IconSelection from '@/src/EBContextMenuPopup/BasicContextMenuBody/IconSelection';
 import DeleteTask from './Task';
+import trash from '@/assets/images/trash.svg';
 
 @injectable()
-export default class Delete extends EBBasicSelection {
+export default class Delete extends IconSelection {
   constructor () {
     super({
       text: 'Delete',
+      icon: trash,
       handleClick: async () => { await this.handleDeleteClick(); },
     });
   }
