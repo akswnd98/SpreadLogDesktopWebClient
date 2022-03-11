@@ -6,12 +6,13 @@ import EBAppBody from './EBApp/Body';
 import BlogPost from './EBApp/Body/Post/route';
 import PostingId from './data-binding/Model/PostingId';
 import PostingPost from './data-binding/Model/PostingPost';
-import PostingIdNotifier from './data-binding/ModelNotifier/PostingId';
-import PostingPostObserver from './data-binding/Observer/PostingPost';
 import PostingPostNotifier from './data-binding/ModelNotifier/PostingPost';
 import BlogPostObserver from './data-binding/Observer/BlogPost';
 import LoginPopup from './EBApp/LoginPopup';
 import LoginPopupBody from './EBApp/LoginPopup/Body';
+import PostingPostBodyObserver from '@/src/app/data-binding/Observer/PostingPost/Body';
+import PostingPostTitleObserver from '@/src/app/data-binding/Observer/PostingPost/Title';
+import PostingPostDateObserver from '@/src/app/data-binding/Observer/PostingPost/Date';
 
 const module = new AsyncContainerModule(
   async (
@@ -23,12 +24,13 @@ const module = new AsyncContainerModule(
     bind<BlogPost>(SYMBOLS.BlogPost).to(BlogPost).inSingletonScope();
     bind<PostingId>(SYMBOLS.PostingId).to(PostingId).inSingletonScope();
     bind<PostingPost>(SYMBOLS.PostingPost).to(PostingPost).inSingletonScope();
-    bind<PostingIdNotifier>(SYMBOLS.PostingIdNotifier).to(PostingIdNotifier).inSingletonScope();
-    bind<PostingPostObserver>(SYMBOLS.PostingPostObserver).to(PostingPostObserver).inSingletonScope();
     bind<PostingPostNotifier>(SYMBOLS.PostingPostNotifier).to(PostingPostNotifier).inSingletonScope();
     bind<BlogPostObserver>(SYMBOLS.BlogPostObserver).to(BlogPostObserver).inSingletonScope();
     bind<LoginPopup>(SYMBOLS.LoginPopup).to(LoginPopup).inSingletonScope();
     bind<LoginPopupBody>(SYMBOLS.LoginPopupBody).to(LoginPopupBody);
+    bind<PostingPostBodyObserver>(SYMBOLS.PostingPostBodyObserver).to(PostingPostBodyObserver);
+    bind<PostingPostTitleObserver>(SYMBOLS.PostingPostTitleObserver).to(PostingPostTitleObserver);
+    bind<PostingPostDateObserver>(SYMBOLS.PostingPostDateObserver).to(PostingPostDateObserver);
   }
 );
 

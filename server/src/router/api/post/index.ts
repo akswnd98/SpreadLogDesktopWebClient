@@ -60,8 +60,8 @@ router.get('/getById', async (req: Request<any, GetByIdResponse, any, GetByIdReq
         id: post.id!,
         title: post.title!,
         body: post.body!,
-        firstUpload: post.firstUpload!,
-        lastUpdate: post.lastUpdate!,
+        firstUpload: post.firstUpload!.toString(),
+        lastUpdate: post.lastUpdate!.toString(),
       },
     });
     res.end();

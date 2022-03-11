@@ -11,6 +11,9 @@ const SYMBOLS = {
   BlogPostObserver: Symbol.for('BlogPostObserver'),
   LoginPopup: Symbol.for('LoginPopup'),
   LoginPopupBody: Symbol.for('LoginPopupBody'),
+  PostingPostBodyObserver: Symbol.for('PostingPostBodyObserver'),
+  PostingPostDateObserver: Symbol.for('PostingPostDateObserver'),
+  PostingPostTitleObserver: Symbol.for('PostingPostTitleObserver'),
 };
 
 export {

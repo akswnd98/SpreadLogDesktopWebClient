@@ -100,6 +100,7 @@ export async function updatePost (id: number, title: string, body: string) {
   const ret = await Post.update({
     title,
     body,
+    lastUpdate: new Date(),
   }, {
     where: {
       id,

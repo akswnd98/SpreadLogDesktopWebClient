@@ -52,8 +52,8 @@ export interface GetByIdResponse {
     id: number;
     title: string;
     body: string;
-    firstUpload: Date;
-    lastUpdate: Date;
+    firstUpload: string;
+    lastUpdate: string;
   };
 };
 

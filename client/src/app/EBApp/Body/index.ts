@@ -7,7 +7,7 @@ import styles from './index.scss';
 import { Context, Router } from '@vaadin/router';
 import EBElement from '@/src/EBElement';
 import { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
-import BlogPost from './Post';
+import BlogPost from './Post/route';
 
 export type PayloadParam = {
 } & ParentConstructorParam;

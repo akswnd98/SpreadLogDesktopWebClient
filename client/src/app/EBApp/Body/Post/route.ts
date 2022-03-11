@@ -1,14 +1,14 @@
-import PostingId from '@/src/app/data-binding/ModelNotifier/PostingId';
 import Static from '@/src/app/inversify.config';
 import { SYMBOLS } from '@/src/app/types';
 import { BeforeEnterObserver, RouterLocation } from '@vaadin/router';
 import { injectable } from 'inversify';
-import Post from '.';
+import Inversified from './inversified';
+import PostingId from '@/src/app/data-binding/Model/PostingId';
 
 @injectable()
-export default class Route extends Post implements BeforeEnterObserver {
+export default class Route extends Inversified implements BeforeEnterObserver {
   async onBeforeEnter (location: RouterLocation) {
-    await Static.instance.get<PostingId>(SYMBOLS.PostingIdNotifier).setId(Number(location.params['id']));
+    await Static.instance.get<PostingId>(SYMBOLS.PostingId).setData({ id: Number(location.params['id']) });
   }
 }
 
