@@ -9,6 +9,7 @@ import styles from './index.scss';
 import { SYMBOLS } from '../types';
 import Body from './Body';
 import ScrollHandler from './Handler/Scroll';
+import Footer from './Footer';
 
 export type PayloadParam = {
   body: Body;
@@ -38,6 +39,7 @@ export default class EBApp extends EBElement {
         <img id='background' src=${background}></img>
         <div id='long'>
           ${payload.body}
+          ${new Footer()}
         </div>
       `,
       this.rootElement,
