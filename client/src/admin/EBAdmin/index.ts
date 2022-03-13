@@ -1,25 +1,42 @@
-import EBElement from '@/src/EBElement';
-import EBContainerElement, { ConstructorParam as ParentConstructorParam} from '@/src/EBContainerElement';
+import EBElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
 import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
-import EBVerticalLayout from '@/src/EBLayout/EBVerticalLayout';
 import EBGraphVis from './GraphVis';
 import 'reflect-metadata';
 import { injectable, unmanaged } from 'inversify';
+import { render, html } from 'lit-html';
+import background from '@/assets/images/plane-background.svg';
+import Navigator from './Navigator';
 
-export type ConstructorParam = {
-} & ParentConstructorParam<EBElement[]>;
+export type PayloadParam = {
+  body: EBGraphVis
+} & ParentConstructorParam;
 
 @injectable()
-export default class EBAdmin extends EBContainerElement<EBElement[]> {
+export default class EBAdmin extends EBElement {
   constructor (
-    @unmanaged() ebGraphVis: EBGraphVis,
+    @unmanaged() body: EBGraphVis,
   ) {
     super({
       attributes: [ new Style({ styles: styles.toString() }) ],
-      layout: new EBVerticalLayout(),
-      childElements: [ ebGraphVis ],
-    });
+      body,
+    } as PayloadParam);
+  }
+
+  initialRender (payload: PayloadParam) {
+    super.initialRender(payload);
+    render(
+      html`
+        <div id='navWrapper'>
+          ${new Navigator()}
+        </div>
+        <img id='background' src=${background}></img>
+        <div id='long'>
+          ${payload.body}
+        </div>
+      `,
+      this.rootElement,
+    );
   }
 }
 

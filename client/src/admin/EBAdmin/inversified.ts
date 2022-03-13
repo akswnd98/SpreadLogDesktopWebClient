@@ -7,9 +7,9 @@ import EBGraphVis from './GraphVis';
 @injectable()
 export default class Inversified extends EBAdmin {
   constructor (
-    @inject(SYMBOLS.EBGraphVis) ebGraphVis: EBGraphVis,
+    @inject(SYMBOLS.EBGraphVis) body: EBGraphVis,
   ) {
-    super(ebGraphVis);
+    super(body);
   }
 }
 
