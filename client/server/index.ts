@@ -58,6 +58,10 @@ app.get('/assets/images/:filename', (req, res) => {
   res.sendFile(path.resolve(__dirname, `../dist/assets/images/${req.params.filename}`));
 });
 
+app.get('assets/fonts/:filename', (req, res) => {
+  res.sendFile(path.resolve(__dirname, `../dist/assets/fonts/${req.params.filename}`));
+});
+
 app.use('/login', login);
 
 https.createServer(options, app).listen(process.env.SERVER_PORT, () => {

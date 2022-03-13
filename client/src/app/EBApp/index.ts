@@ -8,6 +8,7 @@ import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
 import { SYMBOLS } from '../types';
 import Body from './Body';
+import ScrollHandler from './Handler/Scroll';
 
 export type PayloadParam = {
   body: Body;
@@ -21,6 +22,7 @@ export default class EBApp extends EBElement {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
+        new ScrollHandler(),
       ],
       body,
     } as PayloadParam);
@@ -30,9 +32,13 @@ export default class EBApp extends EBElement {
     super.initialRender(payload);
     render(
       html`
+        <div id='navWrapper'>
+          ${new Navigator()}
+        </div>
         <img id='background' src=${background}></img>
-        ${new Navigator()}
-        ${payload.body}
+        <div id='long'>
+          ${payload.body}
+        </div>
       `,
       this.rootElement,
     );

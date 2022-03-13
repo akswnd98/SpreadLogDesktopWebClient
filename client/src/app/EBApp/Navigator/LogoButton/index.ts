@@ -20,7 +20,7 @@ export default class LogoButton extends EBElement {
     super.initialRender(payload);
     render(
       html`
-        <p>Engineering Blog</p>
+        <p>Spread Log</p>
       `,
       this.rootElement,
     );

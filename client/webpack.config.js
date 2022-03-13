@@ -53,6 +53,14 @@ module.exports = {
           filename: 'assets/images/[hash][name][ext]',
         },
       }, {
+        test: /\.(ttf)/i,
+        exclude: /node_modules/,
+        include: /assets\/fonts/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/fonts/[hash][name][ext]',
+        },
+      }, {
         test: /\.(css)$/,
         use: ['css-loader'],
       }, {

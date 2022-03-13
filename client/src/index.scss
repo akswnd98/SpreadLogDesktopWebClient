@@ -1,15 +1,19 @@
+@import './fonts.scss';
+
 html, body {
   position: relative;
   margin: 0;
   width: 100%;
   height: 100%;
+  overflow-y: hidden;
 }
 
 body {
-  overflow-y: scroll;
   background-color: #D1DDE5;
 }
 
 #root {
   width: 100%;
+  height: 100%;
+  overflow-y: hidden;
 }

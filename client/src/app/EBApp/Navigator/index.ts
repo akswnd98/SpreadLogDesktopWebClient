@@ -4,7 +4,6 @@ import 'reflect-metadata';
 import { injectable } from 'inversify';
 import EBVerticalLayout from '@/src/EBLayout/EBVerticalLayout';
 import LogoButton from './LogoButton';
-import ListButton from './ListButton';
 import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
 import RightButton from './RightButton';
@@ -14,7 +13,6 @@ export default class Navigator extends EBContainerElement<ChildElementsType> {
   constructor () {
     super({
       childElements: [
-        new ListButton(),
         new LogoButton(),
         new RightButton(),
       ],
