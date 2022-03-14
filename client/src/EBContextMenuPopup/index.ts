@@ -50,9 +50,7 @@ export default class EBContextMenuPopup extends EBElement {
 
   hide () {
     this.popupInterface.hide(this);
-    setTimeout(() => {
-      this.rootElement.style.visibility = 'hidden';
-    }, 500);
+    this.rootElement.style.visibility = 'hidden';
   }
 
   replaceBody (body: EBElement) {
