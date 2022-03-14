@@ -18,7 +18,7 @@ export default class RightButton extends EBContainerElement<ChildElementsType> {
       layout: new EBVerticalLayout(),
       childElements: [
         new About(),
-        new Login(),
+        // new Login(),
       ],
     });
   }
