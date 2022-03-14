@@ -19,7 +19,7 @@ export default class About extends EBElement {
     super.initialRender(payload);
     render(
       html`
-        <p>About</p>
+        About
       `,
       this.rootElement,
     );
