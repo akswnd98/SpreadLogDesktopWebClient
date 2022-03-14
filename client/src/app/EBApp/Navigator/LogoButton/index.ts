@@ -5,6 +5,7 @@ import { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
 import { html, render } from 'lit-html';
 import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
+import ClickHandler from './Handler/Click';
 
 @injectable()
 export default class LogoButton extends EBElement {
@@ -12,6 +13,7 @@ export default class LogoButton extends EBElement {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
+        new ClickHandler(),
       ],
     });
   }
@@ -20,7 +22,7 @@ export default class LogoButton extends EBElement {
     super.initialRender(payload);
     render(
       html`
-        <p>Spread Log</p>
+        Spread Log
       `,
       this.rootElement,
     );
