@@ -15,7 +15,7 @@ export default class InputHandler extends Handler<'input'> {
     });
   }
 
-  handle (event: HTMLElementEventMap['input']) {
+  async handle (event: HTMLElementEventMap['input']) {
     if (event.target === null) return;
     const model = Static.instance.get<NewNode>(SYMBOLS.NewNodeModel);
     model.data.title = (event.target as HTMLInputElement).value;

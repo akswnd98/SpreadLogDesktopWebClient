@@ -1,19 +1,18 @@
-import EBElement from '@/src/EBElement';
-import EBContainerElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBContainerElement';
+import EBElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
 import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
-import EBVerticalLayout from '@/src/EBLayout/EBVerticalLayout';
-import EBInput from '@/src/EBInput';
 import 'reflect-metadata';
 import { inject, injectable, unmanaged } from 'inversify';
 import { SYMBOLS } from '@/src/admin/types';
 import Input from './Input';
+import { html, render } from 'lit-html';
 
-export type ConstructorParam = {
-};
+export type PayloadParam = {
+  input: Input;
+} & ParentConstructorParam;
 
 @injectable()
-export default class EBNewDialogBody extends EBContainerElement<EBElement[]> {
+export default class EBNewDialogBody extends EBElement {
   constructor (
     @inject(SYMBOLS.NewNodeInput) input: Input,
   ) {
@@ -21,11 +20,19 @@ export default class EBNewDialogBody extends EBContainerElement<EBElement[]> {
       attributes: [
         new Style({ styles: styles.toString() }),
       ],
-      childElements: [
-        input,
-      ],
-      layout: new EBVerticalLayout(),
-    });
+      input,
+    } as PayloadParam);
+  }
+
+  initialRender (payload: PayloadParam): void {
+    super.initialRender(payload);
+    render(
+      html`
+        ${payload.input}
+        <hr />
+      `,
+      this.rootElement,
+    );
   }
 }
 

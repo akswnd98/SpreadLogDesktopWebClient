@@ -3,10 +3,10 @@ import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
 import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
+import popupStyles from '@/src/EBPopup/index.scss';
 import LoginPopupBody from './Body';
 import CssClassPopupInterface from '@/src/PopupInterface/CssClass';
 import { SYMBOLS } from '../../types';
-
 
 @injectable()
 export default class LoginPopup extends EBPopup {
@@ -18,7 +18,10 @@ export default class LoginPopup extends EBPopup {
     super({
       element: body,
       popupInterface: new CssClassPopupInterface({ showTimeClasses: [ 'show' ], hideTimeClasses: [ 'hide' ] }),
-      attributes: [ new Style({ styles: styles.toString() }) ],
+      attributes: [
+        new Style({ styles: styles.toString() }),
+        new Style({ styles: popupStyles.toString() }),
+      ],
     });
     this.body = body;
   }

@@ -3,6 +3,8 @@ import 'reflect-metadata';
 import { inject, injectable, unmanaged } from 'inversify';
 import InputHandler from './Handler';
 import { SYMBOLS } from '@/src/admin/types';
+import Style from '@/src/EBAttribute/Style';
+import styles from './index.scss';
 
 export type ConstructorParam = {
 } & ParentConstructorParam;
@@ -13,7 +15,10 @@ export default class Input extends EBInput {
     @inject(SYMBOLS.NewNodeInputHandler) handler: InputHandler,
   ) {
     super({
-      attributes: [ handler ],
+      attributes: [
+        handler,
+        new Style({ styles: styles.toString() }),
+      ],
     });
   }
 }

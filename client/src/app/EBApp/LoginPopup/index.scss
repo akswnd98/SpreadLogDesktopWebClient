@@ -5,17 +5,3 @@
   transition-duration: 0.5s;
   z-index: 200;
 }
-
-.hide {
-  // visibility: hidden;
-  left: 50%;
-  top: 0%;
-  transform: translate(-50%, -100%);
-}
-
-.show {
-  // visibility: visible;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}

@@ -1,21 +1,25 @@
-import EBPopupDecorator, { ConstructorParam as ParentConstructorParam } from '@/src/EBPopupDecorator';
+import EBPopup, { ConstructorParam as ParentConstructorParam } from '@/src/EBPopup';
 import Style from '@/src/EBAttribute/Style';
-import styles from '@/src/EBPopupDecorator/index.scss';
+import styles from '@/src/EBPopup/index.scss';
 import EBNewDialog from './EBNewDialog';
 import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
 import { SYMBOLS } from '../../types';
+import CssClassPopupInterface from '@/src/PopupInterface/CssClass';
 
 export type ConstructorParam = {
 };
 
 @injectable()
-export default class EBNewDialogPopup extends EBPopupDecorator {
+export default class EBNewDialogPopup extends EBPopup {
   constructor (
-    @inject(SYMBOLS.EBNewDialog) originElement: EBNewDialog,
+    @inject(SYMBOLS.EBNewDialog) body: EBNewDialog,
   ) {
-    super({ originElement });
-    this.registerAttribute(new Style({ styles: styles.toString() }));
+    super({
+      element: body,
+      popupInterface: new CssClassPopupInterface({ showTimeClasses: [ 'show' ], hideTimeClasses: [ 'hide' ] }),
+      attributes: [ new Style({ styles: styles.toString() }) ],
+    });
   }
 }
 

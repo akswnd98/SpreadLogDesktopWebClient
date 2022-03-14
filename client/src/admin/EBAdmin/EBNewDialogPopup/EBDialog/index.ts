@@ -26,13 +26,11 @@ export default class EBDialog extends EBElement {
             <p>new node</p>
             <img src=${x24Icon} id='close' />
           </div>
-          <hr>
           <div class='body'>
             ${payload.body}
           </div>
-          <hr>
           <div class='bottom'>
-            <div id='ok' class='ok'>확인</div>
+            <div id='ok' class='ok'>Ok</div>
           </div>
         </div>
       `,
