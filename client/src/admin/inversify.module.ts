@@ -50,6 +50,8 @@ import GraphVisEdgeContextMenuBody from './EBAdmin/GraphVis/EdgeContextMenuBody'
 import EdgeContextMenuDeleteSelection from './EBAdmin/GraphVis/EdgeContextMenuBody/Delete';
 import ContextMenuEnterEditEdgeModeSelection from './EBAdmin/GraphVis/ContextMenuBody/EnterEditEdgeMode';
 import EBEditorPopupBody from './EBAdmin/EBEditorPopup/EBEditorPopupBody/inversified';
+import PostGraphChangeNodeTitleObserver from '../data-binding/IObserver/EBGraphVis/ChangeNodeTitle/inversified';
+import PostGraphChangeNodeTitleNotifier from '../data-binding/ModelNotifier/PostGraph/ChangeNodeTitle';
 
 const module = new AsyncContainerModule(
   async (
@@ -102,6 +104,8 @@ const module = new AsyncContainerModule(
     bind<GraphVisEdgeContextMenuBody>(SYMBOLS.GraphVisEdgeContextMenuBody).to(GraphVisEdgeContextMenuBody);
     bind<EdgeContextMenuDeleteSelection>(SYMBOLS.EdgeContextMenuDeleteSelection).to(EdgeContextMenuDeleteSelection).inSingletonScope();
     bind<ContextMenuEnterEditEdgeModeSelection>(SYMBOLS.ContextMenuEnterEditEdgeModeSelection).to(ContextMenuEnterEditEdgeModeSelection).inSingletonScope();
+    bind<PostGraphChangeNodeTitleObserver>(SYMBOLS.PostGraphChangeNodeTitleObserver).to(PostGraphChangeNodeTitleObserver).inSingletonScope();
+    bind<PostGraphChangeNodeTitleNotifier>(SYMBOLS.PostGraphChangeNodeTitleNotifier).to(PostGraphChangeNodeTitleNotifier).inSingletonScope();
   }
 );
 

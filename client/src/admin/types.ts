@@ -51,6 +51,8 @@ const SYMBOLS = {
   EdgeContextMenuDeleteSelection: Symbol.for('EdgeContextMenuDeleteSelection'),
   ContextMenuEnterEditEdgeModeSelection: Symbol.for('ContextMenuEnterEditEdgeModeSelection'),
   EditorPopupPreview: Symbol.for('EditorPopupPreview'),
+  PostGraphChangeNodeTitleObserver: Symbol.for('PostGraphChangeNodeTitleObserver'),
+  PostGraphChangeNodeTitleNotifier: Symbol.for('PostGraphChangeNodeTitleNotifier'),
 };
 
 export {

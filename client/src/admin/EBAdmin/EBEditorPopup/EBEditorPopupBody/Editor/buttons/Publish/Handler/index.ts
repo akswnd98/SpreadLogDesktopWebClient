@@ -7,6 +7,7 @@ import axios, { AxiosResponse } from 'axios';
 import EBEditor from '../../..';
 import EditingPost from '@/src/admin/data-binding/Model/EditingPost';
 import EBEditorPopupBody from '../../../..';
+import ChangeNodeTitle from '@/src/data-binding/ModelNotifier/PostGraph/ChangeNodeTitle';
 
 export default class Click extends Handler<'click'> {
   eventName: 'click' = 'click';
@@ -24,5 +25,6 @@ export default class Click extends Handler<'click'> {
     }, {
       responseType: 'json',
     });
+    await Static.instance.get<ChangeNodeTitle>(SYMBOLS.PostGraphChangeNodeTitleNotifier).changeTitle(id, title);
   }
 }
