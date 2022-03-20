@@ -43,15 +43,18 @@ export default class EBButton extends EBElement {
         <p>${payload.text}</p>
       `, this.rootElement,
     );
-    this.registerAttribute(new Style({ styles: `
-      #root {
-        width: ${payload.width};
-        height: ${payload.height};
-        border-radius: ${payload.borderRadius};
-        background-color: ${payload.backgroundColor};
-        color: ${payload.color};
-      }
-    ` }));
+    this.registerAttribute(
+      new Style({
+        styles: `
+          #root {
+            width: ${payload.width};
+            height: ${payload.height};
+            border-radius: ${payload.borderRadius};
+            background-color: ${payload.backgroundColor};
+            color: ${payload.color};
+          }
+      `}),
+    );
   }
 }
 

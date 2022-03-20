@@ -23,8 +23,13 @@ export default abstract class RawEBElement extends HTMLElement {
     render(html`<div id='root' class='root'></div>`, this.shadowRoot!);
     this.rootElement = this.shadowRoot!.getElementById('root')! as HTMLDivElement;
     this.initialRender(payload);
-    payload.renderer?.render(this);
+    this.registerRenderer(payload.renderer);
   }
 
-  initialRender (payload: ConstructorParam) {}
+  initialRender (payload: ConstructorParam) {
+  }
+
+  registerRenderer (renderer?: Renderer) {
+    renderer?.render(this);
+  }
 }

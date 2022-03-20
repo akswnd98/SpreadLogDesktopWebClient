@@ -28,7 +28,6 @@ export default class Static {
   }
 
   static getDecorators () {
-    console.log(this.fInstance);
     return getDecorators(this.fInstance!);
   }
 }

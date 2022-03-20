@@ -17,6 +17,10 @@ export default class EditingPostId implements IObserver {
       },
       responseType: 'json',
     });
-    Static.instance.get<EditingPostNotifier>(SYMBOLS.EditingPostNotifier).setData(ret.data.ret);
+    Static.instance.get<EditingPostNotifier>(SYMBOLS.EditingPostNotifier).setData({
+      ...ret.data.ret,
+      firstUpload: new Date(ret.data.ret.firstUpload),
+      lastUpdate: new Date(ret.data.ret.lastUpdate),
+    });
   }
 }

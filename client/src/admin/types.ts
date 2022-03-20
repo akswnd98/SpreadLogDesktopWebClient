@@ -50,6 +50,7 @@ const SYMBOLS = {
   GraphVisEdgeContextMenuBody: Symbol.for('GraphVisEdgeContextMenuBody'),
   EdgeContextMenuDeleteSelection: Symbol.for('EdgeContextMenuDeleteSelection'),
   ContextMenuEnterEditEdgeModeSelection: Symbol.for('ContextMenuEnterEditEdgeModeSelection'),
+  EditorPopupPreview: Symbol.for('EditorPopupPreview'),
 };
 
 export {

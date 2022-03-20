@@ -29,18 +29,13 @@ import NewNodeInputHandler from './EBAdmin/EBNewDialogPopup/EBNewDialog/EBNewDia
 import NodeContextMenuDeleteSelection from './EBAdmin/GraphVis/NodeContextMenuBody/Delete';
 import NodeContextMenuSelectedId from '@/src/data-binding/Model/NodeContextMenuSelectedId';
 import EBEditorPopup from './EBAdmin/EBEditorPopup';
-import EBEditorOkButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/Bottom/OkButton';
-import EBEditorCancelButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/Bottom/CancelButton';
-import EBEditorPopupBody from './EBAdmin/EBEditorPopup/EBEditorPopupBody';
 import EditingPostId from './data-binding/Model/EditingPostId';
 import EditingPostIdNotifier from './data-binding/ModelNotifier/EditingPostId';
 import EditingPostIdObserver from './data-binding/Observer/EditingPostId';
 import EditingPost from './data-binding/Model/EditingPost';
 import EditingPostNotifier from './data-binding/ModelNotifier/EditingPost';
 import EditingPostObserver from './data-binding/Observer/EditingPost'
-import EBEditor from './EBAdmin/EBEditorPopup/EBEditorPopupBody/EBEditor';
-import EditorPopupBodyBottom from './EBAdmin/EBEditorPopup/EBEditorPopupBody/Bottom';
-import EditorPopupBodyTop from './EBAdmin/EBEditorPopup/EBEditorPopupBody/Top';
+import EBEditor from './EBAdmin/EBEditorPopup/EBEditorPopupBody/Editor';
 import AddPostEdgeNotifier from './data-binding/ModelNotifier/AddPostEdge';
 import AddPostEdgeObserver from './data-binding/Observer/AddPostEdge';
 // import EdgeContextMenuPopup from './EBAdmin/GraphVis/EdgeContextMenuPopup';
@@ -54,6 +49,7 @@ import GraphVisNodeContextMenuBody from './EBAdmin/GraphVis/NodeContextMenuBody'
 import GraphVisEdgeContextMenuBody from './EBAdmin/GraphVis/EdgeContextMenuBody';
 import EdgeContextMenuDeleteSelection from './EBAdmin/GraphVis/EdgeContextMenuBody/Delete';
 import ContextMenuEnterEditEdgeModeSelection from './EBAdmin/GraphVis/ContextMenuBody/EnterEditEdgeMode';
+import EBEditorPopupBody from './EBAdmin/EBEditorPopup/EBEditorPopupBody/inversified';
 
 const module = new AsyncContainerModule(
   async (
@@ -86,15 +82,11 @@ const module = new AsyncContainerModule(
     bind<NodeContextMenuSelectedId>(SYMBOLS.NodeContextMenuSelectedId).to(NodeContextMenuSelectedId).inSingletonScope();
     bind<EBEditorPopup>(SYMBOLS.EBEditorPopup).to(EBEditorPopup).inSingletonScope();
     bind<EBEditorPopupBody>(SYMBOLS.EBEditorPopupBody).to(EBEditorPopupBody).inSingletonScope();
-    bind<EBEditorOkButton>(SYMBOLS.EBEditorOkButton).to(EBEditorOkButton);
-    bind<EBEditorCancelButton>(SYMBOLS.EBEditorCancelButton).to(EBEditorCancelButton);
     bind<EditingPostId>(SYMBOLS.EditingPostId).to(EditingPostId).inSingletonScope();
     bind<EditingPostIdNotifier>(SYMBOLS.EditingPostIdNotifier).to(EditingPostIdNotifier).inSingletonScope();
     bind<EditingPostIdObserver>(SYMBOLS.EditingPostIdObserver).to(EditingPostIdObserver).inSingletonScope();
     bind<EditingPost>(SYMBOLS.EditingPost).to(EditingPost).inSingletonScope();
     bind<EBEditor>(SYMBOLS.EBEditor).to(EBEditor).inSingletonScope();
-    bind<EditorPopupBodyBottom>(SYMBOLS.EditorPopupBodyBottom).to(EditorPopupBodyBottom).inSingletonScope();
-    bind<EditorPopupBodyTop>(SYMBOLS.EditorPopupBodyTop).to(EditorPopupBodyTop).inSingletonScope();
     bind<EditingPostNotifier>(SYMBOLS.EditingPostNotifier).to(EditingPostNotifier).inSingletonScope();
     bind<EditingPostObserver>(SYMBOLS.EditingPostObserver).to(EditingPostObserver).inSingletonScope();
     bind<AddPostEdgeNotifier>(SYMBOLS.AddPostEdgeNotifier).to(AddPostEdgeNotifier).inSingletonScope();

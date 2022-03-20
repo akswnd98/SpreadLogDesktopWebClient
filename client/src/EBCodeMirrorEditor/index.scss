@@ -1,0 +1,54 @@
+#root {
+  width: 100%;
+  height: 100%;
+  .CodeMirror {
+    padding: 10px;
+    .cm-header-1 {
+      font-size: 48px;
+    }
+    .cm-header-2 {
+      font-size: 44px;
+    }
+    .cm-header-3 {
+      font-size: 40px;
+    }
+    .cm-header-4 {
+      font-size: 36px;
+    }
+    .cm-header-5 {
+      font-size: 32px;
+    }
+    .cm-header-6 {
+      font-size: 28px;
+    }
+  }
+  .CodeMirror-vscrollbar {
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      width: 8px;
+      background-color: #2f3542;
+      border-radius: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      width: 8px;
+      background-color: grey;
+    }
+  }
+
+  .CodeMirror-hscrollbar {
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      height: 8px;
+      background-color: #2f3542;
+      border-radius: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      height: 8px;
+      background-color: grey;
+    }
+  }
+}

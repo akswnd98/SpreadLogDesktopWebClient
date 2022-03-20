@@ -5,7 +5,7 @@ import styles from './index.scss';
 import { injectable } from 'inversify';
 
 @injectable()
-export default class Top extends EBElement {
+export default class Title extends EBElement {
   constructor () {
     super({
       attributes: [ new Style({ styles: styles.toString() }) ],
@@ -22,4 +22,4 @@ export default class Top extends EBElement {
   }
 }
 
-customElements.define('editor-popup-body-top', Top);
+customElements.define('editor-popup-body-title', Title);

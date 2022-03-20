@@ -3,10 +3,7 @@ import Static from '@/src/admin/inversify.config';
 import { SYMBOLS } from '@/src/admin/types';
 import EBGraphVis from '..';
 import VisNetworkHandler from '@/src/VisNetworkWrapper/Attribute/Handler'
-import EBEditorPopup from '../../EBEditorPopup';
-import EBEditor from '../../EBEditorPopup/EBEditorPopupBody/EBEditor';
-import EditingPost from '@/src/admin/data-binding/Model/EditingPost';
-import { NetworkEvents } from 'vis-network/standalone';
+import EBEditorPopup from '../../EBEditorPopup/';
 
 export default class Handler extends VisNetworkHandler {
   eventName: 'doubleClick' = 'doubleClick';
@@ -20,7 +17,6 @@ export default class Handler extends VisNetworkHandler {
     const id = Number(graphVis.network.getNodeAt(params.pointer.DOM));
     if (id < 0) return;
     await Static.instance.get<EditingPostIdNotifier>(SYMBOLS.EditingPostIdNotifier).setId(id);
-    Static.instance.get<EBEditor>(SYMBOLS.EBEditor).editor.setMarkdown(Static.instance.get<EditingPost>(SYMBOLS.EditingPost).data.body, false);
     Static.instance.get<EBEditorPopup>(SYMBOLS.EBEditorPopup).show();
   }
 }

@@ -3,12 +3,9 @@ import { inject, injectable } from 'inversify';
 import EBElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
 import styles from './index.scss';
 import Style from '@/src/EBAttribute/Style';
-import { ConstructorParam } from '@/src/RawEBElement';
 import { html, render } from 'lit-html';
-import EBEditorPopupBody from './EBEditorPopupBody';
 import { SYMBOLS } from '../../types';
-import type { ParameterizableNewable } from '@/src/inversify';
-import EBEditorOkButton from '@/src/admin/EBAdmin/EBEditorPopup/EBEditorPopupBody/Bottom/OkButton';
+import EBEditorPopupBody from './EBEditorPopupBody';
 
 export type PayloadParam = {
   body: EBEditorPopupBody;

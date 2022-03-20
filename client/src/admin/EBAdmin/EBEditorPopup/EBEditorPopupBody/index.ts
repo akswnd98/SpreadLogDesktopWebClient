@@ -1,46 +1,47 @@
-import EBElement from '@/src/EBElement';
+import EBElement, { type ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
 import 'reflect-metadata';
-import { inject, injectable, unmanaged } from 'inversify';
-import { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
-import styles from './index.scss';
+import { injectable, unmanaged } from 'inversify';
 import Style from '@/src/EBAttribute/Style';
+import styles from './index.scss';
 import { render, html } from 'lit-html';
-import EBEditor from './EBEditor';
-import { SYMBOLS } from '@/src/admin/types';
-import OkButton from './Bottom/OkButton';
-import CancelButton from './Bottom/CancelButton';
-import EBContainerElement from '@/src/EBContainerElement';
-import EBVerticalDictLayout, { ChildElementsType } from '@/src/EBLayout/EBVerticalDictLayout';
-import EBLayout from '@/src/EBLayout';
-import EditorPopupBodyBottom from './Bottom';
-import EditorPopupBodyTop from './Top';
+import Editor from './Editor';
+import Title from './Title';
 
 export type ConstructorParam = {
-} & ParentConstructorParam;
-
-export type PayloadParam = {
-  layout: EBVerticalDictLayout;
-  childElements: ChildElementsType;
+  editor: Editor;
 } & ParentConstructorParam;
 
 @injectable()
-export default class EBEditorPopupBody extends EBContainerElement<ChildElementsType> {
-  constructor (
-    @inject(SYMBOLS.EditorPopupBodyTop) top: EditorPopupBodyTop,
-    @inject(SYMBOLS.EditorPopupBodyBottom) bottom: EditorPopupBodyBottom,
-    @inject(SYMBOLS.EBEditor) ebEditor: EBEditor,
-  ) {
+export default class EBEditorPopupBody extends EBElement {
+  titleElement: Title;
+
+  constructor (@unmanaged() payload: ConstructorParam) {
     super({
-      layout: new EBVerticalDictLayout(),
-      childElements: {
-        top,
-        center: ebEditor,
-        bottom,
-      },
+      ...payload,
       attributes: [
         new Style({ styles: styles.toString() }),
       ],
-    } as PayloadParam);
+    });
+    this.titleElement = new Title();
+    render(
+      html`
+        ${this.titleElement}
+      `,
+      this.shadowRoot!.getElementById('titleWrapper')!,
+    );
+  }
+
+  initialRender (payload: ConstructorParam) {
+    super.initialRender(payload);
+    render(
+      html`
+        <div id='titleWrapper'></div>
+        <div id='editorWrapper'>
+          ${payload.editor}
+        </div>
+      `,
+      this.rootElement,
+    );
   }
 }
 
