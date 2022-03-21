@@ -10,17 +10,11 @@ import login from './login';
 import { ImageRequest } from './images';
 import crypto from 'crypto';
 import session from 'express-session';
-import multer from 'multer';
-
-const upload = multer();
+import images from './images';
 
 dotenv.config();
 
 const app = express();
-
-app.use(express.json());
-
-app.use(express.urlencoded({ extended: true }));
 
 const options = {
   key: fs.readFileSync(path.join(__dirname, '../../ssl/eb.com.key')),
@@ -85,8 +79,8 @@ app.get('/adminLogin_bundle.js', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist/adminLogin_bundle.js'));
 });
 
-app.post('/checkAdmin', (req, res) => {
-  if (crypto.createHash('sha256').update(process.env.ADMIN_LOGIN_TOKEN).digest('base64') === crypto.createHash('sha256').update(req.body.token).digest('base64')) {
+app.get('/checkAdmin', (req, res) => {
+  if (crypto.createHash('sha256').update(process.env.ADMIN_LOGIN_TOKEN).digest('base64') === crypto.createHash('sha256').update(req.query.token as string).digest('base64')) {
     req.session.isAdmin = true;
     res.redirect('/admin');
   } else {
@@ -102,10 +96,7 @@ app.get('/assets/fonts/:filename', (req, res) => {
   res.sendFile(path.resolve(__dirname, `../dist/assets/fonts/${req.params.filename}`));
 });
 
-app.get('/images', (req: Request<any, any, any, ImageRequest>, res) => {
-  res.sendFile(path.join(process.env.IMAGE_PATH!, req.query.postId.toString(), req.query.filename));
-  console.log(path.join(process.env.IMAGE_PATH!, req.query.postId.toString(), req.query.filename));
-});
+app.use('/images', images);
 
 app.use('/login', login);
 

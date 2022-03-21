@@ -22,7 +22,7 @@ export default class Login extends EBElement {
     super.initialRender(payload);
     render(
       html`
-        <form action='/checkAdmin' method='post'>
+        <form action='/checkAdmin' method='get'>
           <input type='password' name='token' />
           <input type='submit' />
         </form>

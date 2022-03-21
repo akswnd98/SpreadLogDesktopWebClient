@@ -116,9 +116,17 @@ router.delete('/deleteEdgeById', async (req: Request<any, DeleteEdgeByIdResponse
   }
 });
 
+router.put('/test', async (req, res) => {
+  console.log('hel');
+  res.json({
+    ret: 'test',
+  });
+  res.end();
+});
+
 router.put('/updatePost', async (req: Request<any, UpdatePostResponse, any, UpdatePostRequest>, res: Response<UpdatePostResponse>) => {
   try {
-    console.log(req.body.title);
+    console.log('hello', req.body.title);
     await updatePost(req.body.id, req.body.title, req.body.body);
     res.json({ error: false });
     res.end();
