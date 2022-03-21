@@ -12,5 +12,7 @@ declare namespace NodeJS {
     DB_PORT: number;
     DB_USER: string;
     DB_PW: string;
+
+    IMAGE_PATH: string;
   }
 }

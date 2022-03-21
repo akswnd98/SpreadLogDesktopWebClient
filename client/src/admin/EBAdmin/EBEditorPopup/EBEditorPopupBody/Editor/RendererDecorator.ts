@@ -3,6 +3,7 @@ import EBCodeMirrorEditor from '@/src/EBCodeMirrorEditor';
 import { html, render } from 'lit-html';
 import Renderer from '@/src/Renderer';
 import Bottom from './Bottom';
+import Toolbar from './Toolbar';
 
 export default class RendererDecorator extends Renderer {
   originRenderer: EditorRenderer;
@@ -17,6 +18,9 @@ export default class RendererDecorator extends Renderer {
     render(
       html`
         <div id='leftWrapper'>
+          <div id='toolbarWrapper'>
+            ${new Toolbar()}
+          </div>
           <div id='editorWrapper'>
             ${Array.from(element.rootElement.children).map((v) => html`${v}`)}
           </div>

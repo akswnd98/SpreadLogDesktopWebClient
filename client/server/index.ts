@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request } from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
 import webpack from 'webpack';
@@ -7,6 +7,7 @@ import { createProxyMiddleware } from 'http-proxy-middleware';
 import https from 'https';
 import fs from 'fs';
 import login from './login';
+import { ImageRequest } from './images';
 
 dotenv.config();
 
@@ -58,8 +59,14 @@ app.get('/assets/images/:filename', (req, res) => {
   res.sendFile(path.resolve(__dirname, `../dist/assets/images/${req.params.filename}`));
 });
 
-app.get('assets/fonts/:filename', (req, res) => {
+app.get('/assets/fonts/:filename', (req, res) => {
   res.sendFile(path.resolve(__dirname, `../dist/assets/fonts/${req.params.filename}`));
+});
+
+app.get('/images', (req: Request<any, any, any, ImageRequest>, res) => {
+  console.log('hello');
+  res.sendFile(path.join(process.env.IMAGE_PATH!, req.query.postId.toString(), req.query.filename));
+  console.log(path.join(process.env.IMAGE_PATH!, req.query.postId.toString(), req.query.filename));
 });
 
 app.use('/login', login);
