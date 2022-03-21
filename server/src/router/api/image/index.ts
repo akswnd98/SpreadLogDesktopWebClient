@@ -8,7 +8,7 @@ import { UploadResponse } from '@/common/api/image';
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, `/home/akswnd98/SpreadLog/images`);
+    cb(null, process.env.IMAGE_PATH);
   },
   filename: (req, file, cb) => {
     cb(null, `${Math.random().toString().substring(2, 2 + 32)}.${mime.extension(file.mimetype)}`);
