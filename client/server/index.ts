@@ -8,10 +8,19 @@ import https from 'https';
 import fs from 'fs';
 import login from './login';
 import { ImageRequest } from './images';
+import crypto from 'crypto';
+import session from 'express-session';
+import multer from 'multer';
+
+const upload = multer();
 
 dotenv.config();
 
 const app = express();
+
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
 
 const options = {
   key: fs.readFileSync(path.join(__dirname, '../../ssl/eb.com.key')),
@@ -29,6 +38,15 @@ if (process.env.MODE === 'development') {
 }
 
 app.set('port', process.env.SERVER_PORT);
+
+app.use(session({
+  secret: process.env.ADMIN_SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: true,
+  },
+}));
 
 app.use('/api', createProxyMiddleware('', {
   target: `http://${process.env.HOST}:${process.env.API_SERVER_PORT}`,
@@ -48,11 +66,32 @@ app.get('/public_bundle.js', (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../dist/admin.html'));
+  if (req.session.isAdmin === true) {
+    res.sendFile(path.resolve(__dirname, '../dist/admin.html'));
+  } else {
+    res.sendFile(path.resolve(__dirname, '../dist/adminLogin.html'));
+  }
 });
 
 app.get('/admin_bundle.js', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist/admin_bundle.js'));
+});
+
+app.get('/adminLogin', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../dist/adminLogin.html'));
+});
+
+app.get('/adminLogin_bundle.js', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../dist/adminLogin_bundle.js'));
+});
+
+app.post('/checkAdmin', (req, res) => {
+  if (crypto.createHash('sha256').update(process.env.ADMIN_LOGIN_TOKEN).digest('base64') === crypto.createHash('sha256').update(req.body.token).digest('base64')) {
+    req.session.isAdmin = true;
+    res.redirect('/admin');
+  } else {
+    res.redirect('/adminLogin');
+  }
 });
 
 app.get('/assets/images/:filename', (req, res) => {
@@ -64,7 +103,6 @@ app.get('/assets/fonts/:filename', (req, res) => {
 });
 
 app.get('/images', (req: Request<any, any, any, ImageRequest>, res) => {
-  console.log('hello');
   res.sendFile(path.join(process.env.IMAGE_PATH!, req.query.postId.toString(), req.query.filename));
   console.log(path.join(process.env.IMAGE_PATH!, req.query.postId.toString(), req.query.filename));
 });

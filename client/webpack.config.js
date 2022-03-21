@@ -1,11 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CircularDependencyPlugin = require('circular-dependency-plugin');
 const path = require('path');
 
 module.exports = {
   entry: {
     public: path.resolve(__dirname, 'src/app/index.ts'),
     admin: path.resolve(__dirname, 'src/admin/index.ts'),
+    adminLogin: path.resolve(__dirname, 'src/adminLogin/index.ts'),
     test: path.resolve(__dirname, 'src/test/index.ts'),
   },
   output: {
@@ -94,11 +94,11 @@ module.exports = {
       filename: 'test.html',
       template: './src/index.html',
     }),
-    // new CircularDependencyPlugin({
-    //   exclude: /node_module/,
-    //   allowAsyncCycles: false,
-    //   cwd: process.cwd(),
-    // }),
+    new HtmlWebpackPlugin({
+      chunks: ['adminLogin'],
+      filename: 'adminLogin.html',
+      template: './src/index.html',
+    }),
   ],
   devServer: {
     static: path.join(__dirname, 'dist'),
