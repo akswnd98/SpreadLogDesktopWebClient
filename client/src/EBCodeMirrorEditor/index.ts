@@ -4,7 +4,7 @@ import EBElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBE
 import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
 import cmStyles from 'codemirror/lib/codemirror.css';
-import themeStyles from 'codemirror/theme/material.css';
+import themeStyles from 'codemirror/theme/3024-day.css';
 import CodeMirror from 'codemirror';
 import { render, html } from 'lit-html';
 import 'codemirror/mode/gfm/gfm';
@@ -33,7 +33,7 @@ export default class Editor extends EBElement {
     this.editor = CodeMirror.fromTextArea(textArea, {
       mode: 'gfm',
       lineNumbers: false,
-      theme: 'material',
+      theme: '3024-day',
       lineWrapping: true,
     });
     this.editor.setSize(`calc(100% - 20px)`, `calc(100% - 20px)`);
