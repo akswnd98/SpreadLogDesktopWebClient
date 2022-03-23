@@ -15,6 +15,9 @@ import RendererDecorator from './RendererDecorator';
 import EditorRenderer from '@/src/EBCodeMirrorEditor/Renderer';
 import { gfm } from 'micromark-extension-gfm';
 import { gfmFromMarkdown } from 'mdast-util-gfm';
+import katex from 'katex';
+import renderMathInElement from 'katex/dist/contrib/auto-render';
+import katexStyles from 'katex/dist/katex.min.css';
 
 export type PayloadParam = {
 } & ParentConstructorParam;
@@ -29,6 +32,7 @@ export default class Editor extends EBCodeMirrorEditor {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
+        new Style({ styles: katexStyles.toString() }),
       ],
     });
     this.registerRenderer(new RendererDecorator(new EditorRenderer({ editor: this.editor })));
@@ -56,6 +60,14 @@ export default class Editor extends EBCodeMirrorEditor {
     });
     this.hast = toHast(this.mdast)! as HastRoot;
     this.shadowRoot!.getElementById('preview')!.innerHTML = toHtml(this.hast);
+    renderMathInElement(this.shadowRoot!.getElementById('preview')!, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '\\[', right: '\\]', display: true},
+      ],
+    });
     this.updateScrollMap();
   }
 

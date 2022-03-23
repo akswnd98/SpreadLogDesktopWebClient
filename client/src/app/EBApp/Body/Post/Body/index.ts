@@ -2,13 +2,14 @@ import EBElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBE
 import { injectable } from 'inversify';
 import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
-import { html, render } from 'lit-html';
 import { toHtml } from 'hast-util-to-html';
 import { fromMarkdown } from 'mdast-util-from-markdown';
 import { gfm } from 'micromark-extension-gfm';
 import { gfmFromMarkdown } from 'mdast-util-gfm';
 import { toHast } from 'mdast-util-to-hast';
 import { HastNode } from 'mdast-util-to-hast/lib';
+import renderMathInElement from 'katex/dist/contrib/auto-render';
+import katexStyles from 'katex/dist/katex.min.css'
 
 @injectable()
 export default class Body extends EBElement {
@@ -16,6 +17,7 @@ export default class Body extends EBElement {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
+        new Style({ styles: katexStyles.toString() })
       ],
     });
   }
@@ -31,6 +33,14 @@ export default class Body extends EBElement {
     });
     const hast = toHast(mdast)! as HastNode;
     this.rootElement.innerHTML = toHtml(hast);
+    renderMathInElement(this.shadowRoot!.getElementById('preview')!, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '\\[', right: '\\]', display: true},
+      ],
+    });
   }
 }
 
