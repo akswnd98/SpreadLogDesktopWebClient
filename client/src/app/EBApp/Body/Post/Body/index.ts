@@ -33,7 +33,7 @@ export default class Body extends EBElement {
     });
     const hast = toHast(mdast)! as HastNode;
     this.rootElement.innerHTML = toHtml(hast);
-    renderMathInElement(this.shadowRoot!.getElementById('preview')!, {
+    renderMathInElement(this.rootElement, {
       delimiters: [
         {left: '$$', right: '$$', display: true},
         {left: '$', right: '$', display: false},
