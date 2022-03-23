@@ -13,6 +13,8 @@ import ScrollHandler from './Handler/Scroll';
 import EBElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
 import RendererDecorator from './RendererDecorator';
 import EditorRenderer from '@/src/EBCodeMirrorEditor/Renderer';
+import { gfm } from 'micromark-extension-gfm';
+import { gfmFromMarkdown } from 'mdast-util-gfm';
 
 export type PayloadParam = {
 } & ParentConstructorParam;
@@ -48,7 +50,10 @@ export default class Editor extends EBCodeMirrorEditor {
 
   update () {
     const md = this.editor.getValue();
-    this.mdast = fromMarkdown(md);
+    this.mdast = fromMarkdown(md, {
+      extensions: [ gfm() ],
+      mdastExtensions: [ gfmFromMarkdown() ],
+    });
     this.hast = toHast(this.mdast)! as HastRoot;
     this.shadowRoot!.getElementById('preview')!.innerHTML = toHtml(this.hast);
     this.updateScrollMap();

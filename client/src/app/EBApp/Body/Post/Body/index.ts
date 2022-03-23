@@ -1,20 +1,23 @@
 import EBElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
 import { injectable } from 'inversify';
-import Viewer from '@toast-ui/editor/dist/toastui-editor-viewer';
 import Style from '@/src/EBAttribute/Style';
 import styles from './index.scss';
+import { html, render } from 'lit-html';
+import { toHtml } from 'hast-util-to-html';
+import { fromMarkdown } from 'mdast-util-from-markdown';
+import { gfm } from 'micromark-extension-gfm';
+import { gfmFromMarkdown } from 'mdast-util-gfm';
+import { toHast } from 'mdast-util-to-hast';
+import { HastNode } from 'mdast-util-to-hast/lib';
 
 @injectable()
 export default class Body extends EBElement {
-  viewer: Viewer;
-
   constructor() {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
       ],
     });
-    this.viewer = new Viewer({ el: this.rootElement });
   }
 
   initialRender (payload: ParentConstructorParam) {
@@ -22,7 +25,12 @@ export default class Body extends EBElement {
   }
 
   setMarkdown (data: string) {
-    this.viewer.setMarkdown(data);
+    const mdast = fromMarkdown(data, {
+      mdastExtensions: [ gfmFromMarkdown() ],
+      extensions: [ gfm() ],
+    });
+    const hast = toHast(mdast)! as HastNode;
+    this.rootElement.innerHTML = toHtml(hast);
   }
 }
 
