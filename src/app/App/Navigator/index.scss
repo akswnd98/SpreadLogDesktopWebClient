@@ -1,0 +1,9 @@
+@use './nav.scss' as nav;
+
+#root {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  @include nav.height;
+  background-color: #a0a0a080;
+}

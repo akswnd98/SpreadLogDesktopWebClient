@@ -1,0 +1,15 @@
+#root {
+  width: 250px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-family: 'NixieOne';
+  color: black;
+  margin-left: 150px;
+}
+
+#root:hover {
+  cursor: pointer;
+}

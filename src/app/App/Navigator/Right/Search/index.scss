@@ -1,0 +1,8 @@
+@use '../icon.scss' as icon;
+
+#root {
+  @include icon.div;
+  img {
+    @include icon.img;
+  }
+}

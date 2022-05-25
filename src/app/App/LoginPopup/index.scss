@@ -1,0 +1,23 @@
+#root {
+  position: fixed;
+  width: 776px;
+  height: 540px;
+  z-index: 200;
+  transition-duration: 0.3s;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.hide {
+  // visibility: hidden;
+  left: 50%;
+  top: 0%;
+  transform: translate(-50%, -200%);
+}
+
+.show {
+  // visibility: visible;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

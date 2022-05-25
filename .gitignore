@@ -1,10 +1,1 @@
-client/node_modules/
-client/dist/
-client/.env
-server/node_modules/
-server/.env
-common/node_modules/
-ssl/*
-!ssl/readme.md
-!ssl/rootca.conf
-!ssl/eb.com.conf
+node_modules

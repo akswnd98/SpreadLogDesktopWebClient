@@ -1,0 +1,12 @@
+[submodule "src/common"]
+	path = src/common
+	url = https://github.com/akswnd98/SpreadLogCommon
+[submodule "assets"]
+	path = assets
+	url = https://github.com/akswnd98/SpreadLogClientAssets
+[submodule "src/owl-data-binding"]
+	path = src/owl-data-binding
+	url = https://github.com/akswnd98/OwlDataBinding
+[submodule "src/owl-element"]
+	path = src/owl-element
+	url = https://github.com/akswnd98/OwlElement
