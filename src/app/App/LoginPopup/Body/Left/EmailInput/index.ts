@@ -7,6 +7,7 @@ import { ConstructorParam } from '@/src/owl-element/Element/Raw';
 import { html, render } from 'lit-html';
 import FocusHandler from './Handler/Focus';
 import FocusOutHandler from './Handler/FocusOut';
+import InputHandler from './Handler/Input';
 
 @injectable()
 export default class EmailInput extends Element {
@@ -20,6 +21,7 @@ export default class EmailInput extends Element {
     });
     this.registerAttribute(new FocusHandler({ emailInput: this }));
     this.registerAttribute(new FocusOutHandler({ emailInput: this }));
+    this.registerAttribute(new InputHandler({ emailInput: this }));
   }
 
   initialRender (payload: ConstructorParam) {
