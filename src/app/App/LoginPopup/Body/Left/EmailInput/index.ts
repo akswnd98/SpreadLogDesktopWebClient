@@ -1,38 +1,14 @@
 import Element from '@/src/owl-element/Element';
 import 'reflect-metadata';
 import { injectable } from 'inversify';
-import Style from '@/src/owl-element/Attribute/Style';
-import styles from './index.scss';
-import { ConstructorParam } from '@/src/owl-element/Element/Raw';
-import { html, render } from 'lit-html';
-import FocusHandler from './Handler/Focus';
-import FocusOutHandler from './Handler/FocusOut';
-import InputHandler from './Handler/Input';
+import BaseInput from '../BaseInput';
 
 @injectable()
-export default class EmailInput extends Element {
-  isDefault: boolean = true;
-
+export default class EmailInput extends BaseInput {
   constructor () {
     super({
-      attributes: [
-        new Style({ styles: styles.toString() }),
-      ],
+      defaultValue: '이메일',
     });
-    this.registerAttribute(new FocusHandler({ emailInput: this }));
-    this.registerAttribute(new FocusOutHandler({ emailInput: this }));
-    this.registerAttribute(new InputHandler({ emailInput: this }));
-  }
-
-  initialRender (payload: ConstructorParam) {
-    super.initialRender(payload);
-    render(
-      html`
-        <input id='input-box' value='이메일'></input>
-        <div id='hor-line'></div>
-      `,
-      this.rootElement,
-    );
   }
 }
 

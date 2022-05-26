@@ -5,14 +5,19 @@ import { html, render } from 'lit-html';
 import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
 import ClickHandler from './Handler/Click';
+import Left from '..';
+
+export type ConstructorParam = {
+  left: Left;
+};
 
 @injectable()
 export default class LoginButton extends Element {
-  constructor () {
+  constructor (payload: ConstructorParam) {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
-        new ClickHandler(),
+        new ClickHandler({ left: payload.left }),
       ],
     });
   }

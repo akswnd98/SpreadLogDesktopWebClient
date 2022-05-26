@@ -3,6 +3,7 @@
   height: 100%;
   overflow: hidden;
   #guide-div {
+    position: relative;
     width: calc(100% - 80px);
     margin-left: 40px;
     height: 100%;
@@ -12,13 +13,32 @@
       font-size: 28px;
       font-family: 'SourceCodePro';
     }
-    #email-input-wrapper {
+    .input-wrapper {
+      position: relative;
       width: calc(100% - 40px);
+      height: 30px;
       margin: 0px;
       margin-left: 20px;
       margin-top: 100px;
       p {
         margin: 0px;
+      }
+      #email-input-wrapper {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+      }
+      #passwd-input-wrapper {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        transform: translateX(calc(100% + 60px + 60px));
+        width: 100%;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
       }
     }
     #login-button-wrapper {
@@ -37,5 +57,57 @@
       margin-left: 20px;
       margin-top: 40px;
     }
+  }
+}
+
+.input-wrapper-slide-from-right {
+  animation-name: input-wrapper-slide-from-right;
+}
+
+.input-wrapper-slide-to-left {
+  animation-name: input-wrapper-slide-to-left;
+}
+
+.input-wrapper-slide-from-left {
+  animation-name: input-wrapper-slide-from-left;
+}
+
+.input-wrapper-slide-to-right {
+  animation-name: input-wrapper-slide-to-right;
+}
+
+@keyframes input-wrapper-slide-from-right {
+  from {
+    transform: translateX(calc(100% + 60px + 60px));
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes input-wrapper-slide-to-left {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(calc(-100% - 60px - 60px));
+  }
+}
+
+@keyframes input-wrapper-slide-from-left {
+  from {
+    transform: translateX(calc(-100% - 60px - 60px));
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes input-wrapper-slide-to-right {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(calc(100% + 60px + 60px));
   }
 }

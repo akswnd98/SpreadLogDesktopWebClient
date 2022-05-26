@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import { injectable } from 'inversify';
 import { html, render } from 'lit-html';
 import backButton from '@/assets/images/login-popup-back.svg';
-import ClickHandler from './Handler';
+import ClickHandler from './Handler/Click';
 import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
 

@@ -7,6 +7,7 @@ import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
 import LoginButton from './LoginButton';
 import EmailInput from './EmailInput';
+import PasswdInput from './PasswdInput';
 import OAuthLoginButton from '../OAuthLoginButton';
 import googleSvg from '@/assets/images/google.svg';
 import googleStyles from '../OAuthLoginButton/google.scss';
@@ -27,11 +28,16 @@ export default class Left extends Element {
       html`
         <div id='guide-div'>
           <div id='login-label'>로그인</div>
-          <div id='email-input-wrapper'>
-            ${new EmailInput()}
+          <div class='input-wrapper'>
+            <div id='email-input-wrapper'>
+              ${new EmailInput()}
+            </div>
+            <div id='passwd-input-wrapper'>
+              ${new PasswdInput()}
+            </div>
           </div>
           <div id='login-button-wrapper'>
-            ${new LoginButton()}
+            ${new LoginButton({ left: this })}
           </div>
           <div id='sns-login-label'>SNS 간편 시작</div>
           <div id='google-button-wrapper'>

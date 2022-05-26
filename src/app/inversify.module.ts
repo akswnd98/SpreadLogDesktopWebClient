@@ -13,6 +13,10 @@ import LoginPopupBody from './App/LoginPopup/Body';
 import CurrentLoginEmail from './data-binding/Model/CurrentLoginEmail';
 import CurrentLoginEmailSetter from './data-binding/Operator/CurrentLoginEmail/Setter';
 import CurrentLoginEmailGetter from './data-binding/Operator/CurrentLoginEmail/Getter';
+import LoginPopupBaseState from './data-binding/State/LoginPopup/Base';
+import LoginPopupPasswdState from './data-binding/State/LoginPopup/Passwd';
+import LoginPopupCommandStacker from './data-binding/CommandStacker/LoginPopup';
+
 // import PostingPostBodyObserver from '@/src/app/data-binding/Observer/PostingPost/Body';
 // import PostingPostTitleObserver from '@/src/app/data-binding/Observer/PostingPost/Title';
 // import PostingPostDateObserver from '@/src/app/data-binding/Observer/PostingPost/Date';
@@ -34,6 +38,9 @@ const module = new AsyncContainerModule(
     bind<CurrentLoginEmail>(SYMBOLS.CurrentLoginEmail).to(CurrentLoginEmail).inSingletonScope();
     bind<CurrentLoginEmailSetter>(SYMBOLS.CurrentLoginEmailSetter).to(CurrentLoginEmailSetter).inSingletonScope();
     bind<CurrentLoginEmailGetter>(SYMBOLS.CurrentLoginEmailGetter).to(CurrentLoginEmailGetter).inSingletonScope();
+    bind<LoginPopupBaseState>(SYMBOLS.LoginPopupBaseState).to(LoginPopupBaseState).inSingletonScope();
+    bind<LoginPopupPasswdState>(SYMBOLS.LoginPopupPasswdState).to(LoginPopupPasswdState).inSingletonScope();
+    bind<LoginPopupCommandStacker>(SYMBOLS.LoginPopupCommandStacker).to(LoginPopupCommandStacker).inSingletonScope();
     // bind<PostingPostBodyObserver>(SYMBOLS.PostingPostBodyObserver).to(PostingPostBodyObserver);
     // bind<PostingPostTitleObserver>(SYMBOLS.PostingPostTitleObserver).to(PostingPostTitleObserver);
     // bind<PostingPostDateObserver>(SYMBOLS.PostingPostDateObserver).to(PostingPostDateObserver);
