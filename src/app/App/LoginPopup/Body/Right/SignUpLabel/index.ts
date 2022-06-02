@@ -4,6 +4,7 @@ import { injectable } from 'inversify';
 import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
 import { html, render } from 'lit-html';
+import ClickHandler from './Handler/Click';
 
 @injectable()
 export default class SignUpLabel extends Element {
@@ -11,6 +12,7 @@ export default class SignUpLabel extends Element {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
+        new ClickHandler({ id: 'root' }),
       ],
     });
   }
@@ -26,4 +28,4 @@ export default class SignUpLabel extends Element {
   }
 }
 
-customElements.define('sign-up-label', SignUpLabel);
+customElements.define('login-popup-right-sign-up-label', SignUpLabel);

@@ -1,16 +1,12 @@
 import 'reflect-metadata';
 import { injectable } from 'inversify';
-import LoginPopupCommand from '../../Command/Undoable/LoginPopup';
+import State from '@/src/owl-data-binding/State';
 
 @injectable()
-export default abstract class LoginPopup {
-  async executeCommand (command: LoginPopupCommand) {
-    if (this.checkCommandValid(command)) {
-      await command.execute();
-    } else {
-      throw Error('command is not valid');
-    }
-  }
+export default abstract class LoginPopup extends State {
+  abstract back (): Promise<void>;
 
-  protected abstract checkCommandValid(command: LoginPopupCommand): boolean;
+  abstract doEnter (): Promise<void>;
+
+  abstract doEsc (): Promise<void>;
 }

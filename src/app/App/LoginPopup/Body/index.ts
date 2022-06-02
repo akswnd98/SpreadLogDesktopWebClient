@@ -1,6 +1,6 @@
 import Element, { ConstructorParam as ParentConstructorParam } from '@/src/owl-element/Element';
 import 'reflect-metadata';
-import { injectable } from 'inversify';
+import { inject, injectable } from 'inversify';
 import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
 import { html, render } from 'lit-html';
@@ -8,18 +8,29 @@ import Left from './Left';
 import Right from './Right';
 import CloseButton from './CloseButton';
 import BackButton from './BackButton';
+import { SYMBOLS } from '@/src/app/symbols';
+
+export type PayloadParam = {
+  left: Left;
+  right: Right;
+} & ParentConstructorParam;
 
 @injectable()
 export default class Body extends Element {
-  constructor () {
+  constructor (
+    @inject(SYMBOLS.LoginPopupBodyLeft) left: Left,
+    @inject(SYMBOLS.LoginPopupBodyRight) right: Right,
+  ) {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
       ],
-    });
+      left,
+      right,
+    } as PayloadParam);
   }
 
-  initialRender (payload: ParentConstructorParam) {
+  initialRender (payload: PayloadParam) {
     super.initialRender(payload);
     render(
       html`
@@ -33,10 +44,10 @@ export default class Body extends Element {
         </div>
         <div id='main'>
           <div id='left-wrapper'>
-            ${new Left()}
+            ${payload.left}
           </div>
           <div id='right-wrapper'>
-            ${new Right()}
+            ${payload.right}
           </div>
         </div>
       `,

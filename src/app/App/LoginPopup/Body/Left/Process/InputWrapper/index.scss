@@ -1,0 +1,61 @@
+#root {
+  position: relative;
+  width: calc(100% - 40px);
+  height: 30px;
+  margin: 0px;
+  p {
+    margin: 0px;
+  }
+}
+
+.input-wrapper-slide-from-right {
+  animation-name: input-wrapper-slide-from-right;
+}
+
+.input-wrapper-slide-to-left {
+  animation-name: input-wrapper-slide-to-left;
+}
+
+.input-wrapper-slide-from-left {
+  animation-name: input-wrapper-slide-from-left;
+}
+
+.input-wrapper-slide-to-right {
+animation-name: input-wrapper-slide-to-right;
+}
+
+@keyframes input-wrapper-slide-from-right {
+  from {
+    transform: translateX(calc(100% + 60px + 60px));
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes input-wrapper-slide-to-left {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(calc(-100% - 60px - 60px));
+  }
+}
+
+@keyframes input-wrapper-slide-from-left {
+  from {
+    transform: translateX(calc(-100% - 60px - 60px));
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes input-wrapper-slide-to-right {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(calc(100% + 60px + 60px));
+  }
+}

@@ -5,6 +5,7 @@ import 'reflect-metadata';
 import { injectable } from 'inversify';
 import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
+import LoginLabel from './LoginLabel';
 import SignUpLabel from './SignUpLabel';
 
 @injectable()
@@ -26,7 +27,12 @@ export default class Right extends Element {
         </div>
         <div id='lower-wrapper'>
           <div id='guide-div'>
-            ${new SignUpLabel()}
+            <div id='sign-up-wrapper' class='label-wrapper active'>
+              ${new SignUpLabel()}
+            </div>
+            <div id='login-wrapper' class='label-wrapper inactive'>
+              ${new LoginLabel()}
+            </div>
           </div>
         </div>
       `,

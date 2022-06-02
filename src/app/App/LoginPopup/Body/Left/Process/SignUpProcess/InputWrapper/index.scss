@@ -1,0 +1,37 @@
+#root {
+  #email-input-wrapper {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+  #passwd-input-wrapper {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transform: translateX(calc(100% + 60px + 60px));
+    width: 100%;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+  #passwd-check-input-wrapper {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transform: translateX(calc(100% + 60px + 60px));
+    width: 100%;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+  #nick-name-input-wrapper {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transform: translateX(calc(100% + 60px + 60px));
+    width: 100%;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+}

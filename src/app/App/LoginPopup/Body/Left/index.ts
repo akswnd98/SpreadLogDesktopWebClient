@@ -1,48 +1,47 @@
-import Element from '@/src/owl-element/Element';
-import { ConstructorParam } from '@/src/owl-element/Element/Raw';
-import { html, render } from 'lit-html';
+import Element, { ConstructorParam as ParentConstructorParam } from '@/src/owl-element/Element';
 import 'reflect-metadata';
-import { injectable } from 'inversify';
+import { inject, injectable } from 'inversify';
+import { html, render } from 'lit-html';
+import LoginProcess from './Process/LoginProcess';
+import SignUpProcess from './Process/SignUpProcess';
+import { SYMBOLS } from '@/src/app/symbols';
 import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
-import LoginButton from './LoginButton';
-import EmailInput from './EmailInput';
-import PasswdInput from './PasswdInput';
-import OAuthLoginButton from '../OAuthLoginButton';
-import googleSvg from '@/assets/images/google.svg';
-import googleStyles from '../OAuthLoginButton/google.scss';
+
+export type PayloadParam = {
+  loginElement: LoginProcess;
+  signUpElement: SignUpProcess;
+} & ParentConstructorParam;
 
 @injectable()
 export default class Left extends Element {
-  constructor () {
+  loginElement: LoginProcess;
+  signUpElement: SignUpProcess;
+
+  constructor (
+    @inject(SYMBOLS.LoginProcessElement) loginElement: LoginProcess,
+    @inject(SYMBOLS.SignUpProcessElement) signUpElement: SignUpProcess,
+  ) {
     super({
+      loginElement,
+      signUpElement,
       attributes: [
         new Style({ styles: styles.toString() }),
       ],
-    });
+    } as PayloadParam);
+    this.loginElement = loginElement;
+    this.signUpElement = signUpElement;
   }
 
-  initialRender (payload: ConstructorParam) {
+  initialRender (payload: PayloadParam) {
     super.initialRender(payload);
     render(
       html`
-        <div id='guide-div'>
-          <div id='login-label'>로그인</div>
-          <div class='input-wrapper'>
-            <div id='email-input-wrapper'>
-              ${new EmailInput()}
-            </div>
-            <div id='passwd-input-wrapper'>
-              ${new PasswdInput()}
-            </div>
-          </div>
-          <div id='login-button-wrapper'>
-            ${new LoginButton({ left: this })}
-          </div>
-          <div id='sns-login-label'>SNS 간편 시작</div>
-          <div id='google-button-wrapper'>
-            ${new OAuthLoginButton({ attributes: [new Style({ styles: googleStyles.toString() })], text: 'SIGN IN WITH GOOGLE', svgUrl: googleSvg })}
-          </div>
+        <div id='login-wrapper' class='active'>
+          ${payload.loginElement}
+        </div>
+        <div id='sign-up-wrapper' class='inactive'>
+          ${payload.signUpElement}
         </div>
       `,
       this.rootElement,

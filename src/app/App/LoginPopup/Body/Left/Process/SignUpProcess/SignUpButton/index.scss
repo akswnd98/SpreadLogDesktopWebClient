@@ -1,0 +1,12 @@
+@use '../button.scss' as button;
+
+#root {
+  @include button.common;
+  background-color: black;
+  color: white;
+  font-family: 'SourceCodePro';
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
