@@ -20,7 +20,14 @@ export default class Footer extends Element {
     super.initialRender(payload);
     render(
       html`
-        <img src=${github}></img>Open source:&nbsp;<a href='https://github.com/akswnd98/EB'>https://github.com/akswnd98/EB</a>
+        <div>
+          <div>
+            <img src=${github}></img>open source desktop client:&nbsp;<a href='https://github.com/akswnd98/SpreadLogDesktopWebClient'>https://github.com/akswnd98/SpreadLogDesktopWebClient</a>
+          </div>
+          <div>
+            <img src=${github}></img>open source api server:&nbsp;<a href='https://github.com/akswnd98/SpreadLogApiServer'>https://github.com/akswnd98/SpreadLogApiServer</a>
+          </div>
+        </div>
       `,
       this.rootElement,
     );
