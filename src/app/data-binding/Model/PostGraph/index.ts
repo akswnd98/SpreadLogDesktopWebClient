@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { injectable, unmanaged } from 'inversify';
-import Model, { ConstructorParam as ParentConstructorParam } from '..';
+import Model, { ConstructorParam as ParentConstructorParam } from '@/src/owl-data-binding/Model';
 import Node from './Node';
 import Edge from './Edge';
 

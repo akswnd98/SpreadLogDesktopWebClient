@@ -7,7 +7,7 @@ import styles from './index.scss';
 import ClickHandler from './Handler/Click';
 
 @injectable()
-export default class LogoButton extends Element {
+export default class Logo extends Element {
   constructor () {
     super({
       attributes: [
@@ -21,11 +21,11 @@ export default class LogoButton extends Element {
     super.initialRender(payload);
     render(
       html`
-        Spread Log
+        Spread.Log
       `,
       this.rootElement,
     );
   }
 }
 
-customElements.define('logo-button', LogoButton);
+customElements.define('app-navigator-logo', Logo);

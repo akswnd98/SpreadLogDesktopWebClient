@@ -1,5 +1,6 @@
 const SYMBOLS = {
   App: Symbol.for('App'),
+  AppNavigator: Symbol.for("AppNavigator"),
   AppBody: Symbol.for('AppBody'),
   LoginPopupBodyLeft: Symbol.for('LoginPopupBodyLeft'),
   LoginPopupBodyRight: Symbol.for('LoginPopupBodyRight'),
@@ -75,6 +76,10 @@ const SYMBOLS = {
   PostingPostBodyObserver: Symbol.for('PostingPostBodyObserver'),
   PostingPostDateObserver: Symbol.for('PostingPostDateObserver'),
   PostingPostTitleObserver: Symbol.for('PostingPostTitleObserver'),
+
+  AccountPageNickname: Symbol.for('AccountPageNickname'),
+  AccountPageNicknameGetter: Symbol.for('AccountPageNicknameGetter'),
+  AccountPageNicknameSetter: Symbol.for('AccountPageNicknameSetter'),
 };
 
 export {

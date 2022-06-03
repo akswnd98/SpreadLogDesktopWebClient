@@ -2,6 +2,7 @@ import { interfaces, AsyncContainerModule } from 'inversify';
 import { SYMBOLS } from './symbols';
 import App from './App';
 import AppBody from './App/Body';
+import AppNavigator from './App/Navigator/inversified';
 // import GraphVis from './App/Body/GraphVis';
 // import BlogPost from './App/Body/Post/route';
 // import PostingId from './data-binding/Model/PostingId';
@@ -68,6 +69,10 @@ import CurrentSignUpPasswdCheckGetter from './data-binding/Operator/CurrentSignU
 import CurrentSignUpCertSerialSetter from './data-binding/Operator/CurrentSignUpCertSerial/Setter';
 import CurrentSignUpCertSerialGetter from './data-binding/Operator/CurrentSignUpCertSerial/Getter';
 
+import AccountPageNickname from './data-binding/Model/AccountPageNickname';
+import AccountPageNicknameGetter from './data-binding/Operator/AccountPageNickname/Getter';
+import AccountPageNicknameSetter from './data-binding/Operator/AccountPageNickname/Setter';
+
 // import PostingPostBodyObserver from '@/src/app/data-binding/Observer/PostingPost/Body';
 // import PostingPostTitleObserver from '@/src/app/data-binding/Observer/PostingPost/Title';
 // import PostingPostDateObserver from '@/src/app/data-binding/Observer/PostingPost/Date';
@@ -78,6 +83,7 @@ const module = new AsyncContainerModule(
   ) => {
     bind<App>(SYMBOLS.App).to(App).inSingletonScope();
     bind<AppBody>(SYMBOLS.AppBody).to(AppBody).inSingletonScope();
+    bind<AppNavigator>(SYMBOLS.AppNavigator).to(AppNavigator).inSingletonScope();
     // bind<GraphVis>(SYMBOLS.GraphVis).to(GraphVis).inSingletonScope();
     // bind<BlogPost>(SYMBOLS.BlogPost).to(BlogPost).inSingletonScope();
     // bind<PostingId>(SYMBOLS.PostingId).to(PostingId).inSingletonScope();
@@ -146,6 +152,10 @@ const module = new AsyncContainerModule(
     bind<GetCurSignUpProcessState>(SYMBOLS.GetCurSignUpProcessState).to(GetCurSignUpProcessState).inSingletonScope();
     bind<ReceiveSignUpProcessCommand>(SYMBOLS.ReceiveSignUpProcessCommand).to(ReceiveSignUpProcessCommand).inSingletonScope();
     bind<UndoLastSignUpProcessCommand>(SYMBOLS.UndoLastSignUpProcessCommand).to(UndoLastSignUpProcessCommand).inSingletonScope();
+
+    bind<AccountPageNickname>(SYMBOLS.AccountPageNickname).to(AccountPageNickname).inSingletonScope();
+    bind<AccountPageNicknameGetter>(SYMBOLS.AccountPageNicknameGetter).to(AccountPageNicknameGetter).inSingletonScope();
+    bind<AccountPageNicknameSetter>(SYMBOLS.AccountPageNicknameSetter).to(AccountPageNicknameSetter).inSingletonScope();
 
     // bind<PostingPostBodyObserver>(SYMBOLS.PostingPostBodyObserver).to(PostingPostBodyObserver);
     // bind<PostingPostTitleObserver>(SYMBOLS.PostingPostTitleObserver).to(PostingPostTitleObserver);

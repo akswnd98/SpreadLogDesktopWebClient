@@ -2,10 +2,10 @@ import 'reflect-metadata';
 import inversify, { injectable, inject } from 'inversify';
 import { SYMBOLS } from '@/src/symbols';
 import PostGraph from '.';
-import Node from '@/src/data-binding/Model/PostGraph/Node/inversified';
-import Edge from '@/src/data-binding/Model/PostGraph/Edge/inversified';
-import { DataType as PostNodeDataType } from '@/src/data-binding/Model/PostGraph/Node';
-import { DataType as PostEdgeDataType } from '@/src/data-binding/Model/PostGraph/Edge';
+import Node from '@/src/app/data-binding/Model/PostGraph/Node/inversified';
+import Edge from '@/src/app/data-binding/Model/PostGraph/Edge/inversified';
+import { DataType as PostNodeDataType } from '@/src/app/data-binding/Model/PostGraph/Node';
+import { DataType as PostEdgeDataType } from '@/src/app/data-binding/Model/PostGraph/Edge';
 import type { ParameterizableNewable } from '@/src/inversify';
 
 @injectable()

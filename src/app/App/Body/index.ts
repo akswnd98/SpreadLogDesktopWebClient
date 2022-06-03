@@ -6,7 +6,7 @@ import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
 import { Context, Router } from '@vaadin/router';
 import Element, { ConstructorParam as ParentConstructorParam } from '@/src/owl-element/Element';
-import AccountPage from './AccountPage';
+import AccountPage from './AccountPage/route';
 // import BlogPost from './Post/route';
 
 export type PayloadParam = {
@@ -27,7 +27,7 @@ export default class Body extends Element {
     });
     this.router = new Router(this.rootElement);
     this.router.setRoutes([
-      { path: '/:nickname', action: () => new AccountPage() }
+      { path: '/account/:nickname', action: () => new AccountPage() }
     ]);
     // this.router.setRoutes([
     //   { path: '/', action: () => graphVis },

@@ -1,18 +1,24 @@
 import ContainerElement from '@/src/elements/ContainerElement';
 import VerticalLayout, { ChildElementsType } from '@/src/elements/Layout/VerticalLayout';
 import 'reflect-metadata';
-import { injectable } from 'inversify';
-import LogoButton from './Logo';
+import { injectable, unmanaged } from 'inversify';
+import Logo from './Logo';
 import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
 import RightButton from './Right';
 
+export type ConstructorParam = {
+  logo: Logo;
+};
+
 @injectable()
 export default class Navigator extends ContainerElement<ChildElementsType> {
-  constructor () {
+  logo: Logo;
+
+  constructor (@unmanaged() payload: ConstructorParam) {
     super({
       childElements: [
-        new LogoButton(),
+        payload.logo,
         new RightButton(),
       ],
       layout: new VerticalLayout(),
@@ -20,6 +26,7 @@ export default class Navigator extends ContainerElement<ChildElementsType> {
         new Style({ styles: styles.toString() }),
       ],
     });
+    this.logo = payload.logo;
   }
 }
 

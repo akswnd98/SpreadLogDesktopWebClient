@@ -6,6 +6,8 @@ import styles from './index.scss';
 
 @injectable()
 export default class AccountPage extends Element {
+  nickname!: string;
+
   constructor () {
     super({
       attributes: [
