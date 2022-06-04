@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
 import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
-import ContainerElement from '@/src/elements/ContainerElement';
+import ContainerElement from '@/src/owl-element/Element/ContainerElement';
 import VerticalLayout, { ChildElementsType } from '@/src/elements/Layout/VerticalLayout';
 import Account from './Account';
 import Search from './Search';

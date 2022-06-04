@@ -2,6 +2,9 @@ const SYMBOLS = {
   App: Symbol.for('App'),
   AppNavigator: Symbol.for("AppNavigator"),
   AppBody: Symbol.for('AppBody'),
+  AccountPageElement: Symbol.for('AccountPageElement'),
+  PostGraphElement: Symbol.for('PostGraphElement'),
+  PostGraphNewNodeDialogPopup: Symbol.for('PostGraphNewNodeDialogPopup'),
   LoginPopupBodyLeft: Symbol.for('LoginPopupBodyLeft'),
   LoginPopupBodyRight: Symbol.for('LoginPopupBodyRight'),
   LoginProcessElement: Symbol.for('LoginProcessElement'),
@@ -80,6 +83,27 @@ const SYMBOLS = {
   AccountPageNickname: Symbol.for('AccountPageNickname'),
   AccountPageNicknameGetter: Symbol.for('AccountPageNicknameGetter'),
   AccountPageNicknameSetter: Symbol.for('AccountPageNicknameSetter'),
+
+  PostGraph: Symbol.for('PostGraph'),
+  InitialPostNodes: Symbol.for('InitialPostNodes'),
+  InitialPostEdges: Symbol.for('InitialPostEdges'),
+  PostGraphAddNode: Symbol.for('PostGraphAddNode'),
+  PostGraphDeleteNode: Symbol.for('PostGraphDeleteNode'),
+  PostGraphAddEdge: Symbol.for('PostGraphAddEdge'),
+  PostGraphDeleteEdge: Symbol.for('PostGraphDeleteEdge'),
+  PostGraphGetAllNodes: Symbol.for('PostGraphGetAllNodes'),
+  PostGraphGetAllEdges: Symbol.for('PostGraphGetAllEdges'),
+
+  ContextMenuPopup: Symbol.for('ContextMenuPopup'),
+  NodeContextMenuSelectedId: Symbol.for('NodeContextMenuSelectedId'),
+  NodeContextMenuSelectedIdGetter: Symbol.for('NodeContextMenuSelectedIdGetter'),
+  NodeContextMenuSelectedIdSetter: Symbol.for('NodeContextMenuSelectedIdSetter'),
+  EdgeContextMenuSelectedId: Symbol.for('EdgeContextMenuSelectedId'),
+  EdgeContextMenuSelectedIdGetter: Symbol.for('EdgeContextMenuSelectedIdGetter'),
+  EdgeContextMenuSelectedIdSetter: Symbol.for('EdgeContextMenuSelectedIdSetter'),
+  CurrentNewNodeTitle: Symbol.for('CurrentNewNodeTitle'),
+  CurrentNewNodeTitleGetter: Symbol.for('CurrentNewNodeTitleGetter'),
+  CurrentNewNodeTitleSetter: Symbol.for('CurrentNewNodeTitleSetter'),
 };
 
 export {

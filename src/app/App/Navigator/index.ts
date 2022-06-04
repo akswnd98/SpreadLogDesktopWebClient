@@ -1,4 +1,4 @@
-import ContainerElement from '@/src/elements/ContainerElement';
+import ContainerElement from '@/src/owl-element/Element/ContainerElement';
 import VerticalLayout, { ChildElementsType } from '@/src/elements/Layout/VerticalLayout';
 import 'reflect-metadata';
 import { injectable, unmanaged } from 'inversify';

@@ -1,12 +1,12 @@
-import PostGraph, { DataType } from '@/src/data-binding/Model/PostGraph';
-import { DataType as EdgeDataType } from '@/src/data-binding/Model/PostGraph/Edge';
+import PostGraph, { DataType } from '@/src/app/data-binding/Model/PostGraph';
+import { DataType as EdgeDataType } from '@/src/app/data-binding/Model/PostGraphEdge';
 import ModelNotifier from '@/src/data-binding/ModelNotifier';
 import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
 import { SYMBOLS } from '@/src/admin/types';
 import Static from '@/src/admin/inversify.config';
 import { ParameterizableNewable } from '@/src/inversify';
-import Edge from '@/src/data-binding/Model/PostGraph/Edge/inversified';
+import Edge from '@/src/app/data-binding/Model/PostGraphEdge/inversified';
 import { SYMBOLS as BasicSYMBOLS } from '@/src/symbols';
 import AddPostEdgeObserver from '../../Observer/AddPostEdge';
 

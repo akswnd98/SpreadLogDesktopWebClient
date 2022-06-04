@@ -1,9 +1,9 @@
 import { AsyncContainerModule, interfaces } from 'inversify';
 import { SYMBOLS } from './types';
 import { getAllNodeSummary } from '../api/post';
-import Node from '@/src/data-binding/Model/PostGraph/Node/inversified';
-import { ConstructorParam as PostNodeConstructorParam } from '@/src/data-binding/Model/PostGraph/Node';
-import PostGraph from '../data-binding/Model/PostGraph/inversified';
+import Node from '@/src/app/data-binding/Model/PostGraph/PostGraphNode/inversified';
+import { ConstructorParam as PostNodeConstructorParam } from '@/src/app/data-binding/Model/PostGraph/PostGraphNode';
+import PostGraph from '../app/data-binding/Model/PostGraph/inversified';
 import { ParameterizableNewable } from '../inversify';
 import EBAdmin from './EBAdmin/inversified';
 import EBGraphVis from './EBAdmin/GraphVis';

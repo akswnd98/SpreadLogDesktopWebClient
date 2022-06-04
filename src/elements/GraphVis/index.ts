@@ -6,16 +6,13 @@ import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
 
 export type ConstructorParam = {
-  nodes: VisNetwork.DataSet<VisNetwork.Node>;
-  edges: VisNetwork.DataSet<VisNetwork.Edge>;
-  network: VisNetwork.Network;
 } & ParentConstructorParam;
 
 @injectable()
-export default class GraphVis extends Element {
-  nodes: VisNetwork.DataSet<VisNetwork.Node>;
-  edges: VisNetwork.DataSet<VisNetwork.Edge>;
-  network: VisNetwork.Network;
+export default abstract class GraphVis extends Element {
+  abstract nodes: VisNetwork.DataSet<VisNetwork.Node>;
+  abstract edges: VisNetwork.DataSet<VisNetwork.Edge>;
+  abstract network: VisNetwork.Network;
 
   constructor (payload: ConstructorParam) {
     super({
@@ -25,10 +22,5 @@ export default class GraphVis extends Element {
         new Style({ styles: styles.toString()}),
       ],
     });
-    this.nodes = payload.nodes;
-    this.edges = payload.edges;
-    this.network = payload.network;
   }
 }
-
-customElements.define('graph-vis', GraphVis);

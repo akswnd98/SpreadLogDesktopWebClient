@@ -5,7 +5,7 @@ import ContextMenuPopup from '@/src/admin/EBAdmin/ContextMenuPopup';
 import { SYMBOLS } from '@/src/admin/types';
 import Static from '@/src/admin/inversify.config';
 import Body from '../ContextMenuBody';
-import PostGraph from '@/src/data-binding/Model/PostGraph';
+import PostGraph from '@/src/app/data-binding/Model/PostGraph';
 import { SYMBOLS as BasicSYMBOLS } from '@/src/symbols';
 
 @injectable()

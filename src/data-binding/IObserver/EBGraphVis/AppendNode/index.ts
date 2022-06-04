@@ -1,7 +1,7 @@
 import IObserver from '@/src/data-binding/IObserver';
 import INotifier from '@/src/data-binding/INotifier';
 import EBGraphVis from '@/src/admin/EBAdmin/GraphVis';
-import Node from '@/src/data-binding/Model/PostGraph/Node';
+import Node from '@/src/app/data-binding/Model/PostGraph/PostGraphNode';
 import 'reflect-metadata';
 import { injectable, unmanaged } from 'inversify';
 

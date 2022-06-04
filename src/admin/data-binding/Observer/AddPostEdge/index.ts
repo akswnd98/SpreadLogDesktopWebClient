@@ -1,5 +1,5 @@
 import IObserver from '@/src/data-binding/IObserver';
-import { DataType } from '@/src/data-binding/Model/PostGraph/Edge';
+import { DataType } from '@/src/app/data-binding/Model/PostGraphEdge';
 import AddPostEdgeNotifier from '@/src/admin/data-binding/ModelNotifier/AddPostEdge';
 import 'reflect-metadata';
 import { injectable } from 'inversify';

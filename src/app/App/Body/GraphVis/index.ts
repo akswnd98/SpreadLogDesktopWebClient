@@ -1,4 +1,4 @@
-import EBGraphVis from '@/src/EBGraphVis';
+import GraphVis from '@/src/elements/GraphVis';
 import 'reflect-metadata';
 import { injectable, inject } from 'inversify';
 import * as VisNetwork from 'vis-network/standalone';
@@ -7,11 +7,11 @@ import { SYMBOLS as BasicSYMBOLS } from '@/src/symbols';
 import { SYMBOLS } from '@/src/symbols';
 import Style from '@/src/elements/EBAttribute/Style';
 import styles from './index.scss';
-import PostGraphModel from '@/src/data-binding/Model/PostGraph';
+import PostGraphModel from '@/src/app/data-binding/Model/PostGraph';
 import ClickHandler from './ClickHandler';
 
 @injectable()
-export default class GraphVis extends EBGraphVis {
+export default class GraphVis extends GraphVis {
   nodes: VisNetwork.DataSet<VisNetwork.Node>;
   edges: VisNetwork.DataSet<VisNetwork.Edge>;
   network: VisNetworkWrapper;

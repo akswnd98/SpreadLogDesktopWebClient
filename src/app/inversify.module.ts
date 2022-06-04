@@ -3,6 +3,9 @@ import { SYMBOLS } from './symbols';
 import App from './App';
 import AppBody from './App/Body';
 import AppNavigator from './App/Navigator/inversified';
+import AccountPageElement from './App/Body/AccountPage/route';
+import PostGraphElement from './App/Body/AccountPage/PostGraph';
+import PostGraphNewNodeDialogPopup from './App/Body/AccountPage/PostGraph/NewDialogPopup';
 // import GraphVis from './App/Body/GraphVis';
 // import BlogPost from './App/Body/Post/route';
 // import PostingId from './data-binding/Model/PostingId';
@@ -72,6 +75,27 @@ import CurrentSignUpCertSerialGetter from './data-binding/Operator/CurrentSignUp
 import AccountPageNickname from './data-binding/Model/AccountPageNickname';
 import AccountPageNicknameGetter from './data-binding/Operator/AccountPageNickname/Getter';
 import AccountPageNicknameSetter from './data-binding/Operator/AccountPageNickname/Setter';
+import PostGraph from './data-binding/Model/PostGraph/inversified';
+import PostGraphAddNode from './data-binding/Operator/PostGraph/AddNode';
+import PostGraphAddEdge from './data-binding/Operator/PostGraph/AddEdge';
+import PostGraphDeleteNode from './data-binding/Operator/PostGraph/DeleteNode';
+import PostGraphDeleteEdge from './data-binding/Operator/PostGraph/DeleteEdge';
+import PostGraphGetAllNodes from './data-binding/Operator/PostGraph/GetAllNodes';
+import PostGraphGetAllEdges from './data-binding/Operator/PostGraph/GetAllEdges';
+import { getInitialPostEdges, getInitialPostNodes } from './initialize';
+import InitialPostEdges from './data-binding/DataStruct/InitialPostEdges';
+import InitialPostNodes from './data-binding/DataStruct/InitialPostNodes';
+
+import ContextMenuPopup from '../elements/ContextMenuPopup/inversified';
+import NodeContextMenuSelectedId from './data-binding/Model/NodeContextMenuSelectedId';
+import EdgeContextMenuSelectedId from './data-binding/Model/EdgeContextMenuSelectedId';
+import NodeContextMenuSelectedIdGetter from './data-binding/Operator/NodeContextMenuSelectedId/Getter';
+import NodeContextMenuSelectedIdSetter from './data-binding/Operator/NodeContextMenuSelectedId/Setter';
+import EdgeContextMenuSelectedIdGetter from './data-binding/Operator/EdgeContextMenuSelectedId/Getter';
+import EdgeContextMenuSelectedIdSetter from './data-binding/Operator/EdgeContextMenuSelectedId/Setter';
+import CurrentNewNodeTitle from './data-binding/Model/CurrentNewNodeTitle';
+import CurrentNewNodeTitleGetter from './data-binding/Operator/CurrentNewNodeTitle/Getter';
+import CurrentNewNodeTitleSetter from './data-binding/Operator/CurrentNewNodeTitle/Setter';
 
 // import PostingPostBodyObserver from '@/src/app/data-binding/Observer/PostingPost/Body';
 // import PostingPostTitleObserver from '@/src/app/data-binding/Observer/PostingPost/Title';
@@ -84,6 +108,9 @@ const module = new AsyncContainerModule(
     bind<App>(SYMBOLS.App).to(App).inSingletonScope();
     bind<AppBody>(SYMBOLS.AppBody).to(AppBody).inSingletonScope();
     bind<AppNavigator>(SYMBOLS.AppNavigator).to(AppNavigator).inSingletonScope();
+    bind<AccountPageElement>(SYMBOLS.AccountPageElement).to(AccountPageElement).inSingletonScope();
+    bind<PostGraphElement>(SYMBOLS.PostGraphElement).to(PostGraphElement).inSingletonScope();
+    bind<PostGraphNewNodeDialogPopup>(SYMBOLS.PostGraphNewNodeDialogPopup).to(PostGraphNewNodeDialogPopup).inSingletonScope();
     // bind<GraphVis>(SYMBOLS.GraphVis).to(GraphVis).inSingletonScope();
     // bind<BlogPost>(SYMBOLS.BlogPost).to(BlogPost).inSingletonScope();
     // bind<PostingId>(SYMBOLS.PostingId).to(PostingId).inSingletonScope();
@@ -157,6 +184,27 @@ const module = new AsyncContainerModule(
     bind<AccountPageNicknameGetter>(SYMBOLS.AccountPageNicknameGetter).to(AccountPageNicknameGetter).inSingletonScope();
     bind<AccountPageNicknameSetter>(SYMBOLS.AccountPageNicknameSetter).to(AccountPageNicknameSetter).inSingletonScope();
 
+    bind<PostGraph>(SYMBOLS.PostGraph).to(PostGraph).inSingletonScope();
+    bind<InitialPostNodes>(SYMBOLS.InitialPostNodes).toConstantValue(await getInitialPostNodes());
+    bind<InitialPostEdges>(SYMBOLS.InitialPostEdges).toConstantValue(await getInitialPostEdges());
+    bind<PostGraphAddNode>(SYMBOLS.PostGraphAddNode).to(PostGraphAddNode).inSingletonScope();
+    bind<PostGraphAddEdge>(SYMBOLS.PostGraphAddEdge).to(PostGraphAddEdge).inSingletonScope();
+    bind<PostGraphDeleteNode>(SYMBOLS.PostGraphDeleteNode).to(PostGraphDeleteNode).inSingletonScope();
+    bind<PostGraphDeleteEdge>(SYMBOLS.PostGraphDeleteEdge).to(PostGraphDeleteEdge).inSingletonScope();
+    bind<PostGraphGetAllNodes>(SYMBOLS.PostGraphGetAllNodes).to(PostGraphGetAllNodes).inSingletonScope();
+    bind<PostGraphGetAllEdges>(SYMBOLS.PostGraphGetAllEdges).to(PostGraphGetAllEdges).inSingletonScope();
+
+    bind<ContextMenuPopup>(SYMBOLS.ContextMenuPopup).to(ContextMenuPopup).inSingletonScope();
+    bind<NodeContextMenuSelectedId>(SYMBOLS.NodeContextMenuSelectedId).to(NodeContextMenuSelectedId).inSingletonScope();
+    bind<EdgeContextMenuSelectedId>(SYMBOLS.EdgeContextMenuSelectedId).to(EdgeContextMenuSelectedId).inSingletonScope();
+    bind<NodeContextMenuSelectedIdGetter>(SYMBOLS.NodeContextMenuSelectedIdGetter).to(NodeContextMenuSelectedIdGetter).inSingletonScope();
+    bind<NodeContextMenuSelectedIdSetter>(SYMBOLS.NodeContextMenuSelectedIdSetter).to(NodeContextMenuSelectedIdSetter).inSingletonScope();
+    bind<EdgeContextMenuSelectedIdGetter>(SYMBOLS.EdgeContextMenuSelectedIdGetter).to(EdgeContextMenuSelectedIdGetter).inSingletonScope();
+    bind<EdgeContextMenuSelectedIdSetter>(SYMBOLS.EdgeContextMenuSelectedIdSetter).to(EdgeContextMenuSelectedIdSetter).inSingletonScope();
+    
+    bind<CurrentNewNodeTitle>(SYMBOLS.CurrentNewNodeTitle).to(CurrentNewNodeTitle).inSingletonScope();
+    bind<CurrentNewNodeTitleGetter>(SYMBOLS.CurrentNewNodeTitleGetter).to(CurrentNewNodeTitleGetter).inSingletonScope();
+    bind<CurrentNewNodeTitleSetter>(SYMBOLS.CurrentNewNodeTitleSetter).to(CurrentNewNodeTitleSetter).inSingletonScope();
     // bind<PostingPostBodyObserver>(SYMBOLS.PostingPostBodyObserver).to(PostingPostBodyObserver);
     // bind<PostingPostTitleObserver>(SYMBOLS.PostingPostTitleObserver).to(PostingPostTitleObserver);
     // bind<PostingPostDateObserver>(SYMBOLS.PostingPostDateObserver).to(PostingPostDateObserver);

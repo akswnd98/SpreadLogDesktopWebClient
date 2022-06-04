@@ -1,25 +1,24 @@
 import 'reflect-metadata';
 import inversify, { injectable, inject } from 'inversify';
-import { SYMBOLS } from '@/src/symbols';
+import { SYMBOLS } from '@/src/app/symbols';
 import PostGraph from '.';
-import Node from '@/src/app/data-binding/Model/PostGraph/Node/inversified';
-import Edge from '@/src/app/data-binding/Model/PostGraph/Edge/inversified';
-import { DataType as PostNodeDataType } from '@/src/app/data-binding/Model/PostGraph/Node';
-import { DataType as PostEdgeDataType } from '@/src/app/data-binding/Model/PostGraph/Edge';
 import type { ParameterizableNewable } from '@/src/inversify';
+import type InitialPostNodes from '../../DataStruct/InitialPostNodes';
+import type InitialPostEdges from '../../DataStruct/InitialPostEdges';
+import { type NodeType } from '../../DataStruct/InitialPostNodes';
+import { type EdgeType } from '../../DataStruct/InitialPostEdges';
 
 @injectable()
 export default class Inversified extends PostGraph {
   constructor (
-    @inject(SYMBOLS.PostNodeSummaries) postNodeSummaries: PostNodeDataType[],
-    @inject(SYMBOLS.PostEdges) postEdges: PostEdgeDataType[],
-    @inject(SYMBOLS.PostNodeNewable) postNodeNewable: ParameterizableNewable<Node, ConstructorParameters<typeof Node>>,
-    @inject(SYMBOLS.PostEdgeNewable) postEdgeNewable: ParameterizableNewable<Edge, ConstructorParameters<typeof Edge>>,
+    @inject(SYMBOLS.InitialPostNodes) initialPostNodes: InitialPostNodes,
+    @inject(SYMBOLS.InitialPostEdges) InitialPostEdges: InitialPostEdges,
   ) {
+    console.log(initialPostNodes, InitialPostEdges);
     super({
       data: {
-        nodes: new Map<number, Node>(postNodeSummaries.map((v) => [v.id, new postNodeNewable(v.id, v.title)])),
-        edges: new Map<number, Edge>(postEdges.map((v) => [v.id, new postEdgeNewable(v.id, v.fromId, v.toId)])),
+        nodes: new Map<number, NodeType>(initialPostNodes.map((v) => [v.id, v])),
+        edges: new Map<number, EdgeType>(InitialPostEdges.map((v) => [v.id, v])),
       },
     });
   }

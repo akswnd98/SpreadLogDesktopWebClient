@@ -3,7 +3,7 @@ import { SYMBOLS as BasicSYMBOLS } from '@/src/symbols';
 import 'reflect-metadata';
 import { injectable, inject } from 'inversify';
 import ModelNotifier from '@/src/data-binding/ModelNotifier';
-import PostGraph, { DataType } from '@/src/data-binding/Model/PostGraph';
+import PostGraph, { DataType } from '@/src/app/data-binding/Model/PostGraph';
 import PostGraphDeleteNodeObserver from '@/src/data-binding/IObserver/EBGraphVis/DeleteNode/inversified';
 import DeletePostEdgeObserver from '@/src/admin/data-binding/Observer/DeletePostEdge';
 

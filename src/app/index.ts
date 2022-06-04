@@ -4,6 +4,8 @@ import ContainerStatic from './inversify.config';
 import { SYMBOLS } from './symbols';
 // import { SYMBOLS as BasicSYMBOLS } from '../symbols';
 import LoginPopup from './App/LoginPopup';
+import ContextMenuPopup from '../elements/ContextMenuPopup';
+import PostGraphNewNodeDialogPopup from './App/Body/AccountPage/PostGraph/NewDialogPopup';
 // import PostGraph from '../data-binding/Model/PostGraph';
 
 (async () => {
@@ -17,4 +19,6 @@ import LoginPopup from './App/LoginPopup';
   root.appendChild(container.get<App>(SYMBOLS.App));
 
   document.body.appendChild(container.get<LoginPopup>(SYMBOLS.LoginPopup));
+  document.body.appendChild(container.get<ContextMenuPopup>(SYMBOLS.ContextMenuPopup));
+  document.body.appendChild(container.get<PostGraphNewNodeDialogPopup>(SYMBOLS.PostGraphNewNodeDialogPopup));
 })();

@@ -7,7 +7,7 @@ import ContextMenuHandler from './Handler/ContextMenu';
 import EBGraphVis, { ConstructorParam as ParentConstructorParam } from '@/src/EBGraphVis';
 import { SYMBOLS } from '../../types';
 import { SYMBOLS as BasicSYMBOLS } from '@/src/symbols';
-import PostGraph from '@/src/data-binding/Model/PostGraph';
+import PostGraph from '@/src/app/data-binding/Model/PostGraph';
 import VisNetworkWrapper from '@/src/VisNetworkWrapper';
 import NodeContextMenuHandler from './VisNetworkHandler/NodeContextMenu';
 import NodeDoubleClick from './VisNetworkHandler/NodeDoubleClick';

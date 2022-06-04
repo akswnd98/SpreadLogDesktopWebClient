@@ -1,10 +1,10 @@
 import { SYMBOLS } from '@/src/admin/types';
 import { SYMBOLS as BasicSYMBOLS } from '@/src/symbols';
-import Node from '@/src/data-binding/Model/PostGraph/Node';
+import Node from '@/src/app/data-binding/Model/PostGraph/PostGraphNode';
 import 'reflect-metadata';
 import { injectable, inject } from 'inversify';
 import ModelNotifier from '../..';
-import PostGraph, { DataType } from '../../../Model/PostGraph';
+import PostGraph, { DataType } from '../../../../app/data-binding/Model/PostGraph';
 import PostGraphAppendNodeObserver from '@/src/data-binding/IObserver/EBGraphVis/AppendNode/inversified';
 
 @injectable()

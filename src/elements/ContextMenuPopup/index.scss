@@ -1,0 +1,40 @@
+.root {
+  position: absolute;
+  width: 300px;
+  z-index: 100;
+  background-color: #d9d9d980;
+}
+
+.show {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-name: show;
+}
+
+.hide {
+  animation-duration: 0s;
+  animation-fill-mode: forwards;
+  animation-name: hide;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    visibility: visible;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes hide {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

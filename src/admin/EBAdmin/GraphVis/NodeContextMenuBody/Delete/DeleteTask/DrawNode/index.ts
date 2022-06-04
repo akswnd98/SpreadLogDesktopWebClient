@@ -4,7 +4,7 @@ import { SYMBOLS as BasicSYMBOLS } from '@/src/symbols';
 import { SYMBOLS } from '@/src/admin/types';
 import ServerNode from '../ServerNode';
 import PostGraphDeleteNodeNotifier from '@/src/data-binding/ModelNotifier/PostGraph/DeleteNode';
-import PostGraph from '@/src/data-binding/Model/PostGraph';
+import PostGraph from '@/src/app/data-binding/Model/PostGraph';
 import DeletePostEdgeNotifier from '@/src/admin/data-binding/ModelNotifier/DeletePostEdge';
 
 export type PrevNodes = {

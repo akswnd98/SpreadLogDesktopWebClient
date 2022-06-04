@@ -59,6 +59,7 @@
     "micromark-extension-math": "^2.0.2",
     "multer": "^1.4.4",
     "nodemon": "^2.0.15",
+    "path-parser": "^6.1.0",
     "perfect-scrollbar": "^1.5.5",
     "priorityqueuejs": "^2.0.0",
     "qs": "^6.10.3",
