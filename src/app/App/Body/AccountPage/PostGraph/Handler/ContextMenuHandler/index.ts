@@ -4,22 +4,25 @@ import { inject, injectable } from 'inversify';
 import ContextMenuPopup from '@/src/elements/ContextMenuPopup';
 import { SYMBOLS } from '@/src/app/symbols';
 import Static from '@/src/app/inversify.config';
-import ContextMenuBody from './ContextMenuBody';
+import ContextMenuBody from './Generator/Interface/My/Element';
+import AccountGetter from '@/src/app/data-binding/Operator/Account/Getter';
+import AccountPageNicknameGetter from '@/src/app/data-binding/Operator/AccountPageNickname/Getter';
+import Generator from './Generator';
 
 @injectable()
 export default class ContextMenu extends Handler<'contextmenu'> {
   eventName: 'contextmenu' = 'contextmenu';
 
-  body: ContextMenuBody;
-
   constructor () {
     super({ id: 'root' });
-    this.body = new ContextMenuBody();
   }
 
   async handle (event: MouseEvent) {
     event.preventDefault();
     const popup = Static.instance.get<ContextMenuPopup>(SYMBOLS.ContextMenuPopup);
-    popup.show({ x: event.clientX, y: event.clientY }, this.body);
+    const generated = (new Generator()).generate();
+    if (generated !== undefined) {
+      popup.show({ x: event.clientX, y: event.clientY }, generated);
+    }
   }
 }

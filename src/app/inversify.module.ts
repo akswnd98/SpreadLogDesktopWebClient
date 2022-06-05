@@ -99,6 +99,7 @@ import CurrentNewNodeTitleGetter from './data-binding/Operator/CurrentNewNodeTit
 import CurrentNewNodeTitleSetter from './data-binding/Operator/CurrentNewNodeTitle/Setter';
 
 import Account from './data-binding/Model/Account';
+import AccountGetter from './data-binding/Operator/Account/Getter';
 import AccountAvatar from './data-binding/RuleBaseBinder/AccountAvatar';
 
 // import PostingPostBodyObserver from '@/src/app/data-binding/Observer/PostingPost/Body';
@@ -213,6 +214,7 @@ const module = new AsyncContainerModule(
 
     const loginInfo = await getLoginInfo();
     bind<Account>(SYMBOLS.Account).toConstantValue(new Account({ ...loginInfo }));
+    bind<AccountGetter>(SYMBOLS.AccountGetter).to(AccountGetter).inSingletonScope();
 
     await (new AccountAvatar()).bind({ isLoggedIn: loginInfo.isLoggedIn }, { bind, nickname: loginInfo.nickname });
 

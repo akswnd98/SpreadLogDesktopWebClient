@@ -107,6 +107,7 @@ const SYMBOLS = {
   CurrentNewNodeTitleSetter: Symbol.for('CurrentNewNodeTitleSetter'),
 
   Account: Symbol.for('Account'),
+  AccountGetter: Symbol.for('AccountGetter'),
   AccountAvatarElement: Symbol.for('AccountAvatarElement'),
 };
 
