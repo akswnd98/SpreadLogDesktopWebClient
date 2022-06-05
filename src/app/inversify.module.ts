@@ -3,6 +3,7 @@ import { SYMBOLS } from './symbols';
 import App from './App';
 import AppBody from './App/Body';
 import AppNavigator from './App/Navigator/inversified';
+import AppNavigatorRightButton from './App/Navigator/Right';
 import AccountPageElement from './App/Body/AccountPage/route';
 import PostGraphElement from './App/Body/AccountPage/PostGraph';
 import PostGraphNewNodeDialogPopup from './App/Body/AccountPage/PostGraph/NewDialogPopup';
@@ -82,7 +83,7 @@ import PostGraphDeleteNode from './data-binding/Operator/PostGraph/DeleteNode';
 import PostGraphDeleteEdge from './data-binding/Operator/PostGraph/DeleteEdge';
 import PostGraphGetAllNodes from './data-binding/Operator/PostGraph/GetAllNodes';
 import PostGraphGetAllEdges from './data-binding/Operator/PostGraph/GetAllEdges';
-import { getInitialPostEdges, getInitialPostNodes } from './initialize';
+import { getInitialPostEdges, getInitialPostNodes, getLoginInfo } from './initialize';
 import InitialPostEdges from './data-binding/DataStruct/InitialPostEdges';
 import InitialPostNodes from './data-binding/DataStruct/InitialPostNodes';
 
@@ -97,6 +98,9 @@ import CurrentNewNodeTitle from './data-binding/Model/CurrentNewNodeTitle';
 import CurrentNewNodeTitleGetter from './data-binding/Operator/CurrentNewNodeTitle/Getter';
 import CurrentNewNodeTitleSetter from './data-binding/Operator/CurrentNewNodeTitle/Setter';
 
+import Account from './data-binding/Model/Account';
+import AccountAvatar from './data-binding/RuleBaseBinder/AccountAvatar';
+
 // import PostingPostBodyObserver from '@/src/app/data-binding/Observer/PostingPost/Body';
 // import PostingPostTitleObserver from '@/src/app/data-binding/Observer/PostingPost/Title';
 // import PostingPostDateObserver from '@/src/app/data-binding/Observer/PostingPost/Date';
@@ -108,6 +112,7 @@ const module = new AsyncContainerModule(
     bind<App>(SYMBOLS.App).to(App).inSingletonScope();
     bind<AppBody>(SYMBOLS.AppBody).to(AppBody).inSingletonScope();
     bind<AppNavigator>(SYMBOLS.AppNavigator).to(AppNavigator).inSingletonScope();
+    bind<AppNavigatorRightButton>(SYMBOLS.AppNavigatorRightButton).to(AppNavigatorRightButton).inSingletonScope();
     bind<AccountPageElement>(SYMBOLS.AccountPageElement).to(AccountPageElement).inSingletonScope();
     bind<PostGraphElement>(SYMBOLS.PostGraphElement).to(PostGraphElement).inSingletonScope();
     bind<PostGraphNewNodeDialogPopup>(SYMBOLS.PostGraphNewNodeDialogPopup).to(PostGraphNewNodeDialogPopup).inSingletonScope();
@@ -205,6 +210,12 @@ const module = new AsyncContainerModule(
     bind<CurrentNewNodeTitle>(SYMBOLS.CurrentNewNodeTitle).to(CurrentNewNodeTitle).inSingletonScope();
     bind<CurrentNewNodeTitleGetter>(SYMBOLS.CurrentNewNodeTitleGetter).to(CurrentNewNodeTitleGetter).inSingletonScope();
     bind<CurrentNewNodeTitleSetter>(SYMBOLS.CurrentNewNodeTitleSetter).to(CurrentNewNodeTitleSetter).inSingletonScope();
+
+    const loginInfo = await getLoginInfo();
+    bind<Account>(SYMBOLS.Account).toConstantValue(new Account({ ...loginInfo }));
+
+    await (new AccountAvatar()).bind({ isLoggedIn: loginInfo.isLoggedIn }, { bind, nickname: loginInfo.nickname });
+
     // bind<PostingPostBodyObserver>(SYMBOLS.PostingPostBodyObserver).to(PostingPostBodyObserver);
     // bind<PostingPostTitleObserver>(SYMBOLS.PostingPostTitleObserver).to(PostingPostTitleObserver);
     // bind<PostingPostDateObserver>(SYMBOLS.PostingPostDateObserver).to(PostingPostDateObserver);

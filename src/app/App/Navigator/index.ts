@@ -9,6 +9,7 @@ import RightButton from './Right';
 
 export type ConstructorParam = {
   logo: Logo;
+  rightButton: RightButton,
 };
 
 @injectable()
@@ -19,7 +20,7 @@ export default class Navigator extends ContainerElement<ChildElementsType> {
     super({
       childElements: [
         payload.logo,
-        new RightButton(),
+        payload.rightButton,
       ],
       layout: new VerticalLayout(),
       attributes: [

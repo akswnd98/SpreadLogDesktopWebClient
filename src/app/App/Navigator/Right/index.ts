@@ -5,13 +5,15 @@ import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
 import ContainerElement from '@/src/owl-element/Element/ContainerElement';
 import VerticalLayout, { ChildElementsType } from '@/src/elements/Layout/VerticalLayout';
-import Account from './Account';
 import Search from './Search';
 import ViewGraph from './ViewGraph';
+import { SYMBOLS } from '@/src/app/symbols';
 
 @injectable()
 export default class RightButton extends ContainerElement<ChildElementsType> {
-  constructor () {
+  constructor (
+    @inject(SYMBOLS.AccountAvatarElement) accountAvatarElement: Element,
+  ) {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
@@ -20,9 +22,10 @@ export default class RightButton extends ContainerElement<ChildElementsType> {
       childElements: [
         new Search(),
         new ViewGraph(),
-        new Account(),
+        accountAvatarElement,
       ],
     });
+    console.log(accountAvatarElement);
   }
 }
 

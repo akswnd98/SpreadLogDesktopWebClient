@@ -1,6 +1,7 @@
 const SYMBOLS = {
   App: Symbol.for('App'),
-  AppNavigator: Symbol.for("AppNavigator"),
+  AppNavigator: Symbol.for('AppNavigator'),
+  AppNavigatorRightButton: Symbol.for('AppNavigatorRightButton'),
   AppBody: Symbol.for('AppBody'),
   AccountPageElement: Symbol.for('AccountPageElement'),
   PostGraphElement: Symbol.for('PostGraphElement'),
@@ -104,6 +105,9 @@ const SYMBOLS = {
   CurrentNewNodeTitle: Symbol.for('CurrentNewNodeTitle'),
   CurrentNewNodeTitleGetter: Symbol.for('CurrentNewNodeTitleGetter'),
   CurrentNewNodeTitleSetter: Symbol.for('CurrentNewNodeTitleSetter'),
+
+  Account: Symbol.for('Account'),
+  AccountAvatarElement: Symbol.for('AccountAvatarElement'),
 };
 
 export {

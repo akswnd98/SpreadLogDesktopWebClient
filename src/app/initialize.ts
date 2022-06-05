@@ -20,3 +20,23 @@ export async function getInitialPostEdges () {
     return (await axios.get('/api/post/getAllPostEdges', { params: { ...test } })).data.list;
   }
 }
+
+export async function getLoginInfo () {
+  try {
+    if ((await axios.get('/api/account/email/login/checkIsLoggedIn')).data.result) {
+      return {
+        isLoggedIn: true,
+        ...(await axios.get('/api/account/email/logged-in/getLoginInfo')).data,
+      }
+    } else {
+      return {
+        isLoggedIn: false,
+        id: -1,
+        nickname: '',
+      };
+    }
+  } catch (e) {
+    console.log(e);
+    return undefined;
+  }
+}
