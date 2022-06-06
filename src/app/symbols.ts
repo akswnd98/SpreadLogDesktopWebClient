@@ -6,6 +6,8 @@ const SYMBOLS = {
   AccountPageElement: Symbol.for('AccountPageElement'),
   PostGraphElement: Symbol.for('PostGraphElement'),
   PostGraphNewNodeDialogPopup: Symbol.for('PostGraphNewNodeDialogPopup'),
+  EditorPopup: Symbol.for('EditorPopup'),
+  EditorPopupBody: Symbol.for('EditorPopupBody'),
   LoginPopupBodyLeft: Symbol.for('LoginPopupBodyLeft'),
   LoginPopupBodyRight: Symbol.for('LoginPopupBodyRight'),
   LoginProcessElement: Symbol.for('LoginProcessElement'),
@@ -94,6 +96,7 @@ const SYMBOLS = {
   PostGraphDeleteEdge: Symbol.for('PostGraphDeleteEdge'),
   PostGraphGetAllNodes: Symbol.for('PostGraphGetAllNodes'),
   PostGraphGetAllEdges: Symbol.for('PostGraphGetAllEdges'),
+  PostGraphUpdateNode: Symbol.for('PostGraphUpdateNode'),
 
   ContextMenuPopup: Symbol.for('ContextMenuPopup'),
   NodeContextMenuSelectedId: Symbol.for('NodeContextMenuSelectedId'),
@@ -109,6 +112,11 @@ const SYMBOLS = {
   Account: Symbol.for('Account'),
   AccountGetter: Symbol.for('AccountGetter'),
   AccountAvatarElement: Symbol.for('AccountAvatarElement'),
+
+  EditingPostId: Symbol.for('EditingPostId'),
+  EditingPostIdNotifier: Symbol.for('EditingPostIdNotifier'),
+  EditorBodyObserver: Symbol.for('EditorBodyObserver'),
+  EditorTitleObserver: Symbol.for('EditorTitleObserver'),
 };
 
 export {

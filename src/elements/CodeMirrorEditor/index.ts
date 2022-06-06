@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { injectable, unmanaged } from 'inversify';
-import EBElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
-import Style from '@/src/elements/EBAttribute/Style';
+import Element, { ConstructorParam as ParentConstructorParam } from '@/src/owl-element/Element';
+import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
 import cmStyles from 'codemirror/lib/codemirror.css';
 import themeStyles from 'codemirror/theme/3024-day.css';
@@ -14,7 +14,7 @@ export type ConstructorParam = {
 } & ParentConstructorParam;
 
 @injectable()
-export default class Editor extends EBElement {
+export default class CodeMirrorEditor extends Element {
   editor: CodeMirror.Editor;
 
   constructor (@unmanaged() payload: ConstructorParam) {
@@ -41,4 +41,4 @@ export default class Editor extends EBElement {
   }
 }
 
-customElements.define('eb-code-mirror-editor', Editor);
+customElements.define('code-mirror-editor', CodeMirrorEditor);

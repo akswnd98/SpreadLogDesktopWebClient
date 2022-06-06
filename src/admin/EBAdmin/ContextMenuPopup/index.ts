@@ -1,5 +1,5 @@
 import { SYMBOLS } from '@/src/admin/types';
-import EBContextMenuPopup, { CordType } from '@/src/EBContextMenuPopup';
+import EBContextMenuPopup, { CordType } from '@/src/elements/ContextMenuPopup';
 import CssClass from '@/src/elements/PopupInterface/CssClass';
 import { inject, injectable } from 'inversify';
 import EmptyBody from './EmptyBody';

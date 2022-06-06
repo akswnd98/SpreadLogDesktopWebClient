@@ -1,7 +1,7 @@
-import Renderer from '@/src/Renderer';
+import Renderer from '@/src/owl-element/Renderer';
 import 'reflect-metadata';
 import { injectable } from 'inversify';
-import EBCodeMirrorEditor from '@/src/EBCodeMirrorEditor';
+import CodeMirrorEditor from '..';
 import { render, html } from 'lit-html';
 
 export type ConstructorParam = {
@@ -13,7 +13,7 @@ export default class EditorRenderer extends Renderer {
     super();
   }
 
-  render (element: EBCodeMirrorEditor) {
+  render (element: CodeMirrorEditor) {
     render(
       html`
         ${element.editor.getWrapperElement()}

@@ -25,4 +25,4 @@ export default class NewDialog extends Dialog {
   }
 }
 
-customElements.define('eb-new-dialog', NewDialog);
+customElements.define('new-dialog', NewDialog);

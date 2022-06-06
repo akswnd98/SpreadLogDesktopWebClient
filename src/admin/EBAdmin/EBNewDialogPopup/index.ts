@@ -1,7 +1,7 @@
 import EBPopup, { ConstructorParam as ParentConstructorParam } from '@/src/EBPopup';
 import Style from '@/src/elements/EBAttribute/Style';
 import styles from '@/src/EBPopup/index.scss';
-import EBNewDialog from './EBNewDialog';
+import EBNewDialog from './NewDialog';
 import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
 import { SYMBOLS } from '../../types';

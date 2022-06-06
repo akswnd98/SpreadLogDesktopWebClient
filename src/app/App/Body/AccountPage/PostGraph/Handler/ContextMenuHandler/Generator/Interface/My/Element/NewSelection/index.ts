@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import { injectable } from 'inversify';
 import plus from '@/assets/images/plus-lg.svg';
 import Static from '@/src/app/inversify.config';
-import NewDialogPopup from '../../../../NewDialogPopup';
+import NewDialogPopup from '../../../../../../../NewDialogPopup';
 import { SYMBOLS } from '@/src/app/symbols';
 
 @injectable()

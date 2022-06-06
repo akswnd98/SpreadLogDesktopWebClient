@@ -7,6 +7,8 @@ import AppNavigatorRightButton from './App/Navigator/Right';
 import AccountPageElement from './App/Body/AccountPage/route';
 import PostGraphElement from './App/Body/AccountPage/PostGraph';
 import PostGraphNewNodeDialogPopup from './App/Body/AccountPage/PostGraph/NewDialogPopup';
+import EditorPopup from './App/EditorPopup';
+import EditorPopupBody from './App/EditorPopup/EditorPopupBody/inversified';
 // import GraphVis from './App/Body/GraphVis';
 // import BlogPost from './App/Body/Post/route';
 // import PostingId from './data-binding/Model/PostingId';
@@ -76,6 +78,7 @@ import CurrentSignUpCertSerialGetter from './data-binding/Operator/CurrentSignUp
 import AccountPageNickname from './data-binding/Model/AccountPageNickname';
 import AccountPageNicknameGetter from './data-binding/Operator/AccountPageNickname/Getter';
 import AccountPageNicknameSetter from './data-binding/Operator/AccountPageNickname/Setter';
+
 import PostGraph from './data-binding/Model/PostGraph/inversified';
 import PostGraphAddNode from './data-binding/Operator/PostGraph/AddNode';
 import PostGraphAddEdge from './data-binding/Operator/PostGraph/AddEdge';
@@ -83,6 +86,7 @@ import PostGraphDeleteNode from './data-binding/Operator/PostGraph/DeleteNode';
 import PostGraphDeleteEdge from './data-binding/Operator/PostGraph/DeleteEdge';
 import PostGraphGetAllNodes from './data-binding/Operator/PostGraph/GetAllNodes';
 import PostGraphGetAllEdges from './data-binding/Operator/PostGraph/GetAllEdges';
+import PostGraphUpdateNode from './data-binding/Operator/PostGraph/UpdateNode';
 import { getInitialPostEdges, getInitialPostNodes, getLoginInfo } from './initialize';
 import InitialPostEdges from './data-binding/DataStruct/InitialPostEdges';
 import InitialPostNodes from './data-binding/DataStruct/InitialPostNodes';
@@ -102,6 +106,13 @@ import Account from './data-binding/Model/Account';
 import AccountGetter from './data-binding/Operator/Account/Getter';
 import AccountAvatar from './data-binding/RuleBaseBinder/AccountAvatar';
 
+import EditingPostId from './data-binding/Model/EditingPostId';
+import EditingPostIdNotifier from './data-binding/Notifier/EditingPostId';
+import EditorBodyObserver from './data-binding/Observer/Editor/Body';
+import EditorTitleObserver from './data-binding/Observer/Editor/Title';
+
+import PostGraphElementNodeUpdateObserver from './data-binding/Observer/PostGraphElement/Node/Update';
+
 // import PostingPostBodyObserver from '@/src/app/data-binding/Observer/PostingPost/Body';
 // import PostingPostTitleObserver from '@/src/app/data-binding/Observer/PostingPost/Title';
 // import PostingPostDateObserver from '@/src/app/data-binding/Observer/PostingPost/Date';
@@ -117,6 +128,8 @@ const module = new AsyncContainerModule(
     bind<AccountPageElement>(SYMBOLS.AccountPageElement).to(AccountPageElement).inSingletonScope();
     bind<PostGraphElement>(SYMBOLS.PostGraphElement).to(PostGraphElement).inSingletonScope();
     bind<PostGraphNewNodeDialogPopup>(SYMBOLS.PostGraphNewNodeDialogPopup).to(PostGraphNewNodeDialogPopup).inSingletonScope();
+    bind<EditorPopup>(SYMBOLS.EditorPopup).to(EditorPopup).inSingletonScope();
+    bind<EditorPopupBody>(SYMBOLS.EditorPopupBody).to(EditorPopupBody).inSingletonScope();
     // bind<GraphVis>(SYMBOLS.GraphVis).to(GraphVis).inSingletonScope();
     // bind<BlogPost>(SYMBOLS.BlogPost).to(BlogPost).inSingletonScope();
     // bind<PostingId>(SYMBOLS.PostingId).to(PostingId).inSingletonScope();
@@ -199,6 +212,7 @@ const module = new AsyncContainerModule(
     bind<PostGraphDeleteEdge>(SYMBOLS.PostGraphDeleteEdge).to(PostGraphDeleteEdge).inSingletonScope();
     bind<PostGraphGetAllNodes>(SYMBOLS.PostGraphGetAllNodes).to(PostGraphGetAllNodes).inSingletonScope();
     bind<PostGraphGetAllEdges>(SYMBOLS.PostGraphGetAllEdges).to(PostGraphGetAllEdges).inSingletonScope();
+    bind<PostGraphUpdateNode>(SYMBOLS.PostGraphUpdateNode).to(PostGraphUpdateNode).inSingletonScope();
 
     bind<ContextMenuPopup>(SYMBOLS.ContextMenuPopup).to(ContextMenuPopup).inSingletonScope();
     bind<NodeContextMenuSelectedId>(SYMBOLS.NodeContextMenuSelectedId).to(NodeContextMenuSelectedId).inSingletonScope();
@@ -217,6 +231,11 @@ const module = new AsyncContainerModule(
     bind<AccountGetter>(SYMBOLS.AccountGetter).to(AccountGetter).inSingletonScope();
 
     await (new AccountAvatar()).bind({ isLoggedIn: loginInfo.isLoggedIn }, { bind, nickname: loginInfo.nickname });
+
+    bind<EditingPostId>(SYMBOLS.EditingPostId).to(EditingPostId).inSingletonScope();
+    bind<EditingPostIdNotifier>(SYMBOLS.EditingPostIdNotifier).to(EditingPostIdNotifier).inSingletonScope();
+    bind<EditorBodyObserver>(SYMBOLS.EditorBodyObserver).to(EditorBodyObserver).inSingletonScope();
+    bind<EditorTitleObserver>(SYMBOLS.EditorTitleObserver).to(EditorTitleObserver).inSingletonScope();
 
     // bind<PostingPostBodyObserver>(SYMBOLS.PostingPostBodyObserver).to(PostingPostBodyObserver);
     // bind<PostingPostTitleObserver>(SYMBOLS.PostingPostTitleObserver).to(PostingPostTitleObserver);

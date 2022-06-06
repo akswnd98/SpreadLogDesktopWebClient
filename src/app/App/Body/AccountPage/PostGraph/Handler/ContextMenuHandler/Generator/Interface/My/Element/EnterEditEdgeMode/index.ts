@@ -4,7 +4,7 @@ import { inject, injectable } from 'inversify';
 import Static from '@/src/app/inversify.config';
 import { SYMBOLS } from '@/src/app/symbols';
 import pencil from '@/assets/images/pencil.svg';
-import PostGraph from '../../../..';
+import PostGraph from '../../../../../../..';
 
 @injectable()
 export default class EnterEditEdgeMode extends IconSelection {
