@@ -1,6 +1,6 @@
-import EBElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
+import Element, { ConstructorParam as ParentConstructorParam } from '@/src/owl-element/Element';
 import { injectable } from 'inversify';
-import Style from '@/src/elements/EBAttribute/Style';
+import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
 import { toHtml } from 'hast-util-to-html';
 import { fromMarkdown } from 'mdast-util-from-markdown';
@@ -12,7 +12,7 @@ import renderMathInElement from 'katex/dist/contrib/auto-render';
 import katexStyles from 'katex/dist/katex.min.css'
 
 @injectable()
-export default class Body extends EBElement {
+export default class Body extends Element {
   constructor() {
     super({
       attributes: [
@@ -44,4 +44,4 @@ export default class Body extends EBElement {
   }
 }
 
-customElements.define('eb-app-post-body', Body);
+customElements.define('app-post-body', Body);

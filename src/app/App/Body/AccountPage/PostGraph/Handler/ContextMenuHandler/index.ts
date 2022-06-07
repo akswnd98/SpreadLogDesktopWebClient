@@ -20,7 +20,7 @@ export default class ContextMenu extends Handler<'contextmenu'> {
   async handle (event: MouseEvent) {
     event.preventDefault();
     const popup = Static.instance.get<ContextMenuPopup>(SYMBOLS.ContextMenuPopup);
-    const generated = (new Generator()).generate();
+    const generated = await (new Generator()).generate();
     if (generated !== undefined) {
       popup.show({ x: event.clientX, y: event.clientY }, generated);
     }

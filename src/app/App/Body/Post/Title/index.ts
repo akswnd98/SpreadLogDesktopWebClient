@@ -1,6 +1,6 @@
-import Style from '@/src/elements/EBAttribute/Style';
+import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
-import EBLabel, { ConstructorParam as ParentConstructorParam } from '@/src/EBLabel';
+import Label, { ConstructorParam as ParentConstructorParam } from '@/src/elements/Label';
 import 'reflect-metadata';
 import { injectable } from 'inversify';
 
@@ -8,7 +8,7 @@ export type ConstructorParam = {
 } & ParentConstructorParam;
 
 @injectable()
-export default class Title extends EBLabel {
+export default class Title extends Label {
   constructor () {
     super({
       text: '',

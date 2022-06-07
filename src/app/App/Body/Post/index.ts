@@ -1,7 +1,7 @@
-import EBElement, { ConstructorParam as ParentConstructorParam } from '@/src/EBElement';
+import Element, { ConstructorParam as ParentConstructorParam } from '@/src/owl-element/Element';
 import 'reflect-metadata';
 import { injectable, unmanaged } from 'inversify';
-import Style from '@/src/elements/EBAttribute/Style';
+import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
 import { render, html } from 'lit-html';
 import Title from './Title';
@@ -15,7 +15,7 @@ export type ConstructorParam = {
 } & ParentConstructorParam;
 
 @injectable()
-export default class Post extends EBElement {
+export default class Post extends Element {
   postTitle: Title;
   body: Body;
   date: Date;
@@ -46,4 +46,4 @@ export default class Post extends EBElement {
   }
 }
 
-customElements.define('eb-app-post', Post);
+customElements.define('app-post', Post);

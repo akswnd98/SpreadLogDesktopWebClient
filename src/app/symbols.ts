@@ -5,6 +5,7 @@ const SYMBOLS = {
   AppBody: Symbol.for('AppBody'),
   AccountPageElement: Symbol.for('AccountPageElement'),
   PostGraphElement: Symbol.for('PostGraphElement'),
+  PostPageElement: Symbol.for('PostPageElement'),
   PostGraphNewNodeDialogPopup: Symbol.for('PostGraphNewNodeDialogPopup'),
   EditorPopup: Symbol.for('EditorPopup'),
   EditorPopupBody: Symbol.for('EditorPopupBody'),
@@ -17,7 +18,7 @@ const SYMBOLS = {
 
   GraphVis: Symbol.for('GraphVis'),
   BlogPost: Symbol.for('BlogPost'),
-  PostingId: Symbol.for('PostingId'),
+  PostingPostId: Symbol.for('PostingPostId'),
   PostingPost: Symbol.for('PostingPost'),
   PostingIdNotifier: Symbol.for('PostingIdNotifier'),
   PostingPostObserver: Symbol.for('PostingPostObserver'),

@@ -2,7 +2,7 @@ import VisNetworkHandler from '@/src/VisNetworkWrapper/Attribute/Handler'
 import Generator from './Generator';
 
 export default class Handler extends VisNetworkHandler {
-  eventName: 'doubleClick' = 'doubleClick';
+  eventName: 'click' = 'click';
 
   constructor () {
     super();

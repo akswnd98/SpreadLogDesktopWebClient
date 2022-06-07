@@ -1,4 +1,4 @@
-import Handler, { ConstructorParam as ParentConstructorParam } from '@/src/elements/EBAttribute/Handler';
+import Handler from '@/src/owl-element/Attribute/Handler';
 import 'reflect-metadata';
 import { injectable } from 'inversify';
 import PostDate from '..';

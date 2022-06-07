@@ -1,18 +1,21 @@
 import IObserver from '@/src/data-binding/IObserver';
 import 'reflect-metadata';
 import { injectable } from 'inversify';
-import PostingPostNotifier from '../../../ModelNotifier/PostingPost';
+import PostingPostNotifier from '../../../Notifier/PostingPost';
 import Static from '@/src/app/inversify.config';
-import { SYMBOLS } from '@/src/app/types';
-import BlogPost from '@/src/app/App/Body/Post/route';
+import { SYMBOLS } from '@/src/app/symbols';
 import PostingPost from '@/src/app/data-binding/Model/PostingPost';
+import PostPageElement from '@/src/app/App/Body/Post/route';
+
+export type DataType = {
+  firstUpload: Date;
+  lastUpdate: Date;
+};
 
 @injectable()
 export default class PostDate implements IObserver {
-  async update (subject: PostingPostNotifier, event: PostingPost) {
-    const dateElement = Static.instance.get<BlogPost>(SYMBOLS.BlogPost).date;
-    console.log(typeof event.data.firstUpload);
-    dateElement.setFirstUpload(event.data.firstUpload);
-    dateElement.setLastUpdate(event.data.lastUpdate);
+  async update (subject: PostingPostNotifier, event: DataType) {
+    Static.instance.get<PostPageElement>(SYMBOLS.PostPageElement).date.setFirstUpload(event.firstUpload);
+    Static.instance.get<PostPageElement>(SYMBOLS.PostPageElement).date.setLastUpdate(event.lastUpdate);
   }
 }

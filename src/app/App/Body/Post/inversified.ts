@@ -16,4 +16,4 @@ export default class Inversified extends Post {
   }
 }
 
-customElements.define('eb-app-post-inversified', Inversified);
+customElements.define('app-post-inversified', Inversified);

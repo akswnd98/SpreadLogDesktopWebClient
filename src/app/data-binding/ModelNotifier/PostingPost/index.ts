@@ -1,7 +1,7 @@
 import ModelNotifier from '@/src/data-binding/ModelNotifier';
 import PostingPostModel, { DataType } from '../../Model/PostingPost';
 import { injectable, inject } from 'inversify';
-import { SYMBOLS } from '@/src/app/types';
+import { SYMBOLS } from '@/src/app/symbols';
 import PostingPostTitleObserver from '../../Observer/PostingPost/Title';
 import PostingPostDateObserver from '../../Observer/PostingPost/Date';
 import PostingPostBodyObserver from '../../Observer/PostingPost/Body';
@@ -25,12 +25,12 @@ export default class PostingPost extends ModelNotifier<DataType> {
     });
   }
 
-  async notify (event: Model<DataType>) {
-    await super.notify(event);
-  }
-
-  async setData (data: DataType) {
+  async set (data: DataType) {
     this.model.data = data;
     await this.notify(this.model);
+  }
+
+  protected async notify (event: Model<DataType>) {
+    await super.notify(event);
   }
 }

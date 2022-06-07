@@ -1,9 +1,9 @@
-import Style from '@/src/elements/EBAttribute/Style';
+import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
-import EBLabel, { ConstructorParam as ParentConstructorParam } from '@/src/EBLabel';
+import Label, { ConstructorParam as ParentConstructorParam } from '@/src/elements/Label';
 import 'reflect-metadata';
 import { injectable } from 'inversify';
-import EBElement from '@/src/EBElement';
+import Element from '@/src/owl-element/Element';
 import { html, render } from 'lit-html';
 import * as timeago from 'timeago.js';
 import MouseOver from './Handler/MouseOver';
@@ -13,7 +13,7 @@ export type ConstructorParam = {
 } & ParentConstructorParam;
 
 @injectable()
-export default class PostDate extends EBElement {
+export default class PostDate extends Element {
   constructor () {
     super({
       attributes: [

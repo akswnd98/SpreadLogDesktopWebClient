@@ -1,6 +1,7 @@
 import { injectable } from 'inversify';
 import BasicContextMenuBody from '@/src/elements/ContextMenuPopup/BasicContextMenuBody';
 import DeleteSelection from './DeleteSelection';
+import GotoPostSelection from './GotoPostSelection';
 
 @injectable()
 export default class ContextMenuBody extends BasicContextMenuBody {
@@ -8,6 +9,7 @@ export default class ContextMenuBody extends BasicContextMenuBody {
     super({
       childElements: [
         new DeleteSelection(),
+        new GotoPostSelection(),
       ],
     });
   }

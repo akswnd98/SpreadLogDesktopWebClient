@@ -1,6 +1,8 @@
 import Model from '@/src/data-binding/Model';
 import 'reflect-metadata';
-import { injectable } from 'inversify';
+import { inject, injectable } from 'inversify';
+import { SYMBOLS } from '@/src/app/symbols';
+import PostingPostNotifier from '../../Notifier/PostingPost';
 
 export type DataType = {
   id: number;
@@ -12,7 +14,11 @@ export type DataType = {
 
 @injectable()
 export default class PostingPost extends Model<DataType> {
-  constructor () {
+  notifier: PostingPostNotifier;
+
+  constructor (
+    @inject(SYMBOLS.PostingPostNotifier) notifier: PostingPostNotifier,
+  ) {
     super({
       data: {
         id: -1,
@@ -22,9 +28,11 @@ export default class PostingPost extends Model<DataType> {
         lastUpdate: new Date(),
       },
     });
+    this.notifier = notifier;
   }
 
-  setData (data: DataType) {
+  async set (data: DataType) {
     this.data = data;
+    await this.notifier.notify(data)
   }
 }

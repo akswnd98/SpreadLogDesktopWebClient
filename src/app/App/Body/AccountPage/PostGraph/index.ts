@@ -13,6 +13,7 @@ import NodeContextMenuHandler from './VisNetworkHandler/NodeContextMenuHandler';
 import EdgeContextMenuHandler from './VisNetworkHandler/EdgeContextMenuHandler';
 import options from './visNetworkOptions';
 import NodeDoubleClickHandler from './VisNetworkHandler/NodeDoubleClickHandler';
+import NodeClickHandler from './VisNetworkHandler/NodeClickHandler';
 
 @injectable()
 export default class PostGraph extends GraphVis {
@@ -50,6 +51,7 @@ export default class PostGraph extends GraphVis {
         new NodeContextMenuHandler(),
         new EdgeContextMenuHandler(),
         new NodeDoubleClickHandler(),
+        new NodeClickHandler(),
       ],
       options,
     });

@@ -8,6 +8,7 @@ import { Context, Router } from '@vaadin/router';
 import Element, { ConstructorParam as ParentConstructorParam } from '@/src/owl-element/Element';
 import AccountPageElement from './AccountPage/route';
 // import BlogPost from './Post/route';
+import PostPageElement from './Post/route';
 
 export type PayloadParam = {
 } & ParentConstructorParam;
@@ -18,8 +19,7 @@ export default class Body extends Element {
 
   constructor (
     @inject(SYMBOLS.AccountPageElement) accountPageElement: AccountPageElement,
-    // @inject(SYMBOLS.GraphVis) graphVis: GraphVis,
-    // @inject(SYMBOLS.BlogPost) blogPost: BlogPost,
+    @inject(SYMBOLS.PostPageElement) postPageElement: PostPageElement,
   ) {
     super({
       attributes: [
@@ -28,15 +28,9 @@ export default class Body extends Element {
     });
     this.router = new Router(this.rootElement);
     this.router.setRoutes([
-      { path: '/account/:nickname', action: () => accountPageElement }
+      { path: '/account/:nickname', action: () => accountPageElement },
+      { path: '/post/:id', action: () => postPageElement },
     ]);
-    // this.router.setRoutes([
-    //   { path: '/', action: () => graphVis },
-    //   {
-    //     path: '/blog/:id',
-    //     action: (context: Context) => blogPost,
-    //   },
-    // ]);
   }
 }
 

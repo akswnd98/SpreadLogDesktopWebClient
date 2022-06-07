@@ -1,7 +1,7 @@
 import Handler from '@/src/VisNetworkWrapper/Attribute/Handler';
 import Static from '@/src/app/inversify.config';
 import { SYMBOLS } from '@/src/app/symbols';
-import PostingId from '@/src/app/data-binding/Model/PostingId';
+import PostingId from '@/src/app/data-binding/Model/PostingPostId';
 import { Router } from '@vaadin/router';
 import 'reflect-metadata';
 import { injectable } from 'inversify';
@@ -27,7 +27,7 @@ export default class ContextMenuHandler extends Handler {
     const popup = Static.instance.get<ContextMenuPopup>(SYMBOLS.ContextMenuPopup);
     const accountPageNickname = Static.instance.get<AccountPageNicknameGetter>(SYMBOLS.AccountPageNicknameGetter).get();
     const account = Static.instance.get<AccountGetter>(SYMBOLS.AccountGetter).get();
-    const generated = (new Generator()).generate({ account, accountPageNickname });
+    const generated = await (new Generator()).generate();
     if (generated !== undefined) {
       popup.show({ x: params.event.x, y: params.event.y }, generated);
     }

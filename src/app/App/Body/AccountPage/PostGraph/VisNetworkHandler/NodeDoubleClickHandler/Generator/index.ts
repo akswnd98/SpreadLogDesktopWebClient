@@ -5,8 +5,8 @@ import Rule from '@/src/app/data-binding/RuleBaseGenerator/Rule';
 import MyPageRule from '@/src/app/data-binding/RuleBaseGenerator/Rule/MyPageRule';
 import MyInterface from './Interface/My';
 
-export default class Generator extends RuleBaseGenerator<void, void, BasicContextMenuBody> {
-  ruleInterfacePair: [Rule<void>, Interface<void, BasicContextMenuBody>][] = [
+export default class Generator extends RuleBaseGenerator<void, any, void> {
+  ruleInterfacePair: [Rule<void>, Interface<any, void>][] = [
     [new MyPageRule(), new MyInterface()],
   ];
 }

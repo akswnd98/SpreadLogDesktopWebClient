@@ -4,10 +4,10 @@ import Rule from './Rule';
 export default abstract class RuleBaseGenerator<RuleParam, InterfaceParam, InterfaceReturn> {
   abstract ruleInterfacePair: [Rule<RuleParam>, Interface<InterfaceParam, InterfaceReturn>][];
 
-  generate (ruleParam: RuleParam, interfaceParam: InterfaceParam) {
+  async generate (ruleParam: RuleParam, interfaceParam: InterfaceParam) {
     for (let i = 0; i < this.ruleInterfacePair.length; i++) {
-      if (this.ruleInterfacePair[i][0].check(ruleParam)) {
-        return this.ruleInterfacePair[i][1].generate(interfaceParam);
+      if (await this.ruleInterfacePair[i][0].check(ruleParam)) {
+        return await this.ruleInterfacePair[i][1].generate(interfaceParam);
       }
     }
     return undefined;
