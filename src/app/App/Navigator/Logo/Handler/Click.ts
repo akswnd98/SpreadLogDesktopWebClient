@@ -16,6 +16,6 @@ export default class Click extends Handler<'click'> {
   }
 
   async handle (event: HTMLElementEventMap['click']) {
-    Router.go('/')
+    Router.go('/');
   }
 }

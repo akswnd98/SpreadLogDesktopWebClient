@@ -14,7 +14,6 @@ export default class Inversified extends PostGraph {
     @inject(SYMBOLS.InitialPostNodes) initialPostNodes: InitialPostNodes,
     @inject(SYMBOLS.InitialPostEdges) InitialPostEdges: InitialPostEdges,
   ) {
-    console.log(initialPostNodes, InitialPostEdges);
     super({
       data: {
         nodes: new Map<number, NodeType>(initialPostNodes.map((v) => [v.id, v])),

@@ -13,7 +13,6 @@ export default async (data: any, callback: (data: any) => void) => {
 async function mainLogic (data: any) {
   try {
     const edgeRst = (await axios.post('/api/post/account/addEdge', { fromId: data.from, toId: data.to })).data
-    console.log(edgeRst);
     const edgeAdder = Static.instance.get<AddEdge>(SYMBOLS.PostGraphAddEdge);
     edgeAdder.add(edgeRst);
   } catch (e) {

@@ -25,7 +25,6 @@ export default class RightButton extends ContainerElement<ChildElementsType> {
         accountAvatarElement,
       ],
     });
-    console.log(accountAvatarElement);
   }
 }
 

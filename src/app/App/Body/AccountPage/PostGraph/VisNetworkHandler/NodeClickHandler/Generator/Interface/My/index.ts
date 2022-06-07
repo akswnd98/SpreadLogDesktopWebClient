@@ -7,7 +7,6 @@ import EditorPopup from '@/src/app/App/EditorPopup';
 
 export default class MyInterface extends Interface<any, void> {
   async generate (params: any) {
-    console.log('clicked');
     // const graphVis = Static.instance.get<PostGraph>(SYMBOLS.PostGraphElement);
     // const id = Number(graphVis.network.getNodeAt(params.pointer.DOM));
     // if (id < 0 || isNaN(id)) return;
