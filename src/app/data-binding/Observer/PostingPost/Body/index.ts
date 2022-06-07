@@ -1,4 +1,4 @@
-import IObserver from '@/src/data-binding/IObserver';
+import IObserver from '@/src/owl-data-binding/IObserver';
 import 'reflect-metadata';
 import { injectable } from 'inversify';
 import Static from '@/src/app/inversify.config';

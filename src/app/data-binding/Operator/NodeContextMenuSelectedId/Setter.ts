@@ -1,9 +1,8 @@
 import Operator from '@/src/owl-data-binding/Operator';
-import { DataType } from '@/src/data-binding/Model/NodeContextMenuSelectedId';
 import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
 import { SYMBOLS } from '@/src/app/symbols';
-import NodeContextMenuSelectedId from '../../Model/NodeContextMenuSelectedId';
+import NodeContextMenuSelectedId, { DataType } from '../../Model/NodeContextMenuSelectedId';
 
 @injectable()
 export default class Setter extends Operator<DataType> {

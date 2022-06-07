@@ -1,6 +1,5 @@
-import IObserver from '@/src/data-binding/IObserver';
+import IObserver from '@/src/owl-data-binding/IObserver';
 import PostingPostModel, { DataType } from '@/src/app/data-binding/Model/PostingPost';
-import PostingPostNotifier from '../../ModelNotifier/PostingPost';
 import Static from '@/src/app/inversify.config';
 import { SYMBOLS } from '@/src/app/symbols';
 import 'reflect-metadata';

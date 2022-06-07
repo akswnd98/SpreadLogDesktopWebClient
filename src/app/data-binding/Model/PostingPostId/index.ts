@@ -1,4 +1,4 @@
-import Model from '@/src/data-binding/Model';
+import Model from '@/src/owl-data-binding/Model';
 import 'reflect-metadata';
 import { injectable } from 'inversify';
 import PostingPostNotifier from '../../Notifier/PostingPost';

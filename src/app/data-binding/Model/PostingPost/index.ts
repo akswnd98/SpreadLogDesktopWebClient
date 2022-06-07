@@ -1,4 +1,4 @@
-import Model from '@/src/data-binding/Model';
+import Model from '@/src/owl-data-binding/Model';
 import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
 import { SYMBOLS } from '@/src/app/symbols';
@@ -33,6 +33,6 @@ export default class PostingPost extends Model<DataType> {
 
   async set (data: DataType) {
     this.data = data;
-    await this.notifier.notify(data)
+    await this.notifier.notify(data);
   }
 }
