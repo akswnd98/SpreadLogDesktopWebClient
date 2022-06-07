@@ -1,7 +1,7 @@
 import EditorRenderer from '@/src/elements/CodeMirrorEditor/Renderer';
 import CodeMirrorEditor from '@/src/elements/CodeMirrorEditor';
 import { html, render } from 'lit-html';
-import Renderer from '@/src/Renderer';
+import Renderer from '@/src/owl-element/Renderer';
 import Bottom from './Bottom';
 import Toolbar from './Toolbar';
 
