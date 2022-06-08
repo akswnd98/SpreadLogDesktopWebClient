@@ -10,3 +10,6 @@
 [submodule "src/owl-element"]
 	path = src/owl-element
 	url = https://github.com/akswnd98/OwlElement
+[submodule "src/owl-util"]
+	path = src/owl-util
+	url = https://github.com/akswnd98/OwlUtil

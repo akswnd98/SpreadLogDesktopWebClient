@@ -6,6 +6,7 @@ import styles from './index.scss';
 import { html, render } from 'lit-html';
 import FocusHandler from './Handler/Focus';
 import FocusOutHandler from './Handler/FocusOut';
+import TabPressHandler from './Handler/TabPress';
 
 export type ConstructorParam = {
   defaultValue: string;
@@ -27,6 +28,7 @@ export default class BaseInput extends Element {
     this.defaultValue = payload.defaultValue;
     this.registerAttribute(new FocusHandler({ baseInput: this }));
     this.registerAttribute(new FocusOutHandler({ baseInput: this, defaultValue: payload.defaultValue }));
+    this.registerAttribute(new TabPressHandler());
   }
 
   initialRender (payload: ConstructorParam) {

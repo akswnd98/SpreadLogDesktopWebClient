@@ -68,6 +68,10 @@ const SYMBOLS = {
   SignUpProcessPasswdToPasswdCheckCommand: Symbol.for('SignUpProcessPasswdToPasswdCheckCommand'),
   SignUpProcessPasswdCheckToNickNameCommand: Symbol.for('SignUpProcessPasswdCheckToNickNameCommand'),
   SignUpProcessNickNameToEmailSentCommand: Symbol.for('SignUpProcessNickNameToEmailSentCommand'),
+  SignUpProcessBaseToPasswdErrorHandledCommand: Symbol.for('SignUpProcessBaseToPasswdErrorHandledCommand'),
+  SignUpProcessPasswdToPasswdCheckErrorHandledCommand: Symbol.for('SignUpProcessPasswdToPasswdCheckErrorHandledCommand'),
+  SignUpProcessPasswdCheckToNickNameErrorHandledCommand: Symbol.for('SignUpProcessPasswdCheckToNickNameErrorHandledCommand'),
+  SignUpProcessNickNameToEmailSentErrorHandledCommand: Symbol.for('SignUpProcessNickNameToEmailSentErrorHandledCommand'),
 
   SignUpProcessBaseState: Symbol.for('SignUpProcessBaseState'),
   SignUpProcessPasswdState: Symbol.for('SignUpProcessPasswdState'),

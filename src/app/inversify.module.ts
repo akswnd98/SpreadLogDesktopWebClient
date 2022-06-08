@@ -55,6 +55,10 @@ import SignUpProcessBaseToPasswdCommand from './data-binding/Command/Undoable/Lo
 import SignUpProcessPasswdToPasswdCheckCommand from './data-binding/Command/Undoable/LoginPopup/SignUpProcess/PasswdToPasswdCheck/inversified';
 import SignUpProcessPasswdCheckToNickNameCommand from './data-binding/Command/Undoable/LoginPopup/SignUpProcess/PasswdCheckToNickName/inversified';
 import SignUpProcessNickNameToEmailSentCommand from './data-binding/Command/Undoable/LoginPopup/SignUpProcess/NickNameToEmailSent/inversified';
+import SignUpProcessBaseToPasswdErrorHandledCommand from './data-binding/Command/Undoable/LoginPopup/SignUpProcess/BaseToPasswd/error';
+import SignUpProcessPasswdToPasswdCheckErrorHandledCommand from './data-binding/Command/Undoable/LoginPopup/SignUpProcess/PasswdToPasswdCheck/error';
+import SignUpProcessPasswdCheckToNickNameErrorHandledCommand from './data-binding/Command/Undoable/LoginPopup/SignUpProcess/PasswdCheckToNickName/error';
+import SignUpProcessNickNameToEmailSentErrorHandledCommand from './data-binding/Command/Undoable/LoginPopup/SignUpProcess/NickNameToEmailSent/error';
 
 import SignUpProcessChain from './data-binding/Model/LoginPopup/SignUpProcessChain';
 import GetCurSignUpProcessState from './data-binding/Operator/LoginPopup/SignUpProcessChain/GetCurState';
@@ -195,6 +199,10 @@ const module = new AsyncContainerModule(
     bind<SignUpProcessPasswdToPasswdCheckCommand>(SYMBOLS.SignUpProcessPasswdToPasswdCheckCommand).to(SignUpProcessPasswdToPasswdCheckCommand).inSingletonScope();
     bind<SignUpProcessPasswdCheckToNickNameCommand>(SYMBOLS.SignUpProcessPasswdCheckToNickNameCommand).to(SignUpProcessPasswdCheckToNickNameCommand).inSingletonScope();
     bind<SignUpProcessNickNameToEmailSentCommand>(SYMBOLS.SignUpProcessNickNameToEmailSentCommand).to(SignUpProcessNickNameToEmailSentCommand).inSingletonScope();
+    bind<SignUpProcessBaseToPasswdErrorHandledCommand>(SYMBOLS.SignUpProcessBaseToPasswdErrorHandledCommand).to(SignUpProcessBaseToPasswdErrorHandledCommand).inSingletonScope();
+    bind<SignUpProcessPasswdToPasswdCheckErrorHandledCommand>(SYMBOLS.SignUpProcessPasswdToPasswdCheckErrorHandledCommand).to(SignUpProcessPasswdToPasswdCheckErrorHandledCommand).inSingletonScope();
+    bind<SignUpProcessPasswdCheckToNickNameErrorHandledCommand>(SYMBOLS.SignUpProcessPasswdCheckToNickNameErrorHandledCommand).to(SignUpProcessPasswdCheckToNickNameErrorHandledCommand).inSingletonScope();
+    bind<SignUpProcessNickNameToEmailSentErrorHandledCommand>(SYMBOLS.SignUpProcessNickNameToEmailSentErrorHandledCommand).to(SignUpProcessNickNameToEmailSentErrorHandledCommand).inSingletonScope();
   
     bind<SignUpProcessChain>(SYMBOLS.SignUpProcessChain).to(SignUpProcessChain).inSingletonScope();
     bind<GetCurSignUpProcessState>(SYMBOLS.GetCurSignUpProcessState).to(GetCurSignUpProcessState).inSingletonScope();

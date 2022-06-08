@@ -11,6 +11,8 @@ import googleSvg from '@/assets/images/google.svg';
 import googleStyles from './OAuthLoginButton/google.scss';
 import InputWrapper from './InputWrapper/inversified';
 import { SYMBOLS } from '@/src/app/symbols';
+// import EnterHandler from './Handler/Enter';
+import EnterHandler from './WindowHandler/Enter';
 
 export type PayloadParam = {
   inputWrapper: InputWrapper;
@@ -26,6 +28,7 @@ export default class LoginProcess extends Element {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
+        new EnterHandler(),
       ],
       inputWrapper,
     } as PayloadParam);
@@ -43,6 +46,9 @@ export default class LoginProcess extends Element {
           </div>
           <div id='login-button-wrapper'>
             ${new LoginButton({ left: this })}
+          </div>
+          <div id='login-error'>
+            이메일, 비밀번호를 다시 확인해 주세요.
           </div>
           <div id='sns-login-label'>SNS 간편 시작</div>
           <div id='google-button-wrapper'>

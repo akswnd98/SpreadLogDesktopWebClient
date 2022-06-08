@@ -13,6 +13,7 @@ export type ConstructorParam = {
 export default class Popup extends Element {
   element: Element;
   popupInterface: PopupInterface;
+  isFocused: boolean = false;
 
   constructor (@unmanaged() payload: ConstructorParam) {
     super(payload);
@@ -33,10 +34,12 @@ export default class Popup extends Element {
 
   show () {
     this.popupInterface.show(this);
+    this.isFocused = true;
   }
 
   hide () {
     this.popupInterface.hide(this);
+    this.isFocused = false;
   }
 }
 

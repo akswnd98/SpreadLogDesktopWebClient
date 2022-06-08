@@ -23,23 +23,18 @@ export default class NickNameToEmailSent extends StateTransitionCommand {
   }
 
   async execute () {
-    try {
-      const nickname = Static.instance.get<NicknameGetter>(SYMBOLS.CurrentSignUpNicknameGetter).get();
-      const email = Static.instance.get<EmailGetter>(SYMBOLS.CurrentSignUpEmailGetter).get();
-      const pw = Static.instance.get<PasswdGetter>(SYMBOLS.CurrentSignUpPasswdGetter).get();
-      const nicknameAvail = (await axios.get('/api/account/email/signup/checkNicknameAvailable', { params: { nickname } })).data.available;
-      if (!nicknameAvail) {
-        throw Error('nickname already exist');
-      }
-      const requestRst = (await axios.post('/api/account/email/signup/requestEmailCert', { email, pw, nickname })).data.result;
-      if (!requestRst) {
-        throw Error('request email cert failed');
-      }
-      this.element.slideToNext('sign-up-process', 'waiting-email-cert');
-    } catch (e) {
-      console.log(e);
-      throw Error('SignUpProcessPasswdToPasswdCheck.execute failed');
+    const nickname = Static.instance.get<NicknameGetter>(SYMBOLS.CurrentSignUpNicknameGetter).get();
+    const email = Static.instance.get<EmailGetter>(SYMBOLS.CurrentSignUpEmailGetter).get();
+    const pw = Static.instance.get<PasswdGetter>(SYMBOLS.CurrentSignUpPasswdGetter).get();
+    const nicknameAvail = (await axios.get('/api/account/email/signup/checkNicknameAvailable', { params: { nickname } })).data.available;
+    if (!nicknameAvail) {
+      throw 'nickname already exist';
     }
+    const requestRst = (await axios.post('/api/account/email/signup/requestEmailCert', { email, pw, nickname })).data.result;
+    if (!requestRst) {
+      throw 'request email cert failed';
+    }
+    this.element.slideToNext('sign-up-process', 'waiting-email-cert');
   }
 
   async unexecute () {

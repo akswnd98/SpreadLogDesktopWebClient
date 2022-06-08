@@ -7,6 +7,7 @@ import styles from './index.scss';
 import SignUpButton from './SignUpButton';
 import { SYMBOLS } from '@/src/app/symbols';
 import InputWrapper from './InputWrapper/inversified';
+import EnterHandler from './WindowHandler/Enter';
 
 export type PayloadParam = {
   inputWrapper: InputWrapper
@@ -20,6 +21,7 @@ export default class SignUpProcess extends Element {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
+        new EnterHandler(),
       ],
       inputWrapper,
     } as PayloadParam);
@@ -38,6 +40,23 @@ export default class SignUpProcess extends Element {
               </div>
               <div id='sign-up-button-wrapper'>
                 ${new SignUpButton({})}
+              </div>
+              <div id='error'>
+                <div id='email-error'>
+                  이메일이 이미 존재합니다.
+                </div>
+                <div id='passwd-error'>
+                  비밀번호 규칙을 다시 확인해 주세요.
+                </div>
+                <div id='passwd-check-error'>
+                  페스워드가 일치하지 않습니다.
+                </div>
+                <div id='nickname-error'>
+                  닉네임이 이미 존재합니다.
+                </div>
+                <div id='email-send-error'>
+                  이메일을 다시 확인해 주세요
+                </div>
               </div>
             </div>
             <div id='waiting-email-cert'>

@@ -7,6 +7,8 @@ import PasswdState from '@/src/app/data-binding/State/LoginPopup/LoginProcess/Pa
 import axios from 'axios';
 import CurrentLoginEmailGetter from '@/src/app/data-binding/Operator/CurrentLoginEmail/Getter';
 import CurrentLoginPasswdGetter from '@/src/app/data-binding/Operator/CurrentLoginPasswd/Getter';
+import ErrorHandler from './ErrorParser/ErrorHandler';
+import Left from '@/src/app/App/LoginPopup/Body/Left';
 
 @injectable()
 export default class PasswdToUserConfermed extends StateTransitionCommand {
@@ -25,6 +27,8 @@ export default class PasswdToUserConfermed extends StateTransitionCommand {
       window.location.href = '/';
     } catch (e) {
       console.log(e);
+      const loginErrorElement = Static.instance.get<Left>(SYMBOLS.LoginPopupBodyLeft).loginElement.shadowRoot!.getElementById('login-error')! as HTMLDivElement;
+      loginErrorElement.style.display = 'block';
       throw Error('LoginProcess.UserConfermedCommand.execute failed');
     }
   }

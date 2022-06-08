@@ -42,6 +42,15 @@
           margin-left: 20px;
           margin-top: 40px;
         }
+        #error {
+          margin-left: 20px;
+          margin-top: 8px;
+          div {
+            font-size: 14px;
+            color: red;
+            display: none;
+          }
+        }
       }
       #waiting-email-cert {
         position: absolute;

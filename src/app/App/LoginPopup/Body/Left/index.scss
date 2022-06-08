@@ -16,9 +16,8 @@
 }
 
 .active {
-  transform: translateX(0%);
 }
 
 .inactive {
-  transform: translateX(100%);
+  display: none;
 }
