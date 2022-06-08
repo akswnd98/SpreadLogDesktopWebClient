@@ -12,15 +12,17 @@ import Generator from './Generator';
 @injectable()
 export default class ContextMenu extends Handler<'contextmenu'> {
   eventName: 'contextmenu' = 'contextmenu';
+  handlerGenerator: Generator;
 
   constructor () {
     super({ id: 'root' });
+    this.handlerGenerator = new Generator();
   }
 
   async handle (event: MouseEvent) {
     event.preventDefault();
     const popup = Static.instance.get<ContextMenuPopup>(SYMBOLS.ContextMenuPopup);
-    const generated = await (new Generator()).generate();
+    const generated = await this.handlerGenerator.generate();
     if (generated !== undefined) {
       popup.show({ x: event.clientX, y: event.clientY }, generated);
     }

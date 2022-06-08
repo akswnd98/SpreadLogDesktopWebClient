@@ -3,7 +3,14 @@ import BasicContextMenuBody from '@/src/elements/ContextMenuPopup/BasicContextMe
 import ContextMenuBody from './Element';
 
 export default class MyInterface extends Interface<void, BasicContextMenuBody> {
+  body: ContextMenuBody;
+
+  constructor () {
+    super();
+    this.body = new ContextMenuBody();
+  }
+
   async generate () {
-    return new ContextMenuBody();
+    return this.body;
   }
 }
