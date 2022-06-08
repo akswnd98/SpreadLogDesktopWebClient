@@ -3,10 +3,10 @@
   height: 640px;
   background-color: white;
   display: flex;
-  justify-content: left;
+  justify-content: right;
   align-items: center;
   #intro-text {
-    margin-left: 150px;
+    margin-right: 150px;
     font-size: 28px;
     font-family: NotoSansKR;
     p {
@@ -15,6 +15,6 @@
     }
   }
   #intro-illustration {
-    margin-left: 150px;
+    margin-right: 150px;
   }
 }

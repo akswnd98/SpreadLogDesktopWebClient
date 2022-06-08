@@ -1,0 +1,10 @@
+#root {
+  margin-left: 20px;
+  font-family: NotoSansKR;
+  font-size: 20px;
+  li {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@use '@/src/css/PostHtml' as PostHtml;
+
+#root {
+  width: 100%;
+  margin-top: 150px;
+  background-color: #ededed;
+  @include PostHtml.postHtmlTagDecoration;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  div {
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    p {
+      margin: 0;
+      font-size: 28px;
+      font-family: NotoSansKR;
+      margin-bottom: 40px;
+    }
+    #prev-post-list {
+      display: none;
+    }
+    #hide-button {
+      font-size: 20px;
+      font-family: NotoSansKR;
+      margin-top: 80px;
+      &:hover {
+        cursor: pointer;
+      }
+      display: none;
+    }
+    #show-button {
+      font-size: 20px;
+      font-family: NotoSansKR;
+      margin-top: 80px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  margin-bottom: 250px;
+}

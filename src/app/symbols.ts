@@ -6,6 +6,8 @@ const SYMBOLS = {
   AccountPageElement: Symbol.for('AccountPageElement'),
   PostGraphElement: Symbol.for('PostGraphElement'),
   PostPageElement: Symbol.for('PostPageElement'),
+  PostChargingProcess: Symbol.for('PostChargingProcess'),
+  PostDeepeningProcess: Symbol.for('PostDepeningProcess'),
   PostGraphNewNodeDialogPopup: Symbol.for('PostGraphNewNodeDialogPopup'),
   EditorPopup: Symbol.for('EditorPopup'),
   EditorPopupBody: Symbol.for('EditorPopupBody'),
@@ -122,6 +124,8 @@ const SYMBOLS = {
   EditingPostIdNotifier: Symbol.for('EditingPostIdNotifier'),
   EditorBodyObserver: Symbol.for('EditorBodyObserver'),
   EditorTitleObserver: Symbol.for('EditorTitleObserver'),
+
+  PrevPosts: Symbol.for('PrevPosts'),
 };
 
 export {

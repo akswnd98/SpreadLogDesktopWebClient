@@ -7,6 +7,7 @@ import AppNavigatorRightButton from './App/Navigator/Right';
 import AccountPageElement from './App/Body/AccountPage/route';
 import PostGraphElement from './App/Body/AccountPage/PostGraph';
 import PostPageElement from './App/Body/Post/route';
+import PostChargingProcess from './App/Body/Post/ChargingProcess';
 import PostGraphNewNodeDialogPopup from './App/Body/AccountPage/PostGraph/NewDialogPopup';
 import EditorPopup from './App/EditorPopup';
 import EditorPopupBody from './App/EditorPopup/EditorPopupBody/inversified';
@@ -117,6 +118,8 @@ import EditorBodyObserver from './data-binding/Observer/Editor/Body';
 import EditorTitleObserver from './data-binding/Observer/Editor/Title';
 
 import PostGraphElementNodeUpdateObserver from './data-binding/Observer/PostGraphElement/Node/Update';
+
+import PrevPosts from './data-binding/Model/PrevPosts';
 
 // import PostingPostBodyObserver from '@/src/app/data-binding/Observer/PostingPost/Body';
 // import PostingPostTitleObserver from '@/src/app/data-binding/Observer/PostingPost/Title';
@@ -246,6 +249,8 @@ const module = new AsyncContainerModule(
     bind<EditingPostIdNotifier>(SYMBOLS.EditingPostIdNotifier).to(EditingPostIdNotifier).inSingletonScope();
     bind<EditorBodyObserver>(SYMBOLS.EditorBodyObserver).to(EditorBodyObserver).inSingletonScope();
     bind<EditorTitleObserver>(SYMBOLS.EditorTitleObserver).to(EditorTitleObserver).inSingletonScope();
+
+    bind<PrevPosts>(SYMBOLS.PrevPosts).to(PrevPosts).inSingletonScope();
 
     // bind<PostingPostBodyObserver>(SYMBOLS.PostingPostBodyObserver).to(PostingPostBodyObserver);
     // bind<PostingPostTitleObserver>(SYMBOLS.PostingPostTitleObserver).to(PostingPostTitleObserver);

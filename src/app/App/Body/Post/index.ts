@@ -7,8 +7,10 @@ import { render, html } from 'lit-html';
 import Title from './Title';
 import Body from './Body';
 import Date from './Date';
+import PostChargingProcess from './ChargingProcess';
 
 export type ConstructorParam = {
+  chargingProcess: PostChargingProcess;
   title: Title;
   body: Body;
   date: Date;
@@ -16,6 +18,7 @@ export type ConstructorParam = {
 
 @injectable()
 export default class Post extends Element {
+  chargingProcess: PostChargingProcess;
   postTitle: Title;
   body: Body;
   date: Date;
@@ -28,6 +31,7 @@ export default class Post extends Element {
         ...payload.attributes ? payload.attributes : [],
       ],
     });
+    this.chargingProcess = payload.chargingProcess;
     this.postTitle = payload.title;
     this.body = payload.body;
     this.date = payload.date;
@@ -39,6 +43,7 @@ export default class Post extends Element {
       html`
         ${payload.title}
         ${payload.date}
+        ${payload.chargingProcess}
         ${payload.body}
       `,
       this.rootElement,

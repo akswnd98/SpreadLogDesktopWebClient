@@ -4,6 +4,7 @@ import styles from './index.scss';
 import 'reflect-metadata';
 import { injectable } from 'inversify';
 import { html, render } from 'lit-html';
+import spreadIllustration from '@/assets/images/spread-illustration.png';
 
 @injectable()
 export default class SpreadIntro extends Element {
@@ -19,12 +20,11 @@ export default class SpreadIntro extends Element {
     super.initialRender(payload);
     render(
       html`
-        <div id='intro-text'>
-          <p>전파거북이를</p>
-          <p>따라해 보세요</p>
-        </div>
         <div id='intro-illustration'>
-          
+          <img src=${spreadIllustration} />
+        </div>
+        <div id='intro-text'>
+          <p>전파거북이를 따라해 보세요</p>
         </div>
       `,
       this.rootElement,
