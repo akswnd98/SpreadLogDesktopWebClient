@@ -1,14 +1,12 @@
 import Element, { ConstructorParam as ParentConstructorParam } from '@/src/owl-element/Element';
+import Style from '@/src/owl-element/Attribute/Style';
+import styles from './index.scss';
 import 'reflect-metadata';
 import { injectable } from 'inversify';
 import { html, render } from 'lit-html';
-import Style from '@/src/owl-element/Attribute/Style';
-import styles from './index.scss';
-import GraphIntro from './GraphIntro';
-import SpreadIntro from './SpreadIntro';
 
 @injectable()
-export default class FrontPage extends Element {
+export default class SpreadIntro extends Element {
   constructor () {
     super({
       attributes: [
@@ -21,12 +19,17 @@ export default class FrontPage extends Element {
     super.initialRender(payload);
     render(
       html`
-        ${new GraphIntro()}
-        ${new SpreadIntro()}
+        <div id='intro-text'>
+          <p>전파거북이를</p>
+          <p>따라해 보세요</p>
+        </div>
+        <div id='intro-illustration'>
+          
+        </div>
       `,
       this.rootElement,
     );
   }
 }
 
-customElements.define('front-page', FrontPage);
+customElements.define('front-page-spread-intro', SpreadIntro);

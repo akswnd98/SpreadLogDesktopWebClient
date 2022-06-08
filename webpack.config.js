@@ -51,7 +51,7 @@ module.exports = {
           filename: 'assets/images/[hash][name][ext]',
         },
       }, {
-        test: /\.(ttf)/i,
+        test: /\.(ttf|otf)/i,
         exclude: /node_modules/,
         include: /assets\/fonts/,
         type: 'asset/resource',

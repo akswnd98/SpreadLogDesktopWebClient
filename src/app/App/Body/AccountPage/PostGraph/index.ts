@@ -33,7 +33,7 @@ export default class PostGraph extends GraphVis {
     });
     this.nodes = new VisNetwork.DataSet(
       getAllNodes.get().map((v) => {
-        return { id: v.id, label: v.title };
+        return { id: v.id, label: v.title  };
       }),
     );
     this.edges = new VisNetwork.DataSet(
