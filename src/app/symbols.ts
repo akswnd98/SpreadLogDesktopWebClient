@@ -126,6 +126,8 @@ const SYMBOLS = {
   EditorTitleObserver: Symbol.for('EditorTitleObserver'),
 
   PrevPosts: Symbol.for('PrevPosts'),
+
+  AvatarClickPopup: Symbol.for('AvatarClickPopup'),
 };
 
 export {

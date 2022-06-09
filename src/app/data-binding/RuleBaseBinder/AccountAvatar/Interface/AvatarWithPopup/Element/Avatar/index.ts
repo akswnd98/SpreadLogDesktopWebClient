@@ -5,6 +5,7 @@ import { inject, injectable } from 'inversify';
 import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
 import ClickHandler from './Handler/Click';
+import ClickWindowHandler from './WindowHandler/Click';
 
 export type ConstructorParam = {
   nickname: string;
@@ -16,14 +17,19 @@ export type PayloadParam = {
 
 @injectable()
 export default class AvatarElement extends Element {
+  isShowed: boolean = false;
+
   constructor (payload: ConstructorParam) {
     super({
       attributes: [
         new Style({ styles: styles.toString() }),
-        new ClickHandler({ nickname: payload.nickname }),
       ],
       ...payload,
     } as PayloadParam);
+    this.registerAttributes([
+      new ClickHandler({ avatarElement: this }),
+      new ClickWindowHandler({ avatarElement: this }),
+    ])
   }
 
   initialRender (payload: PayloadParam) {

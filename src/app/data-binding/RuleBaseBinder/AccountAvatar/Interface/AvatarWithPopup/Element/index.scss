@@ -1,0 +1,11 @@
+#root {
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  position: relative;
+  #popup-wrapper {
+    position: absolute;
+    top: calc(100% + 20px);
+    right: 0;
+  }
+}

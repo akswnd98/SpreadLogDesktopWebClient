@@ -120,6 +120,7 @@ import EditorTitleObserver from './data-binding/Observer/Editor/Title';
 import PostGraphElementNodeUpdateObserver from './data-binding/Observer/PostGraphElement/Node/Update';
 
 import PrevPosts from './data-binding/Model/PrevPosts';
+import AvatarClickPopup from './App/AvatarClickPopup';
 
 // import PostingPostBodyObserver from '@/src/app/data-binding/Observer/PostingPost/Body';
 // import PostingPostTitleObserver from '@/src/app/data-binding/Observer/PostingPost/Title';
@@ -251,6 +252,8 @@ const module = new AsyncContainerModule(
     bind<EditorTitleObserver>(SYMBOLS.EditorTitleObserver).to(EditorTitleObserver).inSingletonScope();
 
     bind<PrevPosts>(SYMBOLS.PrevPosts).to(PrevPosts).inSingletonScope();
+
+    bind<AvatarClickPopup>(SYMBOLS.AvatarClickPopup).to(AvatarClickPopup).inSingletonScope();
 
     // bind<PostingPostBodyObserver>(SYMBOLS.PostingPostBodyObserver).to(PostingPostBodyObserver);
     // bind<PostingPostTitleObserver>(SYMBOLS.PostingPostTitleObserver).to(PostingPostTitleObserver);

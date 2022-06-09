@@ -1,0 +1,16 @@
+#root {
+  width: 200px;
+  background-color: #e0e0e0;
+  position: absolute;
+  top: 90px;
+  right: 150px;
+  z-index: 200;
+}
+
+.show {
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
+}

@@ -7,6 +7,7 @@ import LoginPopup from './App/LoginPopup';
 import ContextMenuPopup from '../elements/ContextMenuPopup';
 import PostGraphNewNodeDialogPopup from './App/Body/AccountPage/PostGraph/NewDialogPopup';
 import EditorPopup from './App/EditorPopup';
+import AvatarClickPopup from './App/AvatarClickPopup';
 // import PostGraph from '../data-binding/Model/PostGraph';
 
 (async () => {
@@ -23,4 +24,5 @@ import EditorPopup from './App/EditorPopup';
   document.body.appendChild(container.get<ContextMenuPopup>(SYMBOLS.ContextMenuPopup));
   document.body.appendChild(container.get<PostGraphNewNodeDialogPopup>(SYMBOLS.PostGraphNewNodeDialogPopup));
   document.body.appendChild(container.get<EditorPopup>(SYMBOLS.EditorPopup));
+  document.body.appendChild(container.get<AvatarClickPopup>(SYMBOLS.AvatarClickPopup));
 })();

@@ -1,0 +1,13 @@
+#root {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  font-family: NotoSansKR;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-left: 20px;
+  &:hover {
+    cursor: pointer;
+  }
+}
