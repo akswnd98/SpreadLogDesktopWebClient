@@ -29,7 +29,7 @@ export default class Body extends Element {
     this.router.setRoutes([
       { path: '/', action: () => new FrontPage() },
       { path: '/account/:nickname', action: () => accountPageElement },
-      { path: '/post/:id', action: () => postPageElement },
+      { path: '/post/:id', action: (context: Context) => postPageElement },
     ]);
   }
 }

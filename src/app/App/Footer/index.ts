@@ -22,10 +22,7 @@ export default class Footer extends Element {
       html`
         <div>
           <div>
-            <img src=${github}></img>open source desktop client:&nbsp;<a href='https://github.com/akswnd98/SpreadLogDesktopWebClient'>https://github.com/akswnd98/SpreadLogDesktopWebClient</a>
-          </div>
-          <div>
-            <img src=${github}></img>open source api server:&nbsp;<a href='https://github.com/akswnd98/SpreadLogApiServer'>https://github.com/akswnd98/SpreadLogApiServer</a>
+            <img src=${github}></img>spread log github:&nbsp;<a href='https://github.com/akswnd98/SpreadLogDesktopWebClient'>https://github.com/akswnd98</a>
           </div>
         </div>
       `,
@@ -34,4 +31,4 @@ export default class Footer extends Element {
   }
 }
 
-customElements.define('eb-footer', Footer);
+customElements.define('sl-footer', Footer);

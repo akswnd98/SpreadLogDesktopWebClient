@@ -40,3 +40,8 @@ export async function getLoginInfo () {
     return undefined;
   }
 }
+
+export async function getComments (postId: number) {
+  const ret = await (await axios.get('/api/post/comment/getComments', { params: { postId } })).data.list;
+  return ret;
+}

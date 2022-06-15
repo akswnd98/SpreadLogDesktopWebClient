@@ -20,8 +20,8 @@ export default class RightButton extends ContainerElement<ChildElementsType> {
       ],
       layout: new VerticalLayout(),
       childElements: [
-        new Search(),
-        new ViewGraph(),
+        // new Search(),
+        // new ViewGraph(),
         accountAvatarElement,
       ],
     });

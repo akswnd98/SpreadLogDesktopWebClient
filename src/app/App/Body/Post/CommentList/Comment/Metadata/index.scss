@@ -1,0 +1,25 @@
+#root {
+  display: flex;
+  justify-content: left;
+  #avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: #d0d0d0;
+  }
+  #name-date-wrapper {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    #name {
+      font-size: 18px;
+      font-family: NotoSansKR;
+    }
+    #date {
+      font-size: 18px;
+      font-family: NotoSansKR;
+      font-weight: bold;
+    }
+  }
+}

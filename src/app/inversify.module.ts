@@ -122,6 +122,18 @@ import PostGraphElementNodeUpdateObserver from './data-binding/Observer/PostGrap
 import PrevPosts from './data-binding/Model/PrevPosts';
 import AvatarClickPopup from './App/AvatarClickPopup';
 
+import PostingPostComments from './data-binding/Model/PostingPostComments';
+import PostingPostCommentsGetter from './data-binding/Operator/PostingPostComments/Getter';
+import PostingPostCommentsSetter from './data-binding/Operator/PostingPostComments/Setter';
+import PostingPostCommentsSetNotifier from './data-binding/Notifier/PostingPostComments/Set';
+import PostingPostCommentsAdder from './data-binding/Operator/PostingPostComments/Adder';
+import PostingPostCommentsAddNotifier from './data-binding/Notifier/PostingPostComments/Add';
+import PostingPostCommentsDeleter from './data-binding/Operator/PostingPostComments/Deleter';
+import PostingPostCommentsBodyUpdater from './data-binding/Operator/PostingPostComments/BodyUpdater';
+
+import CommentListElement from './App/Body/Post/CommentList';
+import CommentWriterElement from './App/Body/Post/CommentWriter';
+
 // import PostingPostBodyObserver from '@/src/app/data-binding/Observer/PostingPost/Body';
 // import PostingPostTitleObserver from '@/src/app/data-binding/Observer/PostingPost/Title';
 // import PostingPostDateObserver from '@/src/app/data-binding/Observer/PostingPost/Date';
@@ -254,6 +266,18 @@ const module = new AsyncContainerModule(
     bind<PrevPosts>(SYMBOLS.PrevPosts).to(PrevPosts).inSingletonScope();
 
     bind<AvatarClickPopup>(SYMBOLS.AvatarClickPopup).to(AvatarClickPopup).inSingletonScope();
+  
+    bind<PostingPostComments>(SYMBOLS.PostingPostComments).to(PostingPostComments).inSingletonScope();
+    bind<PostingPostCommentsGetter>(SYMBOLS.PostingPostCommentsGetter).to(PostingPostCommentsGetter).inSingletonScope();
+    bind<PostingPostCommentsSetter>(SYMBOLS.PostingPostCommentsSetter).to(PostingPostCommentsSetter).inSingletonScope();
+    bind<PostingPostCommentsSetNotifier>(SYMBOLS.PostingPostCommentsSetNotifier).to(PostingPostCommentsSetNotifier).inSingletonScope();
+    bind<PostingPostCommentsAdder>(SYMBOLS.PostingPostCommentsAdder).to(PostingPostCommentsAdder).inSingletonScope();
+    bind<PostingPostCommentsAddNotifier>(SYMBOLS.PostingPostCommentsAddNotifier).to(PostingPostCommentsAddNotifier).inSingletonScope();
+    bind<PostingPostCommentsDeleter>(SYMBOLS.PostingPostCommentsDeleter).to(PostingPostCommentsDeleter).inSingletonScope();
+    bind<PostingPostCommentsBodyUpdater>(SYMBOLS.PostingPostCommentsBodyUpdater).to(PostingPostCommentsBodyUpdater).inSingletonScope();
+
+    bind<CommentListElement>(SYMBOLS.CommentListElement).to(CommentListElement).inSingletonScope();
+    bind<CommentWriterElement>(SYMBOLS.CommentWriterElement).to(CommentWriterElement).inSingletonScope();
 
     // bind<PostingPostBodyObserver>(SYMBOLS.PostingPostBodyObserver).to(PostingPostBodyObserver);
     // bind<PostingPostTitleObserver>(SYMBOLS.PostingPostTitleObserver).to(PostingPostTitleObserver);

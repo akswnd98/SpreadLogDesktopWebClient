@@ -1,3 +1,5 @@
+import { SymbolFlags } from "typescript";
+
 const SYMBOLS = {
   App: Symbol.for('App'),
   AppNavigator: Symbol.for('AppNavigator'),
@@ -128,6 +130,18 @@ const SYMBOLS = {
   PrevPosts: Symbol.for('PrevPosts'),
 
   AvatarClickPopup: Symbol.for('AvatarClickPopup'),
+
+  PostingPostComments: Symbol.for('PostingPostComments'),
+  PostingPostCommentsGetter: Symbol.for('PostingPostCommentsGetter'),
+  PostingPostCommentsSetter: Symbol.for('PostingPostCommentsSetter'),
+  PostingPostCommentsSetNotifier: Symbol.for('PostingPostCommentsSetNotifier'),
+  PostingPostCommentsAdder: Symbol.for('PostingPostCommentsAdder'),
+  PostingPostCommentsAddNotifier: Symbol.for('PostingPostCommentsAddNotifier'),
+  PostingPostCommentsDeleter: Symbol.for('PostingPostCommentsDeleter'),
+  PostingPostCommentsBodyUpdater: Symbol.for('PostingPostCommentsBodyUpdater'),
+
+  CommentListElement: Symbol.for('CommentListElement'),
+  CommentWriterElement: Symbol.for('CommentWriterElement'),
 };
 
 export {
