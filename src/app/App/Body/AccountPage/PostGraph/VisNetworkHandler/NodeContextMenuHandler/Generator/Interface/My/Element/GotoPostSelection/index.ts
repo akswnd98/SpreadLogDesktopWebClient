@@ -7,6 +7,7 @@ import Getter from '@/src/app/data-binding/Operator/NodeContextMenuSelectedId/Ge
 import { SYMBOLS } from '@/src/app/symbols';
 import DeleteNode from '@/src/app/data-binding/Operator/PostGraph/DeleteNode';
 import axios from 'axios';
+import { Router } from '@vaadin/router';
 
 @injectable()
 export default class GotoPostSelection extends IconSelection {
@@ -20,7 +21,7 @@ export default class GotoPostSelection extends IconSelection {
 
   async handleClick () {
     const id = Static.instance.get<Getter>(SYMBOLS.NodeContextMenuSelectedIdGetter).get();
-    location.href = `/post/${id}`;
+    Router.go(`/post/${id}`);
   }
 }
 

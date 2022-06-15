@@ -99,6 +99,7 @@ const SYMBOLS = {
   PostGraph: Symbol.for('PostGraph'),
   InitialPostNodes: Symbol.for('InitialPostNodes'),
   InitialPostEdges: Symbol.for('InitialPostEdges'),
+  PostGraphSetter: Symbol.for('PostGraphSetter'),
   PostGraphAddNode: Symbol.for('PostGraphAddNode'),
   PostGraphDeleteNode: Symbol.for('PostGraphDeleteNode'),
   PostGraphAddEdge: Symbol.for('PostGraphAddEdge'),

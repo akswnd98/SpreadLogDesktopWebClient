@@ -1,6 +1,7 @@
 import Handler from '@/src/owl-element/Attribute/Handler';
 import 'reflect-metadata';
 import { injectable } from 'inversify';
+import { Router } from '@vaadin/router';
 
 export type ConstructorParam = {
   id: number;
@@ -17,6 +18,6 @@ export default class Click extends Handler<'click'> {
   }
 
   async handle (event: MouseEvent) {
-    location.href = `/post/${this.postId}`;
+    Router.go(`/post/${this.postId}`);
   }
 }

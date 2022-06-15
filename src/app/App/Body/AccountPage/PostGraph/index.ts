@@ -55,6 +55,9 @@ export default class PostGraph extends GraphVis {
       ],
       options,
     });
+    this.network.once('beforeDrawing', () => {
+      this.network.moveTo({ position: { x: 0, y: 0 } });
+    });
   }
 }
 

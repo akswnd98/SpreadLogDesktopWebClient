@@ -86,6 +86,7 @@ import AccountPageNicknameGetter from './data-binding/Operator/AccountPageNickna
 import AccountPageNicknameSetter from './data-binding/Operator/AccountPageNickname/Setter';
 
 import PostGraph from './data-binding/Model/PostGraph/inversified';
+import PostGraphSetter from './data-binding/Operator/PostGraph/Setter';
 import PostGraphAddNode from './data-binding/Operator/PostGraph/AddNode';
 import PostGraphAddEdge from './data-binding/Operator/PostGraph/AddEdge';
 import PostGraphDeleteNode from './data-binding/Operator/PostGraph/DeleteNode';
@@ -230,8 +231,9 @@ const module = new AsyncContainerModule(
     bind<AccountPageNicknameSetter>(SYMBOLS.AccountPageNicknameSetter).to(AccountPageNicknameSetter).inSingletonScope();
 
     bind<PostGraph>(SYMBOLS.PostGraph).to(PostGraph).inSingletonScope();
-    bind<InitialPostNodes>(SYMBOLS.InitialPostNodes).toConstantValue(await getInitialPostNodes());
-    bind<InitialPostEdges>(SYMBOLS.InitialPostEdges).toConstantValue(await getInitialPostEdges());
+    // bind<InitialPostNodes>(SYMBOLS.InitialPostNodes).toConstantValue(await getInitialPostNodes());
+    // bind<InitialPostEdges>(SYMBOLS.InitialPostEdges).toConstantValue(await getInitialPostEdges());
+    bind<PostGraphSetter>(SYMBOLS.PostGraphSetter).to(PostGraphSetter).inSingletonScope();
     bind<PostGraphAddNode>(SYMBOLS.PostGraphAddNode).to(PostGraphAddNode).inSingletonScope();
     bind<PostGraphAddEdge>(SYMBOLS.PostGraphAddEdge).to(PostGraphAddEdge).inSingletonScope();
     bind<PostGraphDeleteNode>(SYMBOLS.PostGraphDeleteNode).to(PostGraphDeleteNode).inSingletonScope();

@@ -24,7 +24,7 @@ export default class PasswdToUserConfermed extends StateTransitionCommand {
       if (!rst) {
         throw Error('login failed');
       }
-      window.location.href = '/';
+      location.href = '/';
     } catch (e) {
       console.log(e);
       const loginErrorElement = Static.instance.get<Left>(SYMBOLS.LoginPopupBodyLeft).loginElement.shadowRoot!.getElementById('login-error')! as HTMLDivElement;

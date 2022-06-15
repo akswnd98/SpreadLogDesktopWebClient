@@ -11,13 +11,17 @@ import { type EdgeType } from '../../DataStruct/InitialPostEdges';
 @injectable()
 export default class Inversified extends PostGraph {
   constructor (
-    @inject(SYMBOLS.InitialPostNodes) initialPostNodes: InitialPostNodes,
-    @inject(SYMBOLS.InitialPostEdges) InitialPostEdges: InitialPostEdges,
+    // @inject(SYMBOLS.InitialPostNodes) initialPostNodes: InitialPostNodes,
+    // @inject(SYMBOLS.InitialPostEdges) InitialPostEdges: InitialPostEdges,
   ) {
     super({
+      // data: {
+      //   nodes: new Map<number, NodeType>(initialPostNodes.map((v) => [v.id, v])),
+      //   edges: new Map<number, EdgeType>(InitialPostEdges.map((v) => [v.id, v])),
+      // },
       data: {
-        nodes: new Map<number, NodeType>(initialPostNodes.map((v) => [v.id, v])),
-        edges: new Map<number, EdgeType>(InitialPostEdges.map((v) => [v.id, v])),
+        nodes: new Map<number, NodeType>(),
+        edges: new Map<number, EdgeType>(),
       },
     });
   }
