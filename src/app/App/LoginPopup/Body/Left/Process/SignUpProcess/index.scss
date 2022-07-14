@@ -51,6 +51,13 @@
             display: none;
           }
         }
+        #passwd-rule {
+          margin-top: 60px;
+          margin-left: 20px;
+          font-size: 16px;
+          font-family: NotoSansKR;
+          font-weight: bold;
+        }
       }
       #waiting-email-cert {
         position: absolute;
@@ -123,4 +130,11 @@
     transform: translateX(calc(100%));
   }
 }
-  
+
+.active {
+  display: block;
+}
+
+.inactive {
+  display: none;
+}

@@ -58,6 +58,10 @@ export default class SignUpProcess extends Element {
                   이메일을 다시 확인해 주세요
                 </div>
               </div>
+              <div id='passwd-rule' class='inactive'>
+                <div>&middot&nbsp10자리 이상</div>
+                <div>&middot&nbsp대소문자, 숫자, 특수문자 조합</div>
+              </div>
             </div>
             <div id='waiting-email-cert'>
               <div>

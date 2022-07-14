@@ -4,7 +4,7 @@ import 'reflect-metadata';
 import { injectable } from 'inversify';
 import Style from '@/src/owl-element/Attribute/Style';
 import styles from './index.scss';
-import accountSvg from '@/assets/images/account-circle.svg';
+import navPerson from '@/assets/images/nav-person.svg';
 import ClickHandler from './Handler/Click';
 
 @injectable()
@@ -22,7 +22,7 @@ export default class PeopleElement extends Element {
     super.initialRender(payload);
     render(
       html`
-        <img src=${accountSvg}></img>
+        <img src=${navPerson}></img>
       `,
       this.rootElement,
     );

@@ -7,17 +7,21 @@ import axios from 'axios';
 import Static from '@/src/app/inversify.config';
 import Getter from '@/src/app/data-binding/Operator/CurrentSignUpEmail/Getter';
 import { SYMBOLS } from '@/src/app/symbols';
+import SignUpProcess from '@/src/app/App/LoginPopup/Body/Left/Process/SignUpProcess';
 
 export type ConstructorParam = {
+  element: SignUpProcess;
   inputWrapper: InputWrapper;
 };
 
 @injectable()
 export default class BaseToPasswd extends StateTransitionCommand {
+  protected element: SignUpProcess;
   protected inputWrapper: InputWrapper;
 
   constructor (@unmanaged() payload: ConstructorParam) {
     super();
+    this.element = payload.element;
     this.inputWrapper = payload.inputWrapper;
   }
 
@@ -29,6 +33,8 @@ export default class BaseToPasswd extends StateTransitionCommand {
         throw Error('email already exist');
       }
       this.inputWrapper.slideInputToNext('email-input-wrapper', 'passwd-input-wrapper');
+      (this.element.shadowRoot!.getElementById('passwd-rule')! as HTMLDivElement).classList.remove('inactive', 'active');
+      (this.element.shadowRoot!.getElementById('passwd-rule')! as HTMLDivElement).classList.add('active');
     } catch (e) {
       console.log(e);
       throw Error('SignUpProcessBaseToPasswdCommand.execute failed');
@@ -37,6 +43,8 @@ export default class BaseToPasswd extends StateTransitionCommand {
 
   async unexecute () {
     this.inputWrapper.slideInputToPrev('passwd-input-wrapper', 'email-input-wrapper');
+    (this.element.shadowRoot!.getElementById('passwd-rule')! as HTMLDivElement).classList.remove('inactive', 'active');
+    (this.element.shadowRoot!.getElementById('passwd-rule')! as HTMLDivElement).classList.add('inactive');
   }
 
   generateNextState () {
