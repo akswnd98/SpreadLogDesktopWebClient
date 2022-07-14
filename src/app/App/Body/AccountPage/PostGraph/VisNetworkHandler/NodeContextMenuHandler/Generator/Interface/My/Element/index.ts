@@ -8,8 +8,8 @@ export default class ContextMenuBody extends BasicContextMenuBody {
   constructor () {
     super({
       childElements: [
-        new DeleteSelection(),
         new GotoPostSelection(),
+        new DeleteSelection(),
       ],
     });
   }
